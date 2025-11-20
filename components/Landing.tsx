@@ -1,10 +1,49 @@
 import React from 'react';
-import { Calendar, Check, ArrowRight, Download, Star, Zap, ArrowUpRight } from 'lucide-react';
+import { Calendar, Check, ArrowRight, Download, Star, Zap, ArrowUpRight, Shield, Heart, BarChart3, XCircle, CheckCircle2, HelpCircle, Clock } from 'lucide-react';
 import { CourseDate, CaseStudy } from '../types';
 import { CaseStudyModal } from './CaseStudyModal';
 import { CohortTicket } from './CohortTicket';
 
-
+// NEW_SECTION_1_START
+const COHORT_DATES: CourseDate[] = [
+  {
+    id: 'cohort-1',
+    date: 'July 15, 2024',
+    time: '9:00 AM - 12:00 PM PST',
+    status: 'open',
+    price: 499,
+    spotsLeft: 5,
+    link: '#',
+  },
+  {
+    id: 'cohort-2',
+    date: 'August 5, 2024',
+    time: '1:00 PM - 4:00 PM PST',
+    status: 'open',
+    price: 499,
+    spotsLeft: 12,
+    link: '#',
+  },
+  {
+    id: 'cohort-3',
+    date: 'September 9, 2024',
+    time: '10:00 AM - 1:00 PM PST',
+    status: 'open',
+    price: 499,
+    spotsLeft: 8,
+    link: '#',
+  },
+  {
+    id: 'cohort-4',
+    date: 'October 14, 2024',
+    time: '11:00 AM - 2:00 PM PST',
+    status: 'full',
+    price: 499,
+    spotsLeft: 0,
+    link: '#',
+  },
+];
+// NEW_SECTION_1_END
 
 const CASE_STUDIES: CaseStudy[] = [
   {
@@ -94,7 +133,7 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
             </h1>
 
             <p className="text-xl text-slate-600 font-medium leading-relaxed max-w-lg">
-              Lead the way without losing your mind. A practical, hands-on course designed to help you tame the AI beast and reclaim your evenings.
+              The only AI training designed by educators, for educators. We help schools navigate the "Wild West" of AI with confidence, ethics, and practical tools.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -137,6 +176,82 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
         </div>
       </section>
 
+      {/* Reality Check Section */}
+      <section className="py-20 bg-white border-b-2 border-black">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <div className="inline-block bg-slate-100 border-2 border-black px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider mb-6">
+            The Reality Check
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black text-sta-dark mb-8 leading-tight">
+            "We bought the tools. <br />
+            <span className="text-slate-400">But nobody is using them.</span>"
+          </h2>
+          <p className="text-xl text-slate-600 font-medium leading-relaxed mb-12">
+            Sound familiar? Most schools are drowning in new tech but starving for meaningful implementation.
+            Teachers are overwhelmed, admin is anxious about privacy, and students are... well, finding their own "workarounds."
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 text-left">
+            <div className="p-6 bg-red-50 border-2 border-red-100 rounded-xl">
+              <div className="font-black text-red-800 mb-2 flex items-center"><XCircle className="w-5 h-5 mr-2" /> The Fear</div>
+              <p className="text-sm text-red-700 font-medium">"Students will just cheat and stop learning."</p>
+            </div>
+            <div className="p-6 bg-orange-50 border-2 border-orange-100 rounded-xl">
+              <div className="font-black text-orange-800 mb-2 flex items-center"><Clock className="w-5 h-5 mr-2" /> The Burnout</div>
+              <p className="text-sm text-orange-700 font-medium">"I don't have time to learn another platform."</p>
+            </div>
+            <div className="p-6 bg-slate-50 border-2 border-slate-100 rounded-xl">
+              <div className="font-black text-slate-800 mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2" /> The Confusion</div>
+              <p className="text-sm text-slate-700 font-medium">"Which tool is actually safe for 5th graders?"</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* For School Leaders Section */}
+      <section className="py-24 bg-sta-surface bg-dot-pattern border-b-2 border-black">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black text-sta-dark mb-4">Why Leaders Choose STA</h2>
+            <p className="text-slate-600 text-xl font-medium">We speak "Admin" as fluently as we speak "Teacher".</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl">
+              <div className="w-14 h-14 bg-sta-mint rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
+                <Shield className="w-8 h-8 text-black" strokeWidth={2} />
+              </div>
+              <h3 className="text-2xl font-black text-sta-dark mb-4">Safety First</h3>
+              <p className="text-slate-600 font-medium leading-relaxed">
+                We don't just show cool tricks. We start with data privacy, PII protection, and age-appropriate usage. Your district's compliance is our priority.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl">
+              <div className="w-14 h-14 bg-sta-coral rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
+                <Heart className="w-8 h-8 text-black" strokeWidth={2} />
+              </div>
+              <h3 className="text-2xl font-black text-sta-dark mb-4">Teacher Retention</h3>
+              <p className="text-slate-600 font-medium leading-relaxed">
+                Burnout is at an all-time high. We give teachers hours back in their week. When teachers feel supported and efficient, they stay.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl">
+              <div className="w-14 h-14 bg-sta-accent rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
+                <BarChart3 className="w-8 h-8 text-black" strokeWidth={2} />
+              </div>
+              <h3 className="text-2xl font-black text-sta-dark mb-4">Measurable Impact</h3>
+              <p className="text-slate-600 font-medium leading-relaxed">
+                From "hours saved" to "feedback quality," we help you track the ROI of your AI implementation. Real metrics for your board meetings.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Curriculum Highlights - Grid with chunky borders */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
@@ -174,6 +289,70 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
               </div>
               <h3 className="text-2xl font-black text-sta-dark mb-3">Personalized Learning</h3>
               <p className="text-slate-600 font-medium leading-relaxed">Scale yourself. Use AI to create individual feedback loops, IEP goal drafts, and custom content for every student.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Section: Old Way vs STA Way */}
+      <section className="py-24 bg-slate-900 text-white border-y-2 border-black">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* The Old Way */}
+            <div className="opacity-50 hover:opacity-70 transition-opacity">
+              <h3 className="text-2xl font-black mb-8 text-slate-400 uppercase tracking-widest border-b-2 border-slate-700 pb-4">The Old Way</h3>
+              <ul className="space-y-6">
+                <li className="flex items-start">
+                  <XCircle className="w-6 h-6 text-red-500 mr-4 shrink-0" />
+                  <div>
+                    <strong className="block text-lg mb-1">"Sit and Get" PD</strong>
+                    <p className="text-slate-400">6 hours of slides in a cafeteria. Teachers grading papers in the back row.</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <XCircle className="w-6 h-6 text-red-500 mr-4 shrink-0" />
+                  <div>
+                    <strong className="block text-lg mb-1">Generic Tech Tools</strong>
+                    <p className="text-slate-400">"Here's a new login." No context, no pedagogy, just another password to forget.</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <XCircle className="w-6 h-6 text-red-500 mr-4 shrink-0" />
+                  <div>
+                    <strong className="block text-lg mb-1">Fear-Based Policy</strong>
+                    <p className="text-slate-400">"Ban it until we figure it out." (Spoiler: The kids figured it out months ago.)</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* The STA Way */}
+            <div className="relative">
+              <div className="absolute -left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-sta-primary to-transparent hidden md:block"></div>
+              <h3 className="text-2xl font-black mb-8 text-sta-primary uppercase tracking-widest border-b-2 border-sta-primary pb-4">The STA Way</h3>
+              <ul className="space-y-8">
+                <li className="flex items-start">
+                  <CheckCircle2 className="w-6 h-6 text-sta-mint mr-4 shrink-0" />
+                  <div>
+                    <strong className="block text-xl mb-1">Hands-On Creation</strong>
+                    <p className="text-slate-300">Teachers leave with lesson plans, rubrics, and emails they can use <i>tomorrow</i>.</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle2 className="w-6 h-6 text-sta-mint mr-4 shrink-0" />
+                  <div>
+                    <strong className="block text-xl mb-1">Pedagogy First</strong>
+                    <p className="text-slate-300">It's not about the bot. It's about high-quality instruction, differentiated for every learner.</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle2 className="w-6 h-6 text-sta-mint mr-4 shrink-0" />
+                  <div>
+                    <strong className="block text-xl mb-1">Empowered Ethics</strong>
+                    <p className="text-slate-300">We teach how to use AI responsibly, so you can lead the conversation instead of reacting to it.</p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -255,6 +434,35 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-sta-surface border-t-2 border-black">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-4xl font-black text-sta-dark mb-12 text-center">Common Questions</h2>
+
+          <div className="space-y-6">
+            <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
+              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Is this safe for student data?</h3>
+              <p className="text-slate-600 font-medium">Absolutely. We have an entire module dedicated to data privacy. We teach the "No PII" rule (No Personally Identifiable Information) and review the privacy policies of every tool we recommend.</p>
+            </div>
+
+            <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
+              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Do I need to be a "techie"?</h3>
+              <p className="text-slate-600 font-medium">Not at all. If you can send an email, you can do this. We focus on "Natural Language" prompting—using plain English to get results.</p>
+            </div>
+
+            <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
+              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> What if I miss a live session?</h3>
+              <p className="text-slate-600 font-medium">Life happens! All sessions are recorded and uploaded to the course portal within 24 hours. You have lifetime access to the recordings.</p>
+            </div>
+
+            <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
+              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Can we pay via Purchase Order?</h3>
+              <p className="text-slate-600 font-medium">Yes! For school groups of 3 or more, we accept POs. Just click the "Schedule Consult" button above or email us directly.</p>
+            </div>
           </div>
         </div>
       </section>
