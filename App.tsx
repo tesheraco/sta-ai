@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Landing } from './components/Landing';
 import { ToolkitPage } from './components/ToolkitPage';
-import { CourseDetails } from './components/CourseDetails';
 import { SchedulePage } from './components/SchedulePage';
-import { ViewState } from './types';
+import { CoursesPage } from './components/CoursesPage';
+import { CourseDetail } from './components/CourseDetail';
 
-const App: React.FC = () => {
-  const [currentView, setView] = useState<ViewState>(ViewState.LANDING);
-
+function App() {
   return (
-    <div className="min-h-screen flex flex-col font-sans text-slate-900">
-      <Navbar currentView={currentView} setView={setView} />
+    <Router>
+      <div className="min-h-screen flex flex-col font-sans text-slate-900">
+        <Navbar />
 
-      <main className="flex-grow">
-        {currentView === ViewState.LANDING ? (
-          <Landing setView={setView} />
-        ) : currentView === ViewState.TOOLKIT ? (
-          <ToolkitPage />
-        ) : currentView === ViewState.COURSE_DETAILS ? (
-          <CourseDetails setView={setView} />
-        ) : (
-          <SchedulePage setView={setView} />
-        )}
-      </main>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/toolkit" element={<ToolkitPage />} />
+            <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/courses/:id" element={<CourseDetail />} />
+            <Route path="/schedule" element={<SchedulePage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 

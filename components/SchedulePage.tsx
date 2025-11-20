@@ -1,24 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, Shield, Video, Clock, CreditCard, CheckCircle } from 'lucide-react';
 import { ViewState } from '../types';
 import { CohortTicket } from './CohortTicket';
 
-interface SchedulePageProps {
-    setView: (view: ViewState) => void;
-}
-
-export const SchedulePage: React.FC<SchedulePageProps> = ({ setView }) => {
+export const SchedulePage: React.FC = () => {
     return (
         <div className="w-full min-h-screen bg-sta-surface bg-dot-pattern">
             {/* Navigation */}
             <div className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b-2 border-black px-4 py-4">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
-                    <button
-                        onClick={() => setView(ViewState.LANDING)}
+                    <Link
+                        to="/"
                         className="flex items-center font-bold text-slate-600 hover:text-sta-dark transition-colors"
                     >
                         <ArrowLeft className="w-5 h-5 mr-2" /> Back to Home
-                    </button>
+                    </Link>
                     <div className="font-black text-sta-dark uppercase tracking-widest text-sm hidden md:block">
                         Secure Registration
                     </div>

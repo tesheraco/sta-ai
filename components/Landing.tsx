@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, Check, ArrowRight, Download, Star, Zap, ArrowUpRight, Shield, Heart, BarChart3, XCircle, CheckCircle2, HelpCircle, Clock } from 'lucide-react';
-import { CourseDate, CaseStudy } from '../types';
+import { CourseDate, CaseStudy, Course } from '../types';
 import { CaseStudyModal } from './CaseStudyModal';
 import { CohortTicket } from './CohortTicket';
+import { COURSES } from '../data/courses';
 
 // NEW_SECTION_1_START
 const COHORT_DATES: CourseDate[] = [
@@ -102,15 +104,15 @@ const CASE_STUDIES: CaseStudy[] = [
   }
 ];
 
-export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView }) => {
-  const [selectedStudy, setSelectedStudy] = React.useState<CaseStudy | null>(null);
+export const Landing: React.FC = () => {
+  const [selectedCaseStudy, setSelectedCaseStudy] = React.useState<CaseStudy | null>(null);
 
   return (
     <div className="w-full overflow-x-hidden bg-white">
-      {selectedStudy && (
+      {selectedCaseStudy && (
         <CaseStudyModal
-          study={selectedStudy}
-          onClose={() => setSelectedStudy(null)}
+          study={selectedCaseStudy}
+          onClose={() => setSelectedCaseStudy(null)}
         />
       )}
 
@@ -125,52 +127,54 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
             </div>
 
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-sta-dark leading-[0.9]">
-              Intro to AI <br />
+              Stop Hiring <br />
               <span className="relative inline-block mt-2">
-                <span className="relative z-10">for Educators</span>
-                <span className="absolute bottom-2 left-0 w-full h-6 bg-sta-mint/60 -rotate-1 z-0"></span>
+                <span className="relative z-10">Expensive Vendors</span>
+                <span className="absolute bottom-2 left-0 w-full h-6 bg-sta-coral/60 -rotate-1 z-0"></span>
               </span>
             </h1>
 
             <p className="text-xl text-slate-600 font-medium leading-relaxed max-w-lg">
-              The only AI training designed by educators, for educators. We help schools navigate the "Wild West" of AI with confidence, ethics, and practical tools.
+              Your staff is already there. They know the kids. They just need the skills. We turn your existing team into STEM superstars for a fraction of the cost.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button
-                onClick={() => setView('SCHEDULE')}
+              <Link
+                to="/courses"
                 className="px-8 py-4 bg-sta-dark text-white border-2 border-black rounded-lg font-bold text-lg shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center"
               >
-                View Upcoming Cohorts
-              </button>
-              <button
-                onClick={() => setView('COURSE_DETAILS')}
+                Explore Courses
+              </Link>
+              <Link
+                to="/courses/ai-educators"
                 className="px-8 py-4 bg-white text-sta-dark border-2 border-black rounded-lg font-bold text-lg shadow-hard-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center"
               >
-                Learn More
-              </button>
+                View Flagship
+              </Link>
             </div>
           </div>
 
-          <div className="md:col-span-5 relative hidden md:block">
-            {/* Stacked Card Effect */}
-            <div className="absolute top-4 left-4 w-full h-full bg-sta-secondary rounded-2xl border-2 border-black"></div>
-            <div className="relative z-10 rounded-2xl overflow-hidden border-2 border-black shadow-hard bg-white">
-              <img
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                alt="Teacher using computer"
-                className="object-cover h-[500px] w-full grayscale hover:grayscale-0 transition-all duration-500"
-              />
-              <div className="absolute bottom-0 left-0 w-full bg-white border-t-2 border-black p-4">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold">LESSON_PLAN_V1.DOCX</span>
-                  <div className="flex space-x-1">
-                    <div className="w-3 h-3 rounded-full bg-sta-coral border border-black"></div>
-                    <div className="w-3 h-3 rounded-full bg-sta-accent border border-black"></div>
-                    <div className="w-3 h-3 rounded-full bg-sta-mint border border-black"></div>
-                  </div>
+          {/* Hero Visual */}
+          <div className="hidden md:block md:col-span-5 relative h-[600px]">
+            <img
+              src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Teachers learning"
+              className="absolute top-0 right-0 w-full h-full object-cover rounded-3xl border-2 border-black shadow-hard z-10"
+            />
+            <div className="absolute bottom-10 left-[-20px] bg-white p-6 rounded-xl border-2 border-black shadow-hard z-20 max-w-xs">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 bg-sta-mint rounded-full flex items-center justify-center border-2 border-black">
+                  <span className="font-black text-lg">A+</span>
+                </div>
+                <div>
+                  <p className="font-bold text-sm">Teacher Confidence</p>
+                  <p className="text-xs text-slate-500">Post-training survey</p>
                 </div>
               </div>
+              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-black">
+                <div className="bg-sta-primary w-[94%] h-full"></div>
+              </div>
+              <p className="text-right text-xs font-bold mt-1">94% Increase</p>
             </div>
           </div>
         </div>
@@ -205,10 +209,10 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* For School Leaders Section */}
-      <section className="py-24 bg-sta-surface bg-dot-pattern border-b-2 border-black">
+      < section className="py-24 bg-sta-surface bg-dot-pattern border-b-2 border-black" >
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-sta-dark mb-4">Why Leaders Choose STA</h2>
@@ -250,10 +254,10 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Curriculum Highlights - Grid with chunky borders */}
-      <section className="py-24 bg-white">
+      < section className="py-24 bg-white" >
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-16 text-center max-w-3xl mx-auto">
             <h2 className="text-4xl font-black text-sta-dark mb-4">The Curriculum</h2>
@@ -267,8 +271,8 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
               <div className="w-12 h-12 bg-sta-secondary/20 rounded-full flex items-center justify-center border-2 border-black mb-6">
                 <Zap className="w-6 h-6 text-sta-secondary" strokeWidth={3} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-3">Ethics & Safety</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">Navigating privacy, plagiarism, and bias without panic. How to talk to parents and admin responsibly.</p>
+              <h3 className="text-2xl font-black text-sta-dark mb-3">Expert Curriculum</h3>
+              <p className="text-slate-600 font-medium leading-relaxed">Don't reinvent the wheel. We provide battle-tested lesson plans, slide decks, and project guides that work.</p>
             </div>
 
             {/* Item 2 */}
@@ -277,8 +281,8 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
               <div className="w-12 h-12 bg-sta-accent/30 rounded-full flex items-center justify-center border-2 border-black mb-6">
                 <div className="text-xl font-black text-sta-dark">P</div>
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-3">Prompt Engineering</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">Learn the "magic words" to get exactly what you need. Create differentiated reading passages and robust quizzes instantly.</p>
+              <h3 className="text-2xl font-black text-sta-dark mb-3">Asynchronous & Live</h3>
+              <p className="text-slate-600 font-medium leading-relaxed">Flexible training that fits your staff's schedule. Self-paced modules for basics, live coaching for mastery.</p>
             </div>
 
             {/* Item 3 */}
@@ -287,15 +291,15 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
               <div className="w-12 h-12 bg-sta-primary/20 rounded-full flex items-center justify-center border-2 border-black mb-6">
                 <Star className="w-6 h-6 text-sta-primary" strokeWidth={3} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-3">Personalized Learning</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">Scale yourself. Use AI to create individual feedback loops, IEP goal drafts, and custom content for every student.</p>
+              <h3 className="text-2xl font-black text-sta-dark mb-3">AI Superpowers</h3>
+              <p className="text-slate-600 font-medium leading-relaxed">Every course includes our "AI Toolkit" to help staff generate lesson modifications and emails in seconds.</p>
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Comparison Section: Old Way vs STA Way */}
-      <section className="py-24 bg-slate-900 text-white border-y-2 border-black">
+      < section className="py-24 bg-slate-900 text-white border-y-2 border-black" >
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
             {/* The Old Way */}
@@ -356,10 +360,10 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Founder Section - Magazine Style */}
-      <section id="founder" className="py-24 bg-sta-accent border-y-2 border-black">
+      < section id="founder" className="py-24 bg-sta-accent border-y-2 border-black" >
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-5 order-2 md:order-1 relative">
@@ -388,10 +392,10 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Case Studies Section */}
-      <section className="py-24 bg-sta-surface bg-dot-pattern">
+      < section className="py-24 bg-sta-surface bg-dot-pattern" >
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-sta-dark mb-4">Success Stories</h2>
@@ -402,7 +406,7 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
             {CASE_STUDIES.map((study) => (
               <div
                 key={study.id}
-                onClick={() => setSelectedStudy(study)}
+                onClick={() => setSelectedCaseStudy(study)}
                 className="bg-white p-8 border-2 border-black shadow-hard-sm rounded-xl cursor-pointer group hover:-translate-y-1 hover:shadow-hard transition-all duration-200 flex flex-col h-full relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 bg-sta-accent text-xs font-bold px-3 py-1 border-l-2 border-b-2 border-black opacity-0 group-hover:opacity-100 transition-opacity">
@@ -436,10 +440,10 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* FAQ Section */}
-      <section className="py-24 bg-sta-surface border-t-2 border-black">
+      < section className="py-24 bg-sta-surface border-t-2 border-black" >
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-4xl font-black text-sta-dark mb-12 text-center">Common Questions</h2>
 
@@ -465,10 +469,10 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Pricing / Offerings - Ticket vs Block */}
-      <section id="register" className="py-24 bg-white border-t-2 border-black">
+      < section id="register" className="py-24 bg-white border-t-2 border-black" >
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-sta-dark mb-2">Get Trained</h2>
@@ -478,8 +482,17 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
           <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto items-start">
 
             {/* Individual Ticket Style */}
-            <div className="h-[600px]">
-              <CohortTicket />
+            <div className="h-[600px] flex flex-col justify-center">
+              <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl text-center">
+                <h3 className="text-3xl font-black mb-4">Browse Catalog</h3>
+                <p className="text-slate-600 font-medium mb-8">From Scratch to Python, we have courses for every skill level.</p>
+                <Link
+                  to="/courses"
+                  className="w-full py-4 bg-sta-primary text-white font-bold border-2 border-black shadow-hard hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all rounded-lg block"
+                >
+                  View All Courses
+                </Link>
+              </div>
             </div>
 
             {/* School Site Premium */}
@@ -503,17 +516,17 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
                   </div>
                 </div>
 
-                <button className="w-full py-4 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_#fbbf24] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all rounded-lg flex items-center justify-center group">
+                <Link to="/schedule" className="w-full py-4 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_#fbbf24] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all rounded-lg flex items-center justify-center group">
                   Schedule Consult <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Lead Magnet & Newsletter */}
-      <section id="newsletter" className="py-24 bg-sta-mint border-t-2 border-black">
+      < section id="newsletter" className="py-24 bg-sta-mint border-t-2 border-black" >
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-xl border-2 border-black p-8 md:p-12 shadow-hard relative">
             {/* Decorative elements */}
@@ -546,7 +559,7 @@ export const Landing: React.FC<{ setView: (view: any) => void }> = ({ setView })
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 };
