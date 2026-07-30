@@ -1,8 +1,21 @@
+/// <reference types="vite/client" />
 import { GoogleGenAI, Type } from "@google/genai";
 import { LessonPlan } from "../types";
 
-// Initialize the client with the API key from the environment
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize the client lazily to avoid issues during module load
+let ai: GoogleGenAI | null = null;
+
+const getAI = () => {
+  if (!ai) {
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY || import.meta.env.API_KEY;
+    if (!apiKey) {
+      console.error("Missing VITE_GEMINI_API_KEY or API_KEY in environment variables");
+      throw new Error("Missing API Key");
+    }
+    ai = new GoogleGenAI({ apiKey });
+  }
+  return ai;
+};
 
 export const generateLessonPlan = async (
   topic: string,
@@ -11,7 +24,7 @@ export const generateLessonPlan = async (
   try {
     const prompt = `Create a concise, engaging lesson plan for a ${gradeLevel} class about "${topic}". make it fun and "out of the box".`;
 
-    const response = await ai.models.generateContent({
+    const response = await getAI().models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
       config: {

@@ -1,72 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>STA | AI for Educators</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              sta: {
-                primary: '#4f46e5', // Indigo 600 - Vibrant Blue
-                secondary: '#db2777', // Pink 600 - Pop Pink
-                accent: '#fbbf24', // Amber 400 - Gen Z Yellow
-                coral: '#f87171', // Soft Red
-                mint: '#34d399', // Mint Green
-                dark: '#1e293b', // Slate 800
-                surface: '#f1f5f9', // Slate 100
-                paper: '#ffffff',
-              }
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              mono: ['JetBrains Mono', 'monospace'], // Added for "technical" feel
-            },
-            boxShadow: {
-              'hard': '4px 4px 0px 0px rgba(0,0,0,1)',
-              'hard-sm': '2px 2px 0px 0px rgba(0,0,0,1)',
-              'hard-lg': '8px 8px 0px 0px rgba(0,0,0,1)',
-              'hard-white': '4px 4px 0px 0px #ffffff',
+
+<head>
+  <script>
+    window.onerror = function (message, source, lineno, colno, error) {
+      const errorDiv = document.createElement('div');
+      errorDiv.style.position = 'fixed';
+      errorDiv.style.top = '0';
+      errorDiv.style.left = '0';
+      errorDiv.style.width = '100%';
+      errorDiv.style.backgroundColor = '#fee2e2';
+      errorDiv.style.color = '#991b1b';
+      errorDiv.style.padding = '20px';
+      errorDiv.style.zIndex = '9999';
+      errorDiv.style.fontFamily = 'monospace';
+      errorDiv.style.borderBottom = '2px solid #7f1d1d';
+      errorDiv.innerHTML = `<strong>Error:</strong> ${message}<br>
+          <small>${source}:${lineno}:${colno}</small><br>
+          <pre>${error ? error.stack : ''}</pre>`;
+      document.body.appendChild(errorDiv);
+    };
+    window.onunhandledrejection = function (event) {
+      const errorDiv = document.createElement('div');
+      errorDiv.style.position = 'fixed';
+      errorDiv.style.top = '0';
+      errorDiv.style.left = '0';
+      errorDiv.style.width = '100%';
+      errorDiv.style.backgroundColor = '#fee2e2';
+      errorDiv.style.color = '#991b1b';
+      errorDiv.style.padding = '20px';
+      errorDiv.style.zIndex = '9999';
+      errorDiv.style.fontFamily = 'monospace';
+      errorDiv.style.borderBottom = '2px solid #7f1d1d';
+      errorDiv.innerHTML = `<strong>Unhandled Rejection:</strong> ${event.reason}`;
+      document.body.appendChild(errorDiv);
+    };
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STA | AI for Educators</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sta: {
+              primary: '#4f46e5', // Indigo 600 - Vibrant Blue
+              secondary: '#db2777', // Pink 600 - Pop Pink
+              accent: '#fbbf24', // Amber 400 - Gen Z Yellow
+              coral: '#f87171', // Soft Red
+              mint: '#34d399', // Mint Green
+              dark: '#1e293b', // Slate 800
+              surface: '#f1f5f9', // Slate 100
+              paper: '#ffffff',
             }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'], // Added for "technical" feel
+          },
+          boxShadow: {
+            'hard': '4px 4px 0px 0px rgba(0,0,0,1)',
+            'hard-sm': '2px 2px 0px 0px rgba(0,0,0,1)',
+            'hard-lg': '8px 8px 0px 0px rgba(0,0,0,1)',
+            'hard-white': '4px 4px 0px 0px #ffffff',
           }
         }
       }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-      body { font-family: 'Inter', sans-serif; }
-      
-      /* Dot pattern for background texture */
-      .bg-dot-pattern {
-        background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
-        background-size: 24px 24px;
-      }
-      
-      /* Paper texture effect */
-      .bg-paper-texture {
-        background-color: #ffffff;
-        background-image: linear-gradient(#f1f5f9 1px, transparent 1px), linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
-        background-size: 40px 40px;
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+    }
+  </script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Dot pattern for background texture */
+    .bg-dot-pattern {
+      background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+    }
+
+    /* Paper texture effect */
+    .bg-paper-texture {
+      background-color: #ffffff;
+      background-image: linear-gradient(#f1f5f9 1px, transparent 1px), linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+  </style>
 </head>
-  <body class="bg-white text-slate-900 antialiased selection:bg-sta-accent selection:text-sta-dark">
-    <div id="root"></div>
+
+<body class="bg-white text-slate-900 antialiased selection:bg-sta-accent selection:text-sta-dark">
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

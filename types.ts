@@ -7,27 +7,34 @@ export enum ViewState {
   COURSE_SINGLE = 'COURSE_SINGLE'
 }
 
-export enum CourseCategory {
-  CODING = 'Coding & Game Design',
-  ROBOTICS = 'Robotics & Engineering',
-  CREATIVE = 'Creative Arts & Media',
-  MAKER = 'Maker & Fabrication',
-  AI = 'AI & Future Tech'
+export enum CoursePillar {
+  STEM = 'STEM',
+  AI = 'AI',
+  ESPORTS = 'Esports'
 }
+
+export type GradeBand = 'K–2' | '3–5' | '6–8' | '9–12';
+
+export const GRADE_BANDS: GradeBand[] = ['K–2', '3–5', '6–8', '9–12'];
 
 export interface Course {
   id: string;
   title: string;
+  pillar: CoursePillar;
+  /** Display string, e.g. "Grades K–2" */
+  grades: string;
+  /** Bands used for filtering */
+  gradeBands: GradeBand[];
   description: string;
-  category: CourseCategory;
+  /** Devices requirement, e.g. "Laptops/Chromebooks" or "None" */
+  devices: string;
+  materials: string;
   image: string;
   tags: string[];
-  duration: string;
-  gradeLevel: string;
-  equipment: string[];
-  learningOutcomes: string[];
-  syllabus: { title: string; description: string }[];
-  price: number;
+  /** True when the program runs with zero student devices */
+  screenFree?: boolean;
+  learningOutcomes?: string[];
+  syllabus?: { title: string; description: string }[];
 }
 
 export interface LessonPlan {

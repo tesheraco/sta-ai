@@ -1,107 +1,95 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Check, ArrowRight, Download, Star, Zap, ArrowUpRight, Shield, Heart, BarChart3, XCircle, CheckCircle2, HelpCircle, Clock } from 'lucide-react';
-import { CourseDate, CaseStudy, Course } from '../types';
+import { ArrowRight, Download, Star, Zap, Shield, Heart, BarChart3, XCircle, CheckCircle2, HelpCircle, Cpu, Gamepad2, FlaskConical } from 'lucide-react';
+import { CaseStudy, CoursePillar } from '../types';
 import { CaseStudyModal } from './CaseStudyModal';
-import { CohortTicket } from './CohortTicket';
 import { COURSES } from '../data/courses';
-
-// NEW_SECTION_1_START
-const COHORT_DATES: CourseDate[] = [
-  {
-    id: 'cohort-1',
-    date: 'July 15, 2024',
-    time: '9:00 AM - 12:00 PM PST',
-    status: 'open',
-    price: 499,
-    spotsLeft: 5,
-    link: '#',
-  },
-  {
-    id: 'cohort-2',
-    date: 'August 5, 2024',
-    time: '1:00 PM - 4:00 PM PST',
-    status: 'open',
-    price: 499,
-    spotsLeft: 12,
-    link: '#',
-  },
-  {
-    id: 'cohort-3',
-    date: 'September 9, 2024',
-    time: '10:00 AM - 1:00 PM PST',
-    status: 'open',
-    price: 499,
-    spotsLeft: 8,
-    link: '#',
-  },
-  {
-    id: 'cohort-4',
-    date: 'October 14, 2024',
-    time: '11:00 AM - 2:00 PM PST',
-    status: 'full',
-    price: 499,
-    spotsLeft: 0,
-    link: '#',
-  },
-];
-// NEW_SECTION_1_END
 
 const CASE_STUDIES: CaseStudy[] = [
   {
     id: '1',
     name: 'Sarah Jenkins',
-    role: 'HS English Teacher',
+    role: 'Site Director, After-School Program',
     location: 'Brooklyn, NY',
     image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    quote: "I was terrified of ChatGPT. STA showed me how to use it to grade essays 5x faster while actually giving BETTER feedback.",
-    fullStory: `Before taking this course, I was drowning in grading. I have 150 students, and giving meaningful feedback on every essay felt impossible. I was spending my weekends grading instead of recharging.
+    quote: "None of my staff had ever written a line of code. Eight weeks later they were running a Scratch arcade night with 60 families in the room.",
+    fullStory: `We'd been quoted $180 per session by an outside STEM vendor — for one hour, one day a week. It wasn't sustainable, and when their instructor left mid-semester, the program just stopped.
 
-    The 'Prompt Engineering' module changed everything. I learned how to train the AI to adopt my specific rubric and grading style. It doesn't just give a grade; it provides specific, actionable feedback that I can review and approve.
-    
-    Now, I spend my time conferencing with students about their writing instead of just marking up papers. My students are writing more because they get feedback faster. It's not just a time-saver; it's a pedagogy amplifier.`,
+    STA flipped the model. Instead of renting an instructor, they trained my existing group leaders to run Game Builders themselves. The facilitation guides are written for people with zero coding background — every session is scripted, every common student error has a troubleshooting note.
+
+    Our first Arcade Showcase drew more families than any event we'd run all year. Now STEM is something we own, not something we book.`,
     metrics: [
-      { label: 'Hours Saved/Week', value: '12+' },
-      { label: 'Feedback Speed', value: '5x' },
-      { label: 'Student Engagement', value: '+40%' }
+      { label: 'Weeks to Launch', value: '4' },
+      { label: 'Vendor Cost Saved', value: '$5.4k/yr' },
+      { label: 'Families at Showcase', value: '60+' }
     ]
   },
   {
     id: '2',
     name: 'Marcus Thompson',
-    role: 'District Admin',
+    role: 'Program Director, Youth Development Org',
     location: 'Oakland, CA',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    quote: "Usually, teachers check their phones during PD. This time? They were glued to the screens, laughing, and building plans.",
-    fullStory: `Professional Development is usually a passive experience. Teachers sit, listen, and maybe try one thing a month later. We wanted something different for our district-wide AI rollout.
-    
-    STA's approach is radically different. It's hands-on from minute one. Teachers weren't just hearing about AI; they were building lesson plans, creating differentiated materials, and solving real classroom problems in real-time.
-    
-    The 'Ethics & Safety' module was particularly crucial for us. It gave our staff the confidence to navigate the tricky waters of AI policy without fear. We've seen a massive uptake in adoption since the training.`,
+    quote: "We rolled out robotics across six sites with the staff we already had. The training scaled — that's the part no vendor could ever offer us.",
+    fullStory: `Running programs across multiple sites means every new offering has to work without me standing in the room. Outside vendors could never scale past one or two locations, and quality varied wildly.
+
+    With STA we trained 14 site staff on Robotics I in a single cohort — mixed live sessions and self-paced modules that fit around program hours. Every site got the same curriculum, the same challenge mats, the same shopping list.
+
+    The unexpected win: staff retention. Our group leaders now have a real, resume-worthy skill, and two of them have taken over as our internal robotics leads. People stay when they're growing.`,
     metrics: [
-      { label: 'Teacher Adoption', value: '85%' },
-      { label: 'NPS Score', value: '92' },
-      { label: 'Workshops Run', value: '15' }
+      { label: 'Sites Launched', value: '6' },
+      { label: 'Staff Trained', value: '14' },
+      { label: 'Staff Retention', value: '+30%' }
     ]
   },
   {
     id: '3',
     name: 'Elena Rodriguez',
-    role: 'Special Ed Coordinator',
+    role: 'Enrichment Coordinator, K–8 School',
     location: 'Austin, TX',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    quote: "The ability to instantly differentiate reading passages for different reading levels is a game changer for my IEP students.",
-    fullStory: `Differentiation is the holy grail of special education, but it's incredibly time-consuming to do well. I often found myself spending hours rewriting the same text for three different reading levels.
-    
-    With the tools I learned in the STA course, I can now take any curriculum material and instantly adapt it for my students' specific needs. I can change the reading level, add vocabulary definitions, or even rewrite it in the style of their favorite superhero to increase engagement.
-    
-    My students are accessing the general education curriculum in ways they never could before. It's leveled the playing field.`,
+    quote: "The esports launch training paid for itself before the first practice. Six Switch consoles instead of a PC lab — and a 40-student waitlist.",
+    fullStory: `Parents had been asking about esports for two years, but every quote we got started with a $25,000 gaming PC lab. It was dead on arrival with our budget.
+
+    STA's Launch Your Esports Program training showed us the budget path: six Nintendo Switch consoles, age-appropriate game selection, and a real practice structure with sportsmanship and screen-time policies parents actually appreciated.
+
+    We launched with Rocket League and Smash for our middle schoolers. Within a month we had a waitlist, and our first in-house tournament packed the gym. The screen-time policy doc alone won over every skeptical parent.`,
     metrics: [
-      { label: 'Prep Time', value: '-70%' },
-      { label: 'Reading Growth', value: '1.5 yrs' },
-      { label: 'Parent Satisfaction', value: '10/10' }
+      { label: 'Startup Cost', value: '<$2.5k' },
+      { label: 'Student Waitlist', value: '40+' },
+      { label: 'Parent Approval', value: '96%' }
     ]
   }
+];
+
+const PILLARS = [
+  {
+    pillar: CoursePillar.STEM,
+    icon: FlaskConical,
+    color: 'bg-sta-primary',
+    textColor: 'text-sta-primary',
+    tint: 'bg-sta-primary/10',
+    blurb: 'Coding, robotics, 3D printing, VR, and engineering — from screen-free kindergarten kits to competition-ready middle school teams.',
+    highlights: ['Game Builders', 'Robotics I & II', 'Minecraft Coding', '3D Design & Print'],
+  },
+  {
+    pillar: CoursePillar.AI,
+    icon: Cpu,
+    color: 'bg-sta-secondary',
+    textColor: 'text-sta-secondary',
+    tint: 'bg-sta-secondary/10',
+    blurb: 'Kid-safe, age-gated AI programs — from hands-on machine learning games to building real apps in partnership with AI tools.',
+    highlights: ['AI Explorers', 'Intro to Vibe Coding'],
+  },
+  {
+    pillar: CoursePillar.ESPORTS,
+    icon: Gamepad2,
+    color: 'bg-sta-accent',
+    textColor: 'text-amber-600',
+    tint: 'bg-sta-accent/20',
+    blurb: 'The zero-to-team playbook: age-appropriate games, practice structure, screen-time policy, and tournaments — on a console budget.',
+    highlights: ['Launch Your Esports Program'],
+  },
 ];
 
 export const Landing: React.FC = () => {
@@ -116,26 +104,29 @@ export const Landing: React.FC = () => {
         />
       )}
 
-      {/* Hero Section - Pop Minimalist */}
+      {/* Hero Section */}
       <section className="relative bg-sta-surface border-b-2 border-black pt-20 pb-24 px-4 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-50 bg-dot-pattern pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center relative z-10">
           <div className="md:col-span-7 space-y-8">
             <div className="inline-block bg-sta-accent border-2 border-black px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-hard-sm rotate-[-2deg]">
-              Flagship Course
+              Staff Training for After-School Programs
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-sta-dark leading-[0.9]">
-              Stop Hiring <br />
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-sta-dark leading-[0.9]">
+              Run AI, STEM & <br />
               <span className="relative inline-block mt-2">
-                <span className="relative z-10">Expensive Vendors</span>
+                <span className="relative z-10">Esports In-House.</span>
                 <span className="absolute bottom-2 left-0 w-full h-6 bg-sta-coral/60 -rotate-1 z-0"></span>
               </span>
             </h1>
 
-            <p className="text-xl text-slate-600 font-medium leading-relaxed max-w-lg">
-              Your staff is already there. They know the kids. They just need the skills. We turn your existing team into STEM superstars for a fraction of the cost.
+            <p className="text-xl text-slate-600 font-medium leading-relaxed max-w-xl">
+              We train your existing staff to run the programs kids ask for — no outside instructors, no per-session vendor fees.
+            </p>
+            <p className="text-lg text-slate-500 font-medium leading-relaxed max-w-lg">
+              Turnkey curriculum, staff training, and equipment shopping lists for after-school sites, community organizations, and schools.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -143,14 +134,16 @@ export const Landing: React.FC = () => {
                 to="/courses"
                 className="px-8 py-4 bg-sta-dark text-white border-2 border-black rounded-lg font-bold text-lg shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center"
               >
-                Explore Courses
+                Browse the Course Library
               </Link>
-              <Link
-                to="/courses/ai-educators"
+              <a
+                href="https://calendly.com/sta-ai"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-4 bg-white text-sta-dark border-2 border-black rounded-lg font-bold text-lg shadow-hard-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center"
               >
-                View Flagship
-              </Link>
+                Get a Quote
+              </a>
             </div>
           </div>
 
@@ -158,7 +151,7 @@ export const Landing: React.FC = () => {
           <div className="hidden md:block md:col-span-5 relative h-[600px]">
             <img
               src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-              alt="Teachers learning"
+              alt="Staff training session"
               className="absolute top-0 right-0 w-full h-full object-cover rounded-3xl border-2 border-black shadow-hard z-10"
             />
             <div className="absolute bottom-10 left-[-20px] bg-white p-6 rounded-xl border-2 border-black shadow-hard z-20 max-w-xs">
@@ -167,7 +160,7 @@ export const Landing: React.FC = () => {
                   <span className="font-black text-lg">A+</span>
                 </div>
                 <div>
-                  <p className="font-bold text-sm">Teacher Confidence</p>
+                  <p className="font-bold text-sm">Staff Confidence</p>
                   <p className="text-xs text-slate-500">Post-training survey</p>
                 </div>
               </div>
@@ -180,43 +173,114 @@ export const Landing: React.FC = () => {
         </div>
       </section>
 
-      {/* Reality Check Section */}
-      <section className="py-20 bg-white border-b-2 border-black">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-block bg-slate-100 border-2 border-black px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider mb-6">
-            The Reality Check
+      {/* Audience Bar */}
+      <section className="py-8 bg-white border-b-2 border-black">
+        <div className="max-w-6xl mx-auto px-4">
+          <p className="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Built for organizations like</p>
+          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
+            {['YMCAs', 'Boys & Girls Clubs', 'Parks & Recreation', 'Charter Networks', 'K–12 Schools', 'Enrichment Providers'].map((name) => (
+              <span key={name} className="text-lg font-black text-slate-300 tracking-tight">{name}</span>
+            ))}
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-sta-dark mb-8 leading-tight">
-            "We bought the tools. <br />
-            <span className="text-slate-400">But nobody is using them.</span>"
-          </h2>
-          <p className="text-xl text-slate-600 font-medium leading-relaxed mb-12">
-            Sound familiar? Most schools are drowning in new tech but starving for meaningful implementation.
-            Teachers are overwhelmed, admin is anxious about privacy, and students are... well, finding their own "workarounds."
-          </p>
-          <div className="grid md:grid-cols-3 gap-6 text-left">
-            <div className="p-6 bg-red-50 border-2 border-red-100 rounded-xl">
-              <div className="font-black text-red-800 mb-2 flex items-center"><XCircle className="w-5 h-5 mr-2" /> The Fear</div>
-              <p className="text-sm text-red-700 font-medium">"Students will just cheat and stop learning."</p>
+        </div>
+      </section>
+
+      {/* Problem / Solution Block */}
+      <section className="py-20 bg-white border-b-2 border-black">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-0">
+            {/* Problem Side */}
+            <div className="bg-red-50 border-2 border-black rounded-t-xl md:rounded-l-xl md:rounded-tr-none p-10">
+              <div className="flex items-center gap-2 mb-6">
+                <XCircle className="w-6 h-6 text-red-500" />
+                <span className="font-black text-sm uppercase tracking-widest text-red-500">The Problem</span>
+              </div>
+              <p className="text-2xl font-black text-sta-dark leading-snug">
+                Outside STEM vendors cost a fortune, cover a few hours a week, and disappear when their instructor quits. Meanwhile, families are asking for coding, AI, and esports by name.
+              </p>
             </div>
-            <div className="p-6 bg-orange-50 border-2 border-orange-100 rounded-xl">
-              <div className="font-black text-orange-800 mb-2 flex items-center"><Clock className="w-5 h-5 mr-2" /> The Burnout</div>
-              <p className="text-sm text-orange-700 font-medium">"I don't have time to learn another platform."</p>
-            </div>
-            <div className="p-6 bg-slate-50 border-2 border-slate-100 rounded-xl">
-              <div className="font-black text-slate-800 mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2" /> The Confusion</div>
-              <p className="text-sm text-slate-700 font-medium">"Which tool is actually safe for 5th graders?"</p>
+
+            {/* Solution Side */}
+            <div className="bg-sta-mint/20 border-2 border-black border-t-0 md:border-t-2 md:border-l-0 rounded-b-xl md:rounded-r-xl md:rounded-bl-none p-10">
+              <div className="flex items-center gap-2 mb-6">
+                <CheckCircle2 className="w-6 h-6 text-emerald-600" />
+                <span className="font-black text-sm uppercase tracking-widest text-emerald-600">The Solution</span>
+              </div>
+              <p className="text-2xl font-black text-sta-dark leading-snug">
+                Train the staff you already have. We provide the curriculum, the session scripts, the equipment shopping lists, and the confidence — you keep the program forever.
+              </p>
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
-      {/* For School Leaders Section */}
-      < section className="py-24 bg-sta-surface bg-dot-pattern border-b-2 border-black" >
+      {/* Three Pillars */}
+      <section className="py-24 bg-sta-surface bg-dot-pattern border-b-2 border-black">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-sta-dark mb-4">Why Leaders Choose STA</h2>
-            <p className="text-slate-600 text-xl font-medium">We speak "Admin" as fluently as we speak "Teacher".</p>
+            <h2 className="text-4xl font-black text-sta-dark mb-2">Three Program Pillars</h2>
+            <p className="text-slate-600 text-xl font-medium">A course library of {COURSES.length} turnkey programs, K–12.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {PILLARS.map(({ pillar, icon: Icon, color, tint, blurb, highlights }) => {
+              const count = COURSES.filter(c => c.pillar === pillar).length;
+              return (
+                <div key={pillar} className="bg-white border-2 border-black rounded-xl shadow-hard overflow-hidden flex flex-col group hover:-translate-y-1 transition-transform">
+                  <div className={`${color} border-b-2 border-black p-6 flex items-center justify-between`}>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-white rounded-full border-2 border-black flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-black" strokeWidth={2.5} />
+                      </div>
+                      <h3 className={`text-2xl font-black ${pillar === CoursePillar.ESPORTS ? 'text-black' : 'text-white'}`}>{pillar}</h3>
+                    </div>
+                    <span className={`text-sm font-black px-3 py-1 rounded-full border-2 border-black bg-white`}>
+                      {count} {count === 1 ? 'program' : 'programs'}
+                    </span>
+                  </div>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <p className="text-slate-600 font-medium mb-6 flex-grow">{blurb}</p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {highlights.map(h => (
+                        <span key={h} className={`px-2.5 py-1 rounded text-xs font-bold text-sta-dark border border-slate-200 ${tint}`}>{h}</span>
+                      ))}
+                    </div>
+                    <Link
+                      to="/courses"
+                      className="w-full py-3 bg-sta-dark text-white font-bold border-2 border-black rounded-lg text-center hover:bg-sta-primary shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+                    >
+                      Browse {pillar} Programs
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Age-safe AI strip */}
+          <div className="mt-12 bg-sta-dark text-white rounded-xl border-2 border-black p-8 shadow-hard flex flex-col md:flex-row items-start md:items-center gap-6">
+            <div className="w-14 h-14 bg-sta-mint rounded-full border-2 border-black flex items-center justify-center shrink-0">
+              <Shield className="w-7 h-7 text-black" strokeWidth={2} />
+            </div>
+            <div className="flex-grow">
+              <h3 className="font-black text-xl mb-1">The only catalog with age-gating built into every AI course.</h3>
+              <p className="text-slate-300 font-medium">
+                Most consumer AI tools require users to be 13+ — and almost no program staff know it. We train your team on exactly which tools each grade can use, and how to supervise them responsibly.
+              </p>
+            </div>
+            <Link to="/courses" className="shrink-0 px-6 py-3 bg-white text-sta-dark border-2 border-black rounded-lg font-bold hover:bg-sta-mint transition-colors">
+              See AI Courses
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Leaders Choose STA */}
+      <section className="py-24 bg-white border-b-2 border-black">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black text-sta-dark mb-4">Why Program Leaders Choose STA</h2>
+            <p className="text-slate-600 text-xl font-medium">We speak "Executive Director" as fluently as we speak "Group Leader".</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -225,9 +289,9 @@ export const Landing: React.FC = () => {
               <div className="w-14 h-14 bg-sta-mint rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
                 <Shield className="w-8 h-8 text-black" strokeWidth={2} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-4">Safety First</h3>
+              <h3 className="text-2xl font-black text-sta-dark mb-4">Safety & Compliance First</h3>
               <p className="text-slate-600 font-medium leading-relaxed">
-                We don't just show cool tricks. We start with data privacy, PII protection, and age-appropriate usage. Your district's compliance is our priority.
+                Age-gating for AI tools, data privacy, screen-time policies, and supervision protocols — documented and ready to show parents, boards, and licensors.
               </p>
             </div>
 
@@ -236,9 +300,9 @@ export const Landing: React.FC = () => {
               <div className="w-14 h-14 bg-sta-coral rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
                 <Heart className="w-8 h-8 text-black" strokeWidth={2} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-4">Teacher Retention</h3>
+              <h3 className="text-2xl font-black text-sta-dark mb-4">Staff Who Stay</h3>
               <p className="text-slate-600 font-medium leading-relaxed">
-                Burnout is at an all-time high. We give teachers hours back in their week. When teachers feel supported and efficient, they stay.
+                Frontline youth workers get real, resume-worthy skills — coding, robotics, AI facilitation. When staff grow, they stay, and your program quality compounds.
               </p>
             </div>
 
@@ -247,21 +311,21 @@ export const Landing: React.FC = () => {
               <div className="w-14 h-14 bg-sta-accent rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
                 <BarChart3 className="w-8 h-8 text-black" strokeWidth={2} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-4">Measurable Impact</h3>
+              <h3 className="text-2xl font-black text-sta-dark mb-4">Enrollment You Can Measure</h3>
               <p className="text-slate-600 font-medium leading-relaxed">
-                From "hours saved" to "feedback quality," we help you track the ROI of your AI implementation. Real metrics for your board meetings.
+                STEM, AI, and esports are the programs families ask for by name. Showcase events, tournaments, and take-home projects turn your program into its own marketing.
               </p>
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
-      {/* Curriculum Highlights - Grid with chunky borders */}
-      < section className="py-24 bg-white" >
+      {/* What's Included */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-16 text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-black text-sta-dark mb-4">The Curriculum</h2>
-            <p className="text-slate-600 text-xl font-medium">No jargon. No hype. Just tools you can use on Monday.</p>
+            <h2 className="text-4xl font-black text-sta-dark mb-4">Everything Your Site Needs to Launch</h2>
+            <p className="text-slate-600 text-xl font-medium">No jargon. No guesswork. Programs your staff can run on Monday.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -271,60 +335,60 @@ export const Landing: React.FC = () => {
               <div className="w-12 h-12 bg-sta-secondary/20 rounded-full flex items-center justify-center border-2 border-black mb-6">
                 <Zap className="w-6 h-6 text-sta-secondary" strokeWidth={3} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-3">Expert Curriculum</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">Don't reinvent the wheel. We provide battle-tested lesson plans, slide decks, and project guides that work.</p>
+              <h3 className="text-2xl font-black text-sta-dark mb-3">Turnkey Curriculum</h3>
+              <p className="text-slate-600 font-medium leading-relaxed">Session-by-session facilitation guides, slide decks, and troubleshooting notes — written for staff with zero technical background.</p>
             </div>
 
             {/* Item 2 */}
             <div className="border-2 border-black rounded-xl p-8 shadow-hard hover:-translate-y-1 transition-transform bg-white relative overflow-hidden group">
               <div className="absolute top-0 right-0 bg-sta-accent text-black font-black text-6xl opacity-20 p-4 -mr-4 -mt-4 rotate-12 group-hover:opacity-40 transition-opacity">02</div>
               <div className="w-12 h-12 bg-sta-accent/30 rounded-full flex items-center justify-center border-2 border-black mb-6">
-                <div className="text-xl font-black text-sta-dark">P</div>
+                <Star className="w-6 h-6 text-sta-dark" strokeWidth={3} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-3">Asynchronous & Live</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">Flexible training that fits your staff's schedule. Self-paced modules for basics, live coaching for mastery.</p>
+              <h3 className="text-2xl font-black text-sta-dark mb-3">Flexible Staff Training</h3>
+              <p className="text-slate-600 font-medium leading-relaxed">Self-paced modules for the basics, live coaching for mastery — designed around after-school hours, not against them.</p>
             </div>
 
             {/* Item 3 */}
             <div className="border-2 border-black rounded-xl p-8 shadow-hard hover:-translate-y-1 transition-transform bg-white relative overflow-hidden group">
               <div className="absolute top-0 right-0 bg-sta-primary text-white font-black text-6xl opacity-10 p-4 -mr-4 -mt-4 rotate-12 group-hover:opacity-20 transition-opacity">03</div>
               <div className="w-12 h-12 bg-sta-primary/20 rounded-full flex items-center justify-center border-2 border-black mb-6">
-                <Star className="w-6 h-6 text-sta-primary" strokeWidth={3} />
+                <BarChart3 className="w-6 h-6 text-sta-primary" strokeWidth={3} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-3">AI Superpowers</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">Every course includes our "AI Toolkit" to help staff generate lesson modifications and emails in seconds.</p>
+              <h3 className="text-2xl font-black text-sta-dark mb-3">Budget-Honest Equipment Lists</h3>
+              <p className="text-slate-600 font-medium leading-relaxed">Exact shopping lists with real prices — including the low-cost path for every program. Several courses need zero student devices.</p>
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
       {/* Comparison Section: Old Way vs STA Way */}
-      < section className="py-24 bg-slate-900 text-white border-y-2 border-black" >
+      <section className="py-24 bg-slate-900 text-white border-y-2 border-black">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
             {/* The Old Way */}
             <div className="opacity-50 hover:opacity-70 transition-opacity">
-              <h3 className="text-2xl font-black mb-8 text-slate-400 uppercase tracking-widest border-b-2 border-slate-700 pb-4">The Old Way</h3>
+              <h3 className="text-2xl font-black mb-8 text-slate-400 uppercase tracking-widest border-b-2 border-slate-700 pb-4">The Vendor Model</h3>
               <ul className="space-y-6">
                 <li className="flex items-start">
                   <XCircle className="w-6 h-6 text-red-500 mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-lg mb-1">"Sit and Get" PD</strong>
-                    <p className="text-slate-400">6 hours of slides in a cafeteria. Teachers grading papers in the back row.</p>
+                    <strong className="block text-lg mb-1">Rent-an-Instructor</strong>
+                    <p className="text-slate-400">$150+ per session, one day a week. When their instructor quits, your program ends.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <XCircle className="w-6 h-6 text-red-500 mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-lg mb-1">Generic Tech Tools</strong>
-                    <p className="text-slate-400">"Here's a new login." No context, no pedagogy, just another password to forget.</p>
+                    <strong className="block text-lg mb-1">Equipment Gathering Dust</strong>
+                    <p className="text-slate-400">Robotics kits in a closet because nobody on staff was ever shown how to use them.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <XCircle className="w-6 h-6 text-red-500 mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-lg mb-1">Fear-Based Policy</strong>
-                    <p className="text-slate-400">"Ban it until we figure it out." (Spoiler: The kids figured it out months ago.)</p>
+                    <strong className="block text-lg mb-1">AI Policy by Avoidance</strong>
+                    <p className="text-slate-400">"Just don't let them use it." Meanwhile, no one checked which tools are even legal for kids under 13.</p>
                   </div>
                 </li>
               </ul>
@@ -338,68 +402,62 @@ export const Landing: React.FC = () => {
                 <li className="flex items-start">
                   <CheckCircle2 className="w-6 h-6 text-sta-mint mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-xl mb-1">Hands-On Creation</strong>
-                    <p className="text-slate-300">Teachers leave with lesson plans, rubrics, and emails they can use <i>tomorrow</i>.</p>
+                    <strong className="block text-xl mb-1">Your Staff, Trained</strong>
+                    <p className="text-slate-300">One flat training fee. The capability stays with your organization <i>permanently</i>.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle2 className="w-6 h-6 text-sta-mint mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-xl mb-1">Pedagogy First</strong>
-                    <p className="text-slate-300">It's not about the bot. It's about high-quality instruction, differentiated for every learner.</p>
+                    <strong className="block text-xl mb-1">Every Kit Earning Its Keep</strong>
+                    <p className="text-slate-300">Curriculum mapped to the exact hardware you buy — with the budget path spelled out before you spend a dollar.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle2 className="w-6 h-6 text-sta-mint mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-xl mb-1">Empowered Ethics</strong>
-                    <p className="text-slate-300">We teach how to use AI responsibly, so you can lead the conversation instead of reacting to it.</p>
+                    <strong className="block text-xl mb-1">AI Done Responsibly</strong>
+                    <p className="text-slate-300">Age-gating, supervision protocols, and parent-ready policies baked into every AI course.</p>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
-      {/* Founder Section - Magazine Style */}
-      < section id="founder" className="py-24 bg-sta-accent border-y-2 border-black" >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-12 gap-12 items-center">
-            <div className="md:col-span-5 order-2 md:order-1 relative">
-              <div className="absolute inset-0 bg-white border-2 border-black translate-x-4 translate-y-4 rounded-xl"></div>
+      {/* Founder Section */}
+      <section id="founder" className="py-24 bg-sta-accent border-y-2 border-black">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row gap-10 items-center">
+            <div className="shrink-0 relative">
+              <div className="absolute inset-0 bg-white border-2 border-black translate-x-3 translate-y-3 rounded-xl"></div>
               <img
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="Allen Rabinovich"
-                className="relative z-10 w-full aspect-[4/5] object-cover rounded-xl border-2 border-black grayscale hover:grayscale-0 transition-all"
+                className="relative z-10 w-48 h-48 object-cover rounded-xl border-2 border-black grayscale hover:grayscale-0 transition-all"
               />
             </div>
-            <div className="md:col-span-7 order-1 md:order-2">
-              <div className="bg-black text-white inline-block px-3 py-1 font-mono text-sm font-bold mb-6">FOUNDER_PROFILE</div>
-              <h2 className="text-5xl font-black text-sta-dark mb-6 tracking-tight">Allen Rabinovich</h2>
-              <div className="space-y-6 text-xl text-sta-dark font-medium leading-relaxed">
-                <p>
-                  Allen has spent over a decade at the forefront of educational innovation, serving public, private, and charter schools across the nation.
-                </p>
-                <p>
-                  From CBOs to massive school districts, Allen understands the unique pressure cookers that educators live in. He doesn't just teach technology; he teaches how to use technology to bring humanity back into the classroom.
-                </p>
-              </div>
-              <div className="mt-8 flex items-center gap-3">
-                <div className="h-1 w-20 bg-black"></div>
-                <span className="font-black text-lg">Lead Coach</span>
-              </div>
+            <div>
+              <div className="bg-black text-white inline-block px-3 py-1 font-mono text-sm font-bold mb-4">FOUNDER</div>
+              <h2 className="text-3xl font-black text-sta-dark mb-3 tracking-tight">Allen Rabinovich</h2>
+              <p className="text-lg text-sta-dark font-medium leading-relaxed mb-4">
+                Over a decade at the forefront of educational innovation, serving public, private, and charter schools across the nation. Allen doesn't just teach technology — he teaches organizations how to use it to bring out the best in their people and programs.
+              </p>
+              <Link to="/about" className="inline-flex items-center font-bold text-sta-dark hover:text-sta-primary transition-colors gap-1">
+                Learn more about our story <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
       {/* Case Studies Section */}
-      < section className="py-24 bg-sta-surface bg-dot-pattern" >
+      <section className="py-24 bg-sta-surface bg-dot-pattern">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-sta-dark mb-4">Success Stories</h2>
-            <p className="text-slate-600 text-xl font-medium">Real teachers. Real results.</p>
+            <p className="text-slate-600 text-xl font-medium">Real sites. Real staff. Real programs.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -440,93 +498,39 @@ export const Landing: React.FC = () => {
             ))}
           </div>
         </div>
-      </section >
+      </section>
 
       {/* FAQ Section */}
-      < section className="py-24 bg-sta-surface border-t-2 border-black" >
+      <section className="py-24 bg-sta-surface border-t-2 border-black">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-4xl font-black text-sta-dark mb-12 text-center">Common Questions</h2>
 
           <div className="space-y-6">
             <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
-              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Is this safe for student data?</h3>
-              <p className="text-slate-600 font-medium">Absolutely. We have an entire module dedicated to data privacy. We teach the "No PII" rule (No Personally Identifiable Information) and review the privacy policies of every tool we recommend.</p>
+              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Do our staff need any tech experience?</h3>
+              <p className="text-slate-600 font-medium">No. Every curriculum is written for group leaders and youth workers with zero technical background. If your staff can follow a lesson script and manage a room of kids, they can run these programs.</p>
             </div>
 
             <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
-              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Do I need to be a "techie"?</h3>
-              <p className="text-slate-600 font-medium">Not at all. If you can send an email, you can do this. We focus on "Natural Language" prompting—using plain English to get results.</p>
+              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> What does equipment cost?</h3>
+              <p className="text-slate-600 font-medium">It ranges from nearly free (Invention Lab runs on cardboard and hot glue) to a few thousand dollars for robotics or esports. Every course page lists exactly what you need, and we always teach the budget path first.</p>
             </div>
 
             <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
-              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> What if I miss a live session?</h3>
-              <p className="text-slate-600 font-medium">Life happens! All sessions are recorded and uploaded to the course portal within 24 hours. You have lifetime access to the recordings.</p>
+              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Is AI safe and legal for younger kids?</h3>
+              <p className="text-slate-600 font-medium">This is exactly why our AI courses exist. Most consumer AI tools require users to be 13+ — our training covers which tools each grade can use, kid-safe no-login alternatives for elementary ages, and supervision protocols your licensor and parents will approve of.</p>
             </div>
 
             <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
               <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Can we pay via Purchase Order?</h3>
-              <p className="text-slate-600 font-medium">Yes! For school groups of 3 or more, we accept POs. Just click the "Schedule Consult" button above or email us directly.</p>
+              <p className="text-slate-600 font-medium">Yes. We work with nonprofits, districts, and municipal programs regularly and accept POs for organizational purchases. Book a consult and we'll handle the paperwork.</p>
             </div>
           </div>
         </div>
-      </section >
-
-      {/* Pricing / Offerings - Ticket vs Block */}
-      < section id="register" className="py-24 bg-white border-t-2 border-black" >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-sta-dark mb-2">Get Trained</h2>
-            <p className="text-slate-600 font-medium">Choose your adventure.</p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto items-start">
-
-            {/* Individual Ticket Style */}
-            <div className="h-[600px] flex flex-col justify-center">
-              <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl text-center">
-                <h3 className="text-3xl font-black mb-4">Browse Catalog</h3>
-                <p className="text-slate-600 font-medium mb-8">From Scratch to Python, we have courses for every skill level.</p>
-                <Link
-                  to="/courses"
-                  className="w-full py-4 bg-sta-primary text-white font-bold border-2 border-black shadow-hard hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all rounded-lg block"
-                >
-                  View All Courses
-                </Link>
-              </div>
-            </div>
-
-            {/* School Site Premium */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-sta-accent translate-x-2 translate-y-2 rounded-2xl"></div>
-              <div className="relative bg-sta-dark text-white border-2 border-black rounded-2xl p-10 h-full flex flex-col">
-                <div className="mb-8">
-                  <div className="bg-white text-black text-xs font-bold px-3 py-1 inline-block border border-black mb-4">INSTITUTIONAL</div>
-                  <h3 className="text-3xl font-black mb-2">School Site Premium</h3>
-                  <p className="text-slate-400 font-medium">Customized on-site or virtual training for your entire team.</p>
-                </div>
-
-                <div className="space-y-6 flex-grow mb-8 border-l-2 border-slate-700 pl-6">
-                  <div>
-                    <h4 className="font-bold text-sta-accent mb-1">Custom Curriculum</h4>
-                    <p className="text-slate-300 text-sm">Adapted to your specific grade levels, subjects, and tech stack.</p>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sta-accent mb-1">Implementation Support</h4>
-                    <p className="text-slate-300 text-sm">Follow-up coaching for leadership to ensure long-term adoption.</p>
-                  </div>
-                </div>
-
-                <Link to="/schedule" className="w-full py-4 bg-white text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_#fbbf24] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all rounded-lg flex items-center justify-center group">
-                  Schedule Consult <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section >
+      </section>
 
       {/* Lead Magnet & Newsletter */}
-      < section id="newsletter" className="py-24 bg-sta-mint border-t-2 border-black" >
+      <section id="newsletter" className="py-24 bg-sta-mint border-t-2 border-black">
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-xl border-2 border-black p-8 md:p-12 shadow-hard relative">
             {/* Decorative elements */}
@@ -536,9 +540,9 @@ export const Landing: React.FC = () => {
 
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="flex-1">
-                <h2 className="text-3xl font-black text-sta-dark mb-4">Grab the "AI Starter Pack"</h2>
+                <h2 className="text-3xl font-black text-sta-dark mb-4">Grab the Program Launch Kit</h2>
                 <p className="text-slate-600 mb-8 font-medium">
-                  A 20-page PDF guide for admin and teachers. Plus, join our newsletter for one high-quality lesson plan each week.
+                  A free PDF for program directors: equipment budgets for all {COURSES.length} programs, a staffing model, and our AI age-gating cheat sheet.
                 </p>
                 <form className="flex flex-col sm:flex-row gap-3">
                   <input type="email" placeholder="Work email address" className="flex-1 px-5 py-3 bg-slate-50 rounded-lg border-2 border-black focus:outline-none focus:border-sta-primary font-mono text-sm" />
@@ -552,14 +556,14 @@ export const Landing: React.FC = () => {
                   <div className="w-full h-full border-2 border-black border-dashed flex flex-col items-center justify-center bg-slate-50">
                     <span className="font-black text-3xl text-sta-dark">STA</span>
                     <div className="w-12 h-1 bg-sta-accent my-2"></div>
-                    <span className="text-xs font-black text-slate-400">STARTER PACK</span>
+                    <span className="text-xs font-black text-slate-400">LAUNCH KIT</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section >
-    </div >
+      </section>
+    </div>
   );
 };

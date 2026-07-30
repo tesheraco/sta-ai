@@ -1,5 +1,6 @@
 import React from 'react';
 import { Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,13 +10,13 @@ export const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <span className="font-black text-3xl tracking-tighter mb-6 block">STA</span>
             <p className="text-gray-400 max-w-sm">
-              Empowering educators to harness the power of Artificial Intelligence with confidence, creativity, and humanity.
+              Turnkey AI, STEM, and Esports programs for after-school sites, community organizations, and schools — run by the staff you already have.
             </p>
           </div>
           <div>
             <h4 className="font-bold mb-4 text-sta-accent">Company</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white">About Us</a></li>
+              <li><Link to="/about" className="hover:text-white">About Us</Link></li>
               <li><a href="#" className="hover:text-white">Careers</a></li>
               <li><a href="#" className="hover:text-white">Contact</a></li>
               <li><a href="#" className="hover:text-white">Privacy Policy</a></li>

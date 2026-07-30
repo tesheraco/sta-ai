@@ -25,29 +25,40 @@ export const Navbar: React.FC = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-1 items-center">
             <Link
-              to="/toolkit"
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 border-transparent ${currentPath === '/toolkit'
-                ? 'bg-sta-secondary/10 text-sta-secondary border-sta-secondary'
-                : 'text-slate-600 hover:bg-slate-100'
-                }`}
-            >
-              AI Toolkit
-            </Link>
-            <Link
-              to="/schedule"
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 border-transparent ${currentPath === '/schedule'
+              to="/courses"
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 border-transparent ${currentPath === '/courses' || currentPath.startsWith('/courses/')
                 ? 'bg-sta-primary/10 text-sta-primary border-sta-primary'
                 : 'text-slate-600 hover:bg-slate-100'
                 }`}
             >
-              Schedule
+              Courses
             </Link>
-            <a href="/#founder" className="px-4 py-2 text-sm font-bold text-slate-600 hover:text-sta-dark">
-              About Allen
-            </a>
+            <Link
+              to="/about"
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 border-transparent ${currentPath === '/about'
+                ? 'bg-sta-primary/10 text-sta-primary border-sta-primary'
+                : 'text-slate-600 hover:bg-slate-100'
+                }`}
+            >
+              About
+            </Link>
+            <Link
+              to="/toolkit"
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 border-transparent ${currentPath === '/toolkit'
+                ? 'bg-sta-secondary/10 text-sta-secondary border-sta-secondary'
+                : 'text-slate-500 hover:bg-slate-100'
+                }`}
+            >
+              Tools
+            </Link>
             <div className="pl-4">
-              <a href="/#newsletter" className="px-6 py-2.5 bg-sta-dark text-white border-2 border-black rounded-lg text-sm font-bold hover:bg-sta-primary hover:shadow-hard-sm transition-all">
-                Get Brochure
+              <a
+                href="https://calendly.com/sta-ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 bg-sta-dark text-white border-2 border-black rounded-lg text-sm font-bold hover:bg-sta-primary hover:shadow-hard-sm transition-all"
+              >
+                Book a Demo
               </a>
             </div>
           </div>
@@ -66,26 +77,35 @@ export const Navbar: React.FC = () => {
         <div className="md:hidden bg-sta-surface border-b-2 border-black absolute w-full">
           <div className="px-4 pt-4 pb-8 space-y-3">
             <Link
-              to="/"
+              to="/courses"
               onClick={() => setIsOpen(false)}
               className="block w-full text-left px-4 py-3 bg-white border-2 border-black rounded-lg shadow-hard-sm font-bold text-sta-dark active:shadow-none active:translate-x-0.5 active:translate-y-0.5"
             >
-              Intro to AI Course
+              Courses
+            </Link>
+            <Link
+              to="/about"
+              onClick={() => setIsOpen(false)}
+              className="block w-full text-left px-4 py-3 bg-white border-2 border-black rounded-lg shadow-hard-sm font-bold text-sta-dark active:shadow-none active:translate-x-0.5 active:translate-y-0.5"
+            >
+              About
             </Link>
             <Link
               to="/toolkit"
               onClick={() => setIsOpen(false)}
               className="block w-full text-left px-4 py-3 bg-white border-2 border-black rounded-lg shadow-hard-sm font-bold text-sta-dark active:shadow-none active:translate-x-0.5 active:translate-y-0.5"
             >
-              Try AI Toolkit
+              Tools
             </Link>
-            <Link
-              to="/schedule"
+            <a
+              href="https://calendly.com/sta-ai"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-left px-4 py-3 bg-white border-2 border-black rounded-lg shadow-hard-sm font-bold text-sta-dark active:shadow-none active:translate-x-0.5 active:translate-y-0.5"
+              className="block w-full text-left px-4 py-3 bg-sta-dark text-white border-2 border-black rounded-lg shadow-hard-sm font-bold active:shadow-none active:translate-x-0.5 active:translate-y-0.5"
             >
-              Schedule & Registration
-            </Link>
+              Book a Demo
+            </a>
           </div>
         </div>
       )}
