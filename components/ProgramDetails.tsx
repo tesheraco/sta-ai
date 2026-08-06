@@ -2,11 +2,11 @@ import React from 'react';
 import { ArrowLeft, Check, HelpCircle, Clock, Shield, Zap, BookOpen, Users } from 'lucide-react';
 import { ViewState } from '../types';
 
-interface CourseDetailsProps {
+interface ProgramDetailsProps {
     setView: (view: ViewState) => void;
 }
 
-export const CourseDetails: React.FC<CourseDetailsProps> = ({ setView }) => {
+export const ProgramDetails: React.FC<ProgramDetailsProps> = ({ setView }) => {
     return (
         <div className="w-full bg-white">
             {/* Navigation */}
@@ -38,7 +38,7 @@ export const CourseDetails: React.FC<CourseDetailsProps> = ({ setView }) => {
                         <span className="text-sta-primary">Start Teaching Again.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
-                        The only AI course designed specifically for educators who are tired of working 60-hour weeks.
+                        The only AI program designed specifically for educators who are tired of working 60-hour weeks.
                     </p>
                 </div>
             </section>
@@ -70,7 +70,7 @@ export const CourseDetails: React.FC<CourseDetailsProps> = ({ setView }) => {
                             </div>
                             <h3 className="text-xl font-black text-sta-dark mt-6 mb-4">"...don't have time for this."</h3>
                             <p className="text-slate-600 leading-relaxed">
-                                That's exactly why you need this. Teachers who take this course save an average of 10 hours per week. Invest 4 weeks now to reclaim your evenings and weekends forever.
+                                That's exactly why you need this. Teachers who take this program save an average of 10 hours per week. Invest 4 weeks now to reclaim your evenings and weekends forever.
                             </p>
                         </div>
 

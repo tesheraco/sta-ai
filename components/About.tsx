@@ -35,7 +35,7 @@ export const About: React.FC = () => {
               The real breakthrough came when we started training existing staff. A 3rd-grade teacher who'd never touched a line of code was running a full robotics lab within a semester. A librarian became the school's AI specialist. The programs didn't depend on us anymore — they belonged to the school.
             </p>
             <p>
-              That's what STA is: everything we learned about running world-class STEM labs, distilled into courses, kits, and coaching that your team can use immediately.
+              That's what STA is: everything we learned about running world-class STEM labs, distilled into programs, kits, and coaching that your team can use immediately.
             </p>
           </div>
         </div>
@@ -100,14 +100,14 @@ export const About: React.FC = () => {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-black text-sta-dark mb-6">Ready to Build Your STEM Program?</h2>
           <p className="text-xl text-slate-600 font-medium mb-8">
-            Browse our course catalog or book a free consultation to design a custom plan for your school.
+            Browse our program catalog or book a free consultation to design a custom plan for your school.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/courses"
-              className="px-8 py-4 bg-sta-dark text-white border-2 border-black rounded-lg font-bold text-lg shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center"
+              to="/programs"
+              className="px-8 py-4 bg-sta-cta text-white border-2 border-black rounded-lg font-bold text-lg shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center"
             >
-              View Course Catalog
+              View Program Catalog
             </Link>
             <a
               href="https://calendly.com/sta-ai"

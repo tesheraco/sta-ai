@@ -68,7 +68,7 @@ export const CaseStudiesPage: React.FC = () => {
                                 </div>
                             </div>
 
-                            <div className="w-full py-3 bg-slate-50 border-2 border-black rounded-lg font-bold text-sm text-center group-hover:bg-sta-dark group-hover:text-white transition-colors flex items-center justify-center gap-2">
+                            <div className="w-full py-3 bg-slate-50 border-2 border-black rounded-lg font-bold text-sm text-center group-hover:bg-sta-cta group-hover:text-white transition-colors flex items-center justify-center gap-2">
                                 Read Success Story <ArrowRight className="w-4 h-4" />
                             </div>
                         </div>
@@ -82,16 +82,16 @@ export const CaseStudiesPage: React.FC = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link
-                            to="/courses"
+                            to="/programs"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-sta-primary text-white border-2 border-black rounded-lg font-bold shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
                         >
-                            Browse Courses <ArrowRight className="w-5 h-5" />
+                            Browse Programs <ArrowRight className="w-5 h-5" />
                         </Link>
                         <a
                             href="https://calendly.com/sta-ai"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-sta-dark text-white border-2 border-black rounded-lg font-bold shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-sta-cta text-white border-2 border-black rounded-lg font-bold shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
                         >
                             Book a Demo
                         </a>

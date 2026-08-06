@@ -77,7 +77,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ study, onClose }
                     <div className="mt-12 pt-8 border-t-2 border-slate-100 flex justify-end">
                         <button
                             onClick={onClose}
-                            className="px-8 py-3 bg-sta-dark text-white font-bold rounded-lg border-2 border-black hover:bg-sta-primary transition-all shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5"
+                            className="px-8 py-3 bg-sta-cta text-white font-bold rounded-lg border-2 border-black hover:bg-sta-cta-hover transition-all shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5"
                         >
                             Close Story
                         </button>

@@ -45,15 +45,21 @@
       theme: {
         extend: {
           colors: {
+            // Driven by the CSS variables in :root below, so the palette can be
+            // swapped at runtime. Channel-only vars + <alpha-value> keep opacity
+            // modifiers working (bg-sta-primary/10, bg-black/50).
+            black: 'rgb(var(--sta-frame) / <alpha-value>)', // border-black / shadow-hard framing
             sta: {
-              primary: '#4f46e5', // Indigo 600 - Vibrant Blue
-              secondary: '#db2777', // Pink 600 - Pop Pink
-              accent: '#fbbf24', // Amber 400 - Gen Z Yellow
-              coral: '#f87171', // Soft Red
-              mint: '#34d399', // Mint Green
-              dark: '#1e293b', // Slate 800
-              surface: '#f1f5f9', // Slate 100
-              paper: '#ffffff',
+              primary: 'rgb(var(--sta-primary) / <alpha-value>)', // Indigo 600 - Vibrant Blue
+              secondary: 'rgb(var(--sta-secondary) / <alpha-value>)', // Pink 600 - Pop Pink
+              accent: 'rgb(var(--sta-accent) / <alpha-value>)', // Amber 400 - Gen Z Yellow
+              coral: 'rgb(var(--sta-coral) / <alpha-value>)', // Soft Red
+              mint: 'rgb(var(--sta-mint) / <alpha-value>)', // Mint Green
+              dark: 'rgb(var(--sta-dark) / <alpha-value>)', // Slate 800 - text
+              cta: 'rgb(var(--sta-cta) / <alpha-value>)', // Button fill
+              'cta-hover': 'rgb(var(--sta-cta-hover) / <alpha-value>)', // Button hover fill
+              surface: 'rgb(var(--sta-surface) / <alpha-value>)', // Slate 100
+              paper: 'rgb(var(--sta-paper) / <alpha-value>)',
             }
           },
           fontFamily: {
@@ -61,9 +67,9 @@
             mono: ['JetBrains Mono', 'monospace'], // Added for "technical" feel
           },
           boxShadow: {
-            'hard': '4px 4px 0px 0px rgba(0,0,0,1)',
-            'hard-sm': '2px 2px 0px 0px rgba(0,0,0,1)',
-            'hard-lg': '8px 8px 0px 0px rgba(0,0,0,1)',
+            'hard': '4px 4px 0px 0px rgb(var(--sta-frame))',
+            'hard-sm': '2px 2px 0px 0px rgb(var(--sta-frame))',
+            'hard-lg': '8px 8px 0px 0px rgb(var(--sta-frame))',
             'hard-white': '4px 4px 0px 0px #ffffff',
           }
         }
@@ -74,6 +80,35 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
   <style>
+    /* Palette, as space-separated RGB channels so Tailwind's <alpha-value>
+       substitution works (bg-sta-primary/10, bg-black/50 depend on it).
+       Change a value here and every sta-* utility follows. */
+    :root {
+      --sta-primary: 79 70 229;
+      /* #4f46e5 */
+      --sta-secondary: 219 39 119;
+      /* #db2777 */
+      --sta-accent: 251 191 36;
+      /* #fbbf24 */
+      --sta-coral: 248 113 113;
+      /* #f87171 */
+      --sta-mint: 52 211 153;
+      /* #34d399 */
+      --sta-dark: 30 41 59;
+      /* #1e293b - text, stays neutral */
+      --sta-surface: 241 245 249;
+      /* #f1f5f9 */
+      --sta-paper: 255 255 255;
+      /* #ffffff */
+
+      --sta-cta: 79 70 229;
+      /* #4f46e5 - button fill (indigo, matches sta-primary) */
+      --sta-cta-hover: 67 56 202;
+      /* #4338ca - button hover fill */
+      --sta-frame: 0 0 0;
+      /* #000000 - borders + hard shadows */
+    }
+
     body {
       font-family: 'Inter', sans-serif;
     }

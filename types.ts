@@ -1,13 +1,13 @@
 export enum ViewState {
   LANDING = 'LANDING',
   TOOLKIT = 'TOOLKIT',
-  COURSE_DETAILS = 'COURSE_DETAILS',
+  PROGRAM_DETAILS = 'PROGRAM_DETAILS',
   SCHEDULE = 'SCHEDULE',
-  COURSES = 'COURSES',
-  COURSE_SINGLE = 'COURSE_SINGLE'
+  PROGRAMS = 'PROGRAMS',
+  PROGRAM_SINGLE = 'PROGRAM_SINGLE'
 }
 
-export enum CoursePillar {
+export enum ProgramPillar {
   STEM = 'STEM',
   AI = 'AI',
   ESPORTS = 'Esports'
@@ -17,10 +17,10 @@ export type GradeBand = 'K–2' | '3–5' | '6–8' | '9–12';
 
 export const GRADE_BANDS: GradeBand[] = ['K–2', '3–5', '6–8', '9–12'];
 
-export interface Course {
+export interface Program {
   id: string;
   title: string;
-  pillar: CoursePillar;
+  pillar: ProgramPillar;
   /** Display string, e.g. "Grades K–2" */
   grades: string;
   /** Bands used for filtering */
@@ -48,7 +48,7 @@ export interface LessonPlan {
   assessmentIdea: string;
 }
 
-export interface CourseDate {
+export interface ProgramDate {
   id: string;
   date: string;
   time: string;

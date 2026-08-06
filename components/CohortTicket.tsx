@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar as CalendarIcon, Check, ArrowRight, ChevronLeft, ChevronRight, Printer } from 'lucide-react';
-import { CourseDate } from '../types';
+import { ProgramDate } from '../types';
 
 // Mock data for calendar
 const CALENDAR_DAYS = Array.from({ length: 35 }, (_, i) => {
@@ -14,7 +14,7 @@ const CALENDAR_DAYS = Array.from({ length: 35 }, (_, i) => {
 
 type TicketView = 'LIST' | 'CALENDAR' | 'REGISTER' | 'SUCCESS';
 
-const UPCOMING_COHORTS: CourseDate[] = [
+const UPCOMING_COHORTS: ProgramDate[] = [
     { id: '1', date: 'Nov 14, 2024', time: '4:00 PM EST', seats: 4 },
     { id: '2', date: 'Nov 21, 2024', time: '4:00 PM EST', seats: 12 },
     { id: '3', date: 'Dec 05, 2024', time: '4:00 PM EST', seats: 20 },
@@ -167,7 +167,7 @@ export const CohortTicket: React.FC = () => {
 
                             <button
                                 type="submit"
-                                className="w-full mt-auto py-3 bg-sta-dark text-white font-bold border-2 border-black shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all rounded-lg"
+                                className="w-full mt-auto py-3 bg-sta-cta text-white font-bold border-2 border-black shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all rounded-lg"
                             >
                                 Confirm & Pay ($199)
                             </button>

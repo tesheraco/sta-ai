@@ -31,7 +31,7 @@ npm run preview      # Preview production build
 The app uses a simple enum-based view state system (no router). The main App component manages navigation between four views:
 - `LANDING` - Marketing homepage with hero, curriculum, case studies, pricing
 - `TOOLKIT` - Interactive demo of the AI lesson plan generator
-- `COURSE_DETAILS` - Course information page
+- `PROGRAM_DETAILS` - Program information page
 - `SCHEDULE` - Cohort scheduling page
 
 View state is managed via React `useState` and passed down as props. To add a new view, update the `ViewState` enum in `types.ts` and add the conditional rendering in `App.tsx`.
@@ -41,7 +41,7 @@ View state is managed via React `useState` and passed down as props. To add a ne
 - **components/** - All UI components organized by feature:
   - `Landing.tsx` - Main landing page with multiple sections
   - `ToolkitPage.tsx` / `ToolkitDemo.tsx` - AI lesson plan generator
-  - `CourseDetails.tsx` / `SchedulePage.tsx` - Course info pages
+  - `ProgramDetails.tsx` / `SchedulePage.tsx` - Program info pages
   - `CaseStudyModal.tsx` - Modal for success stories
   - `CohortTicket.tsx` - Pricing ticket component
   - `Navbar.tsx` / `Footer.tsx` - Layout components
@@ -55,7 +55,7 @@ View state is managed via React `useState` and passed down as props. To add a ne
 All TypeScript interfaces are centralized in `types.ts`:
 - `ViewState` - Navigation enum
 - `LessonPlan` - Structured lesson plan schema matching Gemini response
-- `CourseDate`, `CaseStudy` - Data models for marketing content
+- `ProgramDate`, `CaseStudy` - Data models for marketing content
 
 ### Styling System
 Uses Tailwind CSS (loaded via CDN in `index.html`) with custom STA color palette:

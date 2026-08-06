@@ -85,7 +85,7 @@ export const SchedulePage: React.FC = () => {
                         {/* Testimonial Snippet */}
                         <div className="bg-white p-6 border-2 border-black border-dashed rounded-xl">
                             <p className="text-slate-600 italic mb-4">
-                                "I was skeptical about an online course, but the live sessions were so engaging. It felt like a real workshop, not a webinar."
+                                "I was skeptical about an online program, but the live sessions were so engaging. It felt like a real workshop, not a webinar."
                             </p>
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 bg-slate-200 rounded-full border border-black"></div>

@@ -89,7 +89,7 @@ export const ToolkitPage: React.FC = () => {
             {/* Mobile Sidebar Toggle */}
             <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className="md:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-sta-dark text-white rounded-full shadow-hard border-2 border-black flex items-center justify-center"
+                className="md:hidden fixed bottom-6 right-6 z-50 w-14 h-14 bg-sta-cta text-white rounded-full shadow-hard border-2 border-black flex items-center justify-center"
             >
                 {isSidebarOpen ? <X /> : <Menu />}
             </button>
@@ -226,7 +226,7 @@ export const ToolkitPage: React.FC = () => {
                                     <button
                                         type="submit"
                                         disabled={isLoading}
-                                        className="w-full py-3 bg-sta-dark text-white rounded-lg font-bold border-2 border-black shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-center"
+                                        className="w-full py-3 bg-sta-cta text-white rounded-lg font-bold border-2 border-black shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-center"
                                     >
                                         {isLoading ? <Loader2 className="animate-spin w-5 h-5" /> : <Wand2 className="w-5 h-5 mr-2" />}
                                         Generate

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Download, Star, Zap, Shield, Heart, BarChart3, XCircle, CheckCircle2, HelpCircle, Cpu, Gamepad2, FlaskConical } from 'lucide-react';
-import { CaseStudy, CoursePillar } from '../types';
+import { CaseStudy, ProgramPillar } from '../types';
 import { CaseStudyModal } from './CaseStudyModal';
-import { COURSES, PILLAR_SLUGS } from '../data/courses';
+import { PROGRAMS, PILLAR_SLUGS } from '../data/programs';
 import { CASE_STUDIES } from '../data/caseStudies';
 
 const PILLARS = [
   {
-    pillar: CoursePillar.STEM,
+    pillar: ProgramPillar.STEM,
     icon: FlaskConical,
     color: 'bg-sta-primary',
     textColor: 'text-sta-primary',
@@ -17,7 +17,7 @@ const PILLARS = [
     highlights: ['Game Builders', 'Robotics I & II', 'Minecraft Coding', '3D Design & Print'],
   },
   {
-    pillar: CoursePillar.AI,
+    pillar: ProgramPillar.AI,
     icon: Cpu,
     color: 'bg-sta-secondary',
     textColor: 'text-sta-secondary',
@@ -26,7 +26,7 @@ const PILLARS = [
     highlights: ['AI Explorers', 'Intro to Vibe Coding'],
   },
   {
-    pillar: CoursePillar.ESPORTS,
+    pillar: ProgramPillar.ESPORTS,
     icon: Gamepad2,
     color: 'bg-sta-accent',
     textColor: 'text-amber-600',
@@ -75,10 +75,10 @@ export const Landing: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link
-                to="/courses"
-                className="px-8 py-4 bg-sta-dark text-white border-2 border-black rounded-lg font-bold text-lg shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center"
+                to="/programs"
+                className="px-8 py-4 bg-sta-cta text-white border-2 border-black rounded-lg font-bold text-lg shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center"
               >
-                Browse the Course Library
+                Browse the Program Library
               </Link>
               <a
                 href="https://calendly.com/sta-ai"
@@ -163,12 +163,12 @@ export const Landing: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-sta-dark mb-2">Three Program Pillars</h2>
-            <p className="text-slate-600 text-xl font-medium">A course library of {COURSES.length} turnkey programs, K–12.</p>
+            <p className="text-slate-600 text-xl font-medium">A program library of {PROGRAMS.length} turnkey programs, K–12.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {PILLARS.map(({ pillar, icon: Icon, color, tint, blurb, highlights }) => {
-              const count = COURSES.filter(c => c.pillar === pillar).length;
+              const count = PROGRAMS.filter(c => c.pillar === pillar).length;
               return (
                 <div key={pillar} className="bg-white border-2 border-black rounded-xl shadow-hard overflow-hidden flex flex-col group hover:-translate-y-1 transition-transform">
                   <div className={`${color} border-b-2 border-black p-6 flex items-center justify-between`}>
@@ -176,7 +176,7 @@ export const Landing: React.FC = () => {
                       <div className="w-12 h-12 bg-white rounded-full border-2 border-black flex items-center justify-center">
                         <Icon className="w-6 h-6 text-black" strokeWidth={2.5} />
                       </div>
-                      <h3 className={`text-2xl font-black ${pillar === CoursePillar.ESPORTS ? 'text-black' : 'text-white'}`}>{pillar}</h3>
+                      <h3 className={`text-2xl font-black ${pillar === ProgramPillar.ESPORTS ? 'text-black' : 'text-white'}`}>{pillar}</h3>
                     </div>
                     <span className={`text-sm font-black px-3 py-1 rounded-full border-2 border-black bg-white`}>
                       {count} {count === 1 ? 'program' : 'programs'}
@@ -190,8 +190,8 @@ export const Landing: React.FC = () => {
                       ))}
                     </div>
                     <Link
-                      to={`/courses/${PILLAR_SLUGS[pillar]}`}
-                      className="w-full py-3 bg-sta-dark text-white font-bold border-2 border-black rounded-lg text-center hover:bg-sta-primary shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+                      to={`/programs/${PILLAR_SLUGS[pillar]}`}
+                      className="w-full py-3 bg-sta-cta text-white font-bold border-2 border-black rounded-lg text-center hover:bg-sta-cta-hover shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
                     >
                       Browse {pillar} Programs
                     </Link>
@@ -207,13 +207,13 @@ export const Landing: React.FC = () => {
               <Shield className="w-7 h-7 text-black" strokeWidth={2} />
             </div>
             <div className="flex-grow">
-              <h3 className="font-black text-xl mb-1">The only catalog with age-gating built into every AI course.</h3>
+              <h3 className="font-black text-xl mb-1">The only catalog with age-gating built into every AI program.</h3>
               <p className="text-slate-300 font-medium">
                 Most consumer AI tools require users to be 13+ — and almost no program staff know it. We train your team on exactly which tools each grade can use, and how to supervise them responsibly.
               </p>
             </div>
-            <Link to="/courses/ai" className="shrink-0 px-6 py-3 bg-white text-sta-dark border-2 border-black rounded-lg font-bold hover:bg-sta-mint transition-colors">
-              See AI Courses
+            <Link to="/programs/ai" className="shrink-0 px-6 py-3 bg-white text-sta-dark border-2 border-black rounded-lg font-bold hover:bg-sta-mint transition-colors">
+              See AI Programs
             </Link>
           </div>
         </div>
@@ -300,7 +300,7 @@ export const Landing: React.FC = () => {
                 <BarChart3 className="w-6 h-6 text-sta-primary" strokeWidth={3} />
               </div>
               <h3 className="text-2xl font-black text-sta-dark mb-3">Budget-Honest Equipment Lists</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">Exact shopping lists with real prices — including the low-cost path for every program. Several courses need zero student devices.</p>
+              <p className="text-slate-600 font-medium leading-relaxed">Exact shopping lists with real prices — including the low-cost path for every program. Several programs need zero student devices.</p>
             </div>
           </div>
         </div>
@@ -361,7 +361,7 @@ export const Landing: React.FC = () => {
                   <CheckCircle2 className="w-6 h-6 text-sta-mint mr-4 shrink-0" />
                   <div>
                     <strong className="block text-xl mb-1">AI Done Responsibly</strong>
-                    <p className="text-slate-300">Age-gating, supervision protocols, and parent-ready policies baked into every AI course.</p>
+                    <p className="text-slate-300">Age-gating, supervision protocols, and parent-ready policies baked into every AI program.</p>
                   </div>
                 </li>
               </ul>
@@ -435,7 +435,7 @@ export const Landing: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="w-full py-3 bg-slate-50 border-2 border-black rounded-lg font-bold text-sm text-center group-hover:bg-sta-dark group-hover:text-white transition-colors flex items-center justify-center gap-2">
+                <div className="w-full py-3 bg-slate-50 border-2 border-black rounded-lg font-bold text-sm text-center group-hover:bg-sta-cta group-hover:text-white transition-colors flex items-center justify-center gap-2">
                   Read Success Story <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
@@ -466,12 +466,12 @@ export const Landing: React.FC = () => {
 
             <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
               <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> What does equipment cost?</h3>
-              <p className="text-slate-600 font-medium">It ranges from nearly free (Invention Lab runs on cardboard and hot glue) to a few thousand dollars for robotics or esports. Every course page lists exactly what you need, and we always teach the budget path first.</p>
+              <p className="text-slate-600 font-medium">It ranges from nearly free (Invention Lab runs on cardboard and hot glue) to a few thousand dollars for robotics or esports. Every program page lists exactly what you need, and we always teach the budget path first.</p>
             </div>
 
             <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
               <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Is AI safe and legal for younger kids?</h3>
-              <p className="text-slate-600 font-medium">This is exactly why our AI courses exist. Most consumer AI tools require users to be 13+ — our training covers which tools each grade can use, kid-safe no-login alternatives for elementary ages, and supervision protocols your licensor and parents will approve of.</p>
+              <p className="text-slate-600 font-medium">This is exactly why our AI programs exist. Most consumer AI tools require users to be 13+ — our training covers which tools each grade can use, kid-safe no-login alternatives for elementary ages, and supervision protocols your licensor and parents will approve of.</p>
             </div>
 
             <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
@@ -495,11 +495,11 @@ export const Landing: React.FC = () => {
               <div className="flex-1">
                 <h2 className="text-3xl font-black text-sta-dark mb-4">Grab the Program Launch Kit</h2>
                 <p className="text-slate-600 mb-8 font-medium">
-                  A free PDF for program directors: equipment budgets for all {COURSES.length} programs, a staffing model, and our AI age-gating cheat sheet.
+                  A free PDF for program directors: equipment budgets for all {PROGRAMS.length} programs, a staffing model, and our AI age-gating cheat sheet.
                 </p>
                 <form className="flex flex-col sm:flex-row gap-3">
                   <input type="email" placeholder="Work email address" className="flex-1 px-5 py-3 bg-slate-50 rounded-lg border-2 border-black focus:outline-none focus:border-sta-primary font-mono text-sm" />
-                  <button className="px-6 py-3 bg-sta-dark text-white font-bold rounded-lg border-2 border-black hover:bg-sta-primary transition-colors flex items-center justify-center whitespace-nowrap shadow-hard-sm active:shadow-none active:translate-x-0.5 active:translate-y-0.5">
+                  <button className="px-6 py-3 bg-sta-cta text-white font-bold rounded-lg border-2 border-black hover:bg-sta-cta-hover transition-colors flex items-center justify-center whitespace-nowrap shadow-hard-sm active:shadow-none active:translate-x-0.5 active:translate-y-0.5">
                     <Download className="w-4 h-4 mr-2" /> Download
                   </button>
                 </form>

@@ -1,11 +1,11 @@
-import { Course, CoursePillar } from '../types';
+import { Program, ProgramPillar } from '../types';
 
-export const COURSES: Course[] = [
+export const PROGRAMS: Program[] = [
     // ─────────────────────────── STEM ───────────────────────────
     {
         id: 'first-coders',
         title: 'First Coders',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades K–2',
         gradeBands: ['K–2'],
         description: 'Animated stories and simple games with ScratchJr — sequencing and problem-solving before kids can even read fluently.',
@@ -17,7 +17,7 @@ export const COURSES: Course[] = [
     {
         id: 'game-builders',
         title: 'Game Builders',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades 3–5',
         gradeBands: ['3–5'],
         description: 'Students design and code their own playable games in Scratch; sessions build toward a site-wide arcade showcase.',
@@ -42,7 +42,7 @@ export const COURSES: Course[] = [
     {
         id: 'level-up-coding',
         title: 'Level Up Coding',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades 6–8',
         gradeBands: ['6–8'],
         description: 'The bridge out of blocks: retro-style games in MakeCode Arcade, transitioning into beginner Python.',
@@ -54,7 +54,7 @@ export const COURSES: Course[] = [
     {
         id: '3d-design-print',
         title: '3D Design & Print Studio',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades 3–8',
         gradeBands: ['3–5', '6–8'],
         description: 'Students design in Tinkercad and print real objects — keychains to prosthetic-hand challenges, scaled by age.',
@@ -66,7 +66,7 @@ export const COURSES: Course[] = [
     {
         id: 'vr-world-builders',
         title: 'VR World Builders',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades 4–8',
         gradeBands: ['3–5', '6–8'],
         description: 'Build and code interactive 3D worlds in CoSpaces, then walk through them in VR.',
@@ -78,7 +78,7 @@ export const COURSES: Course[] = [
     {
         id: 'robocubes',
         title: 'RoboCubes',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades K–3',
         gradeBands: ['K–2', '3–5'],
         description: 'Screen-free robotics with snap-together robotic cubes (e.g., Cubelets) — kids build robot behaviors from sensor and motor blocks.',
@@ -91,7 +91,7 @@ export const COURSES: Course[] = [
     {
         id: 'robotics-1',
         title: 'Robotics I: Build & Code',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades 3–5',
         gradeBands: ['3–5'],
         description: 'First real build-and-program robotics using LEGO SPIKE Essential (or Dash) — missions, mazes, and challenge mats.',
@@ -103,7 +103,7 @@ export const COURSES: Course[] = [
     {
         id: 'robotics-2',
         title: 'Robotics II: Competition Ready',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades 6–8',
         gradeBands: ['6–8'],
         description: 'Advanced builds with LEGO SPIKE Prime or VEX IQ, structured around head-to-head challenges and optional league play.',
@@ -115,7 +115,7 @@ export const COURSES: Course[] = [
     {
         id: 'minecraft-coding',
         title: 'Minecraft Coding',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades 3–8',
         gradeBands: ['3–5', '6–8'],
         description: 'Code inside Minecraft Education — students program an in-game agent with blocks (younger) or Python (older) to build and automate.',
@@ -127,7 +127,7 @@ export const COURSES: Course[] = [
     {
         id: 'circuit-inventors',
         title: 'Circuit Inventors',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades 2–6',
         gradeBands: ['K–2', '3–5', '6–8'],
         description: 'Makey Makey turns bananas, foil, and playdough into game controllers and instruments — electricity and conductivity through pure play.',
@@ -139,7 +139,7 @@ export const COURSES: Course[] = [
     {
         id: 'invention-lab',
         title: 'Invention Lab',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades 3–8',
         gradeBands: ['3–5', '6–8'],
         description: 'Open-ended engineering-design challenges: cardboard builds, recycled-material inventions, simple circuits. The lowest-cost, highest-flexibility program in the catalog.',
@@ -152,7 +152,7 @@ export const COURSES: Course[] = [
     {
         id: 'structures-skyscrapers',
         title: 'Structures & Skyscrapers',
-        pillar: CoursePillar.STEM,
+        pillar: ProgramPillar.STEM,
         grades: 'Grades 2–8',
         gradeBands: ['K–2', '3–5', '6–8'],
         description: "Structural engineering with building kits (KEVA planks, Strawbees, K'NEX): bridges, towers, and shake-table earthquake tests.",
@@ -167,7 +167,7 @@ export const COURSES: Course[] = [
     {
         id: 'ai-explorers',
         title: 'AI Explorers',
-        pillar: CoursePillar.AI,
+        pillar: ProgramPillar.AI,
         grades: 'Grades 3–6',
         gradeBands: ['3–5', '6–8'],
         description: 'Demystifying AI through hands-on training games — students teach a computer to recognize images and sounds using kid-safe, no-login tools (Teachable Machine, Machine Learning for Kids) plus unplugged activities.',
@@ -179,7 +179,7 @@ export const COURSES: Course[] = [
     {
         id: 'intro-vibe-coding',
         title: 'Intro to Vibe Coding',
-        pillar: CoursePillar.AI,
+        pillar: ProgramPillar.AI,
         grades: 'Grades 6–12',
         gradeBands: ['6–8', '9–12'],
         description: 'Students describe the app or game they want in plain language and build it in partnership with AI tools. Training focuses heavily on facilitation: keeping kids in the driver\'s seat, iterating on prompts, and debugging by conversation.',
@@ -193,7 +193,7 @@ export const COURSES: Course[] = [
     {
         id: 'launch-esports',
         title: 'Launch Your Esports Program',
-        pillar: CoursePillar.ESPORTS,
+        pillar: ProgramPillar.ESPORTS,
         grades: 'Grades 4–12',
         gradeBands: ['3–5', '6–8', '9–12'],
         description: 'The zero-to-team training: age-appropriate game selection (Rocket League, Smash, Minecraft for younger; Valorant-tier only for HS), team structure and practice format, sportsmanship and screen-time policy, running an in-house tournament, and joining scholastic leagues.',
@@ -204,11 +204,11 @@ export const COURSES: Course[] = [
     },
 ];
 
-export const PILLAR_ORDER = [CoursePillar.STEM, CoursePillar.AI, CoursePillar.ESPORTS];
+export const PILLAR_ORDER = [ProgramPillar.STEM, ProgramPillar.AI, ProgramPillar.ESPORTS];
 
-/** URL slugs for pillar-filtered course library routes, e.g. /courses/ai */
-export const PILLAR_SLUGS: Record<CoursePillar, string> = {
-    [CoursePillar.STEM]: 'stem',
-    [CoursePillar.AI]: 'ai',
-    [CoursePillar.ESPORTS]: 'esports',
+/** URL slugs for pillar-filtered program library routes, e.g. /programs/ai */
+export const PILLAR_SLUGS: Record<ProgramPillar, string> = {
+    [ProgramPillar.STEM]: 'stem',
+    [ProgramPillar.AI]: 'ai',
+    [ProgramPillar.ESPORTS]: 'esports',
 };
