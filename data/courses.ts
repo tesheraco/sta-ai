@@ -205,3 +205,10 @@ export const COURSES: Course[] = [
 ];
 
 export const PILLAR_ORDER = [CoursePillar.STEM, CoursePillar.AI, CoursePillar.ESPORTS];
+
+/** URL slugs for pillar-filtered course library routes, e.g. /courses/ai */
+export const PILLAR_SLUGS: Record<CoursePillar, string> = {
+    [CoursePillar.STEM]: 'stem',
+    [CoursePillar.AI]: 'ai',
+    [CoursePillar.ESPORTS]: 'esports',
+};

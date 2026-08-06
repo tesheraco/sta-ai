@@ -34,6 +34,15 @@ export const Navbar: React.FC = () => {
               Courses
             </Link>
             <Link
+              to="/case-studies"
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 border-transparent ${currentPath === '/case-studies'
+                ? 'bg-sta-primary/10 text-sta-primary border-sta-primary'
+                : 'text-slate-600 hover:bg-slate-100'
+                }`}
+            >
+              Case Studies
+            </Link>
+            <Link
               to="/about"
               className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 border-transparent ${currentPath === '/about'
                 ? 'bg-sta-primary/10 text-sta-primary border-sta-primary'
@@ -82,6 +91,13 @@ export const Navbar: React.FC = () => {
               className="block w-full text-left px-4 py-3 bg-white border-2 border-black rounded-lg shadow-hard-sm font-bold text-sta-dark active:shadow-none active:translate-x-0.5 active:translate-y-0.5"
             >
               Courses
+            </Link>
+            <Link
+              to="/case-studies"
+              onClick={() => setIsOpen(false)}
+              className="block w-full text-left px-4 py-3 bg-white border-2 border-black rounded-lg shadow-hard-sm font-bold text-sta-dark active:shadow-none active:translate-x-0.5 active:translate-y-0.5"
+            >
+              Case Studies
             </Link>
             <Link
               to="/about"

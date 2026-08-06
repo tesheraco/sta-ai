@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useMemo } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Search, Clock3, Monitor, Package, ShieldCheck, GraduationCap } from 'lucide-react';
 import { CoursePillar, GradeBand, GRADE_BANDS } from '../types';
-import { COURSES, PILLAR_ORDER } from '../data/courses';
+import { COURSES, PILLAR_ORDER, PILLAR_SLUGS } from '../data/courses';
 
 const PILLAR_STYLES: Record<CoursePillar, { badge: string; chip: string }> = {
     [CoursePillar.STEM]: { badge: 'bg-sta-primary text-white', chip: 'bg-sta-primary text-white' },
@@ -10,16 +10,49 @@ const PILLAR_STYLES: Record<CoursePillar, { badge: string; chip: string }> = {
     [CoursePillar.ESPORTS]: { badge: 'bg-sta-accent text-black', chip: 'bg-sta-accent text-black' },
 };
 
-export const CoursesPage: React.FC = () => {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [selectedPillar, setSelectedPillar] = useState<CoursePillar | 'All'>('All');
-    const [selectedBands, setSelectedBands] = useState<GradeBand[]>([]);
-    const [screenFreeOnly, setScreenFreeOnly] = useState(false);
+/** Grade bands contain an en dash, which URL-encodes badly — swap it for a plain hyphen. */
+const bandToSlug = (band: GradeBand) => band.replace('–', '-');
+const slugToBand = (slug: string) => GRADE_BANDS.find(b => bandToSlug(b) === slug);
+
+interface CoursesPageProps {
+    /** Set by the pillar-filtered routes (/courses/ai etc.); absent on plain /courses. */
+    pillar?: CoursePillar;
+}
+
+export const CoursesPage: React.FC<CoursesPageProps> = ({ pillar: routePillar }) => {
+    const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    // The URL is the source of truth for every filter.
+    const selectedPillar: CoursePillar | 'All' = routePillar ?? 'All';
+    const searchQuery = searchParams.get('q') ?? '';
+    const screenFreeOnly = searchParams.get('screenFree') === '1';
+    const selectedBands = (searchParams.get('grades')?.split(',') ?? [])
+        .map(slugToBand)
+        .filter((b): b is GradeBand => Boolean(b));
+
+    /** Merge a patch into the current query string; a null value drops the param. */
+    const updateParams = (patch: Record<string, string | null>) => {
+        const next = new URLSearchParams(searchParams);
+        Object.entries(patch).forEach(([key, value]) => {
+            if (value) next.set(key, value);
+            else next.delete(key);
+        });
+        // Filters are view state, not navigation steps — keep them out of the history stack.
+        setSearchParams(next, { replace: true });
+    };
+
+    const goToPillar = (next: CoursePillar | 'All') => {
+        const path = next === 'All' ? '/courses' : `/courses/${PILLAR_SLUGS[next]}`;
+        const query = searchParams.toString();
+        navigate(query ? `${path}?${query}` : path, { replace: true });
+    };
 
     const toggleBand = (band: GradeBand) => {
-        setSelectedBands(prev =>
-            prev.includes(band) ? prev.filter(b => b !== band) : [...prev, band]
-        );
+        const next = selectedBands.includes(band)
+            ? selectedBands.filter(b => b !== band)
+            : [...selectedBands, band];
+        updateParams({ grades: next.length ? next.map(bandToSlug).join(',') : null });
     };
 
     const filteredCourses = useMemo(() => {
@@ -54,7 +87,7 @@ export const CoursesPage: React.FC = () => {
                         {PILLAR_ORDER.map(pillar => (
                             <button
                                 key={pillar}
-                                onClick={() => setSelectedPillar(selectedPillar === pillar ? 'All' : pillar)}
+                                onClick={() => goToPillar(selectedPillar === pillar ? 'All' : pillar)}
                                 className={`px-5 py-2 rounded-full border-2 border-black font-bold text-sm transition-all ${selectedPillar === pillar
                                     ? `${PILLAR_STYLES[pillar].chip} shadow-hard-sm`
                                     : 'bg-white text-sta-dark hover:bg-slate-100'
@@ -81,7 +114,7 @@ export const CoursesPage: React.FC = () => {
                                         type="text"
                                         placeholder="Robotics, Minecraft, VR..."
                                         value={searchQuery}
-                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                        onChange={(e) => updateParams({ q: e.target.value || null })}
                                         className="w-full pl-10 pr-4 py-2 rounded border-2 border-slate-200 focus:border-sta-primary outline-none font-medium text-sm"
                                     />
                                 </div>
@@ -93,7 +126,7 @@ export const CoursesPage: React.FC = () => {
                                     {(['All', ...PILLAR_ORDER] as const).map(pillar => (
                                         <button
                                             key={pillar}
-                                            onClick={() => setSelectedPillar(pillar as CoursePillar | 'All')}
+                                            onClick={() => goToPillar(pillar as CoursePillar | 'All')}
                                             className={`w-full text-left px-3 py-2 rounded font-bold text-sm transition-all flex items-center justify-between ${selectedPillar === pillar
                                                 ? 'bg-sta-dark text-white border-2 border-black'
                                                 : 'text-slate-600 hover:bg-slate-100 border-2 border-transparent'
@@ -131,24 +164,13 @@ export const CoursesPage: React.FC = () => {
                                     <input
                                         type="checkbox"
                                         checked={screenFreeOnly}
-                                        onChange={(e) => setScreenFreeOnly(e.target.checked)}
+                                        onChange={(e) => updateParams({ screenFree: e.target.checked ? '1' : null })}
                                         className="w-4 h-4 accent-sta-primary"
                                     />
                                     <span className="font-bold text-sm text-slate-700">Screen-free only</span>
                                 </label>
                                 <p className="text-xs text-slate-400 font-medium mt-1 ml-7">No student devices required</p>
                             </div>
-                        </div>
-
-                        {/* Responsible AI badge */}
-                        <div className="bg-sta-dark text-white p-6 rounded-xl border-2 border-black shadow-hard-sm">
-                            <div className="flex items-center gap-2 mb-3">
-                                <ShieldCheck className="w-5 h-5 text-sta-mint" />
-                                <h3 className="font-black text-sm uppercase tracking-wider">Age-Safe AI</h3>
-                            </div>
-                            <p className="text-sm font-medium text-slate-300">
-                                Most consumer AI tools require users to be 13+. Every AI course includes age-gating and supervision training so your staff knows exactly which tools each grade can use — and how.
-                            </p>
                         </div>
 
                         {/* Custom Training */}
@@ -174,7 +196,7 @@ export const CoursesPage: React.FC = () => {
                             </h2>
                             {(selectedPillar !== 'All' || selectedBands.length > 0 || screenFreeOnly || searchQuery) && (
                                 <button
-                                    onClick={() => { setSelectedPillar('All'); setSelectedBands([]); setScreenFreeOnly(false); setSearchQuery(''); }}
+                                    onClick={() => navigate('/courses', { replace: true })}
                                     className="text-sm font-bold text-sta-primary hover:underline"
                                 >
                                     Clear filters
@@ -241,20 +263,21 @@ export const CoursesPage: React.FC = () => {
                             ))}
                         </div>
 
-                        {/* AI differentiator strip under grid */}
-                        {(selectedPillar === 'All' || selectedPillar === CoursePillar.AI) && filteredCourses.length > 0 && (
-                            <div className="mt-10 bg-white border-2 border-black rounded-xl p-8 shadow-hard-sm flex flex-col md:flex-row items-start md:items-center gap-6">
-                                <div className="w-14 h-14 bg-sta-secondary/15 rounded-full border-2 border-black flex items-center justify-center shrink-0">
-                                    <ShieldCheck className="w-7 h-7 text-sta-secondary" />
+                        {/* Responsible AI note — only relevant while browsing the AI pillar */}
+                        {selectedPillar === CoursePillar.AI && filteredCourses.length > 0 && (
+                            <div className="mt-10 bg-sta-dark text-white border-2 border-black rounded-xl p-8 shadow-hard-sm flex flex-col md:flex-row items-start md:items-center gap-6">
+                                <div className="w-14 h-14 bg-sta-mint/15 rounded-full border-2 border-black flex items-center justify-center shrink-0">
+                                    <ShieldCheck className="w-7 h-7 text-sta-mint" />
                                 </div>
                                 <div>
-                                    <h3 className="font-black text-lg text-sta-dark mb-1">The AI question every director asks: "Which tools can my 4th graders legally touch?"</h3>
-                                    <p className="text-slate-600 font-medium text-sm">
-                                        We answer it for you. Our AI courses ship with age-gating guidance, supervision protocols, and responsible-use policies for every tool in the curriculum — so your program is defensible to parents, boards, and licensors from day one.
+                                    <h3 className="font-black text-sm uppercase tracking-wider mb-2">Age-Safe AI</h3>
+                                    <p className="text-sm font-medium text-slate-300">
+                                        Most consumer AI tools require users to be 13+. Every AI course includes age-gating and supervision training so your staff knows exactly which tools each grade can use — and how.
                                     </p>
                                 </div>
                             </div>
                         )}
+
                     </div>
 
                 </div>
