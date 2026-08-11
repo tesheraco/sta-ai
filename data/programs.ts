@@ -11,7 +11,8 @@ export const PROGRAMS: Program[] = [
         description: 'Animated stories and simple games with ScratchJr — sequencing and problem-solving before kids can even read fluently.',
         devices: 'Tablets (iPads or Android)',
         materials: 'ScratchJr (free)',
-        image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        image: '/programs/first-coders.jpg',
+        imageCredit: { text: 'Tufts University, Scratch Foundation', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:ScratchJr_Interface.png' },
         tags: ['Coding', 'Free Software', 'Early Learners'],
     },
     {
@@ -23,7 +24,8 @@ export const PROGRAMS: Program[] = [
         description: 'Students design and code their own playable games in Scratch; sessions build toward a site-wide arcade showcase.',
         devices: 'Laptops/Chromebooks',
         materials: 'Scratch (free)',
-        image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        image: '/programs/game-builders.jpg',
+        imageCredit: { text: 'Scratch, MIT Media Lab', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Scratch_3.0_editor.png' },
         tags: ['Coding', 'Free Software', 'Showcase Event'],
         learningOutcomes: [
             'Facilitate block-based coding with zero prior experience',
@@ -48,6 +50,7 @@ export const PROGRAMS: Program[] = [
         description: 'The bridge out of blocks: retro-style games in MakeCode Arcade, transitioning into beginner Python.',
         devices: 'Laptops/Chromebooks',
         materials: 'Free platforms; optional handheld Arcade consoles (~$40 ea.) for playing their builds',
+        // TODO(image): stand-in. Capture a MakeCode Arcade game mid-edit at arcade.makecode.com.
         image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
         tags: ['Coding', 'Python', 'Middle School'],
     },
@@ -60,7 +63,8 @@ export const PROGRAMS: Program[] = [
         description: 'Students design in Tinkercad and print real objects — keychains to prosthetic-hand challenges, scaled by age.',
         devices: 'Laptops/Chromebooks',
         materials: '1–2 desktop printers (e.g., Bambu A1 Mini or Prusa Mini), PLA filament, Tinkercad (free)',
-        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        image: '/programs/3d-design-print.jpg',
+        imageCredit: { text: 'Wikimedia Commons', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:3D_Printing.jpg' },
         tags: ['Maker', '3D Printing', 'Take-Home Projects'],
     },
     {
@@ -72,6 +76,7 @@ export const PROGRAMS: Program[] = [
         description: 'Build and code interactive 3D worlds in CoSpaces, then walk through them in VR.',
         devices: 'Laptops/Chromebooks',
         materials: 'CoSpaces Edu license; optional low-cost VR viewers (phone-cradle style)',
+        // TODO(image): stand-in. Capture a CoSpaces Edu 3D scene in the editor (free tier).
         image: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
         tags: ['Coding', 'VR', 'Design'],
     },
@@ -84,7 +89,8 @@ export const PROGRAMS: Program[] = [
         description: 'Screen-free robotics with snap-together robotic cubes (e.g., Cubelets) — kids build robot behaviors from sensor and motor blocks.',
         devices: 'None',
         materials: 'Robotic cube classroom kit',
-        image: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        image: '/programs/robocubes.jpg',
+        imageCredit: { text: 'SparkFun Electronics', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Cubelets_Six_Kit_(15311725944).jpg' },
         tags: ['Robotics', 'Screen-Free', 'Early Learners'],
         screenFree: true,
     },
@@ -97,7 +103,8 @@ export const PROGRAMS: Program[] = [
         description: 'First real build-and-program robotics using LEGO SPIKE Essential (or Dash) — missions, mazes, and challenge mats.',
         devices: 'Tablets or laptops',
         materials: '1 robotics kit per 2–3 students, challenge mats',
-        image: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        image: '/programs/robotics-1.jpg',
+        imageCredit: { text: 'Wikimedia Commons', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Lego_Mindstorms_EV3_Robot.jpg' },
         tags: ['Robotics', 'LEGO SPIKE', 'Hands-On'],
     },
     {
@@ -109,7 +116,8 @@ export const PROGRAMS: Program[] = [
         description: 'Advanced builds with LEGO SPIKE Prime or VEX IQ, structured around head-to-head challenges and optional league play.',
         devices: 'Laptops/tablets',
         materials: 'SPIKE Prime or VEX IQ kits, game field elements',
-        image: 'https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        image: '/programs/robotics-2.jpg',
+        imageCredit: { text: 'U.S. Air Force', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Scott_members_mentor_students_in_robotics_competition_141122-F-IW762-006.jpg' },
         tags: ['Robotics', 'Competition', 'League Play'],
     },
     {
@@ -121,7 +129,8 @@ export const PROGRAMS: Program[] = [
         description: 'Code inside Minecraft Education — students program an in-game agent with blocks (younger) or Python (older) to build and automate.',
         devices: 'Laptops/Chromebooks/tablets',
         materials: 'Minecraft Education licenses',
-        image: 'https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        image: '/programs/minecraft-coding.jpg',
+        imageCredit: { text: 'Wikimedia Commons', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Minecraft_-_Lush_caves.jpg' },
         tags: ['Coding', 'Minecraft', 'High Demand'],
     },
     {
@@ -133,7 +142,8 @@ export const PROGRAMS: Program[] = [
         description: 'Makey Makey turns bananas, foil, and playdough into game controllers and instruments — electricity and conductivity through pure play.',
         devices: 'Laptops',
         materials: 'Makey Makey kits, alligator clips, conductive odds and ends (mostly grocery/craft store)',
-        image: 'https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        image: '/programs/circuit-inventors.jpg',
+        imageCredit: { text: 'Wikimedia Commons', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Makey_Makey.jpg' },
         tags: ['Maker', 'Circuits', 'Low Cost'],
     },
     {
@@ -145,6 +155,7 @@ export const PROGRAMS: Program[] = [
         description: 'Open-ended engineering-design challenges: cardboard builds, recycled-material inventions, simple circuits. The lowest-cost, highest-flexibility program in the catalog.',
         devices: 'None',
         materials: 'Consumables — cardboard, hot glue, tape, craft stock, LEDs + coin batteries',
+        // TODO(image): stand-in. Photograph an actual cardboard build from a session.
         image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
         tags: ['Maker', 'Screen-Free', 'Lowest Cost'],
         screenFree: true,
@@ -158,7 +169,8 @@ export const PROGRAMS: Program[] = [
         description: "Structural engineering with building kits (KEVA planks, Strawbees, K'NEX): bridges, towers, and shake-table earthquake tests.",
         devices: 'None',
         materials: 'Building kits, weights and fans for load/wind testing',
-        image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        image: '/programs/structures-skyscrapers.jpg',
+        imageCredit: { text: 'Wikimedia Commons', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Open_Dag_Philips_Drachten_Strawbees.jpg' },
         tags: ['Engineering', 'Screen-Free', 'Hands-On'],
         screenFree: true,
     },
@@ -173,6 +185,7 @@ export const PROGRAMS: Program[] = [
         description: 'Demystifying AI through hands-on training games — students teach a computer to recognize images and sounds using kid-safe, no-login tools (Teachable Machine, Machine Learning for Kids) plus unplugged activities.',
         devices: 'Laptops/Chromebooks',
         materials: 'Free web tools',
+        // TODO(image): stand-in. Capture Teachable Machine mid-training with class samples showing.
         image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
         tags: ['AI', 'Kid-Safe Tools', 'No Logins Required'],
     },
@@ -185,6 +198,7 @@ export const PROGRAMS: Program[] = [
         description: 'Students describe the app or game they want in plain language and build it in partnership with AI tools. Training focuses heavily on facilitation: keeping kids in the driver\'s seat, iterating on prompts, and debugging by conversation.',
         devices: 'Laptops/Chromebooks',
         materials: 'AI builder platform accounts (Claude, Replit, or similar)',
+        // TODO(image): stand-in. Capture a student-built app running from an AI builder session.
         image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
         tags: ['AI', 'App Building', 'Age-Gated Tools'],
     },
@@ -199,7 +213,8 @@ export const PROGRAMS: Program[] = [
         description: 'The zero-to-team training: age-appropriate game selection (Rocket League, Smash, Minecraft for younger; Valorant-tier only for HS), team structure and practice format, sportsmanship and screen-time policy, running an in-house tournament, and joining scholastic leagues.',
         devices: 'Consoles or gaming PCs — we teach the budget path explicitly: 4–6 Nintendo Switch consoles gets a program running for a fraction of a gaming-PC lab',
         materials: 'Consoles or gaming PCs, monitors, headsets, controllers, wired internet',
-        image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        image: '/programs/launch-esports.jpg',
+        imageCredit: { text: 'Wikimedia Commons', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Iskandar_Investment_Esports_Carnival_2019.jpg' },
         tags: ['Esports', 'Tournaments', 'Budget Path Included'],
     },
 ];

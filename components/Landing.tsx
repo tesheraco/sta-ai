@@ -1,36 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Download, Star, Zap, Shield, Heart, BarChart3, XCircle, CheckCircle2, HelpCircle, Cpu, Gamepad2, FlaskConical } from 'lucide-react';
+import { ArrowRight, Download, Star, Zap, Shield, Heart, BarChart3, XCircle, CheckCircle2, HelpCircle } from 'lucide-react';
 import { CaseStudy, ProgramPillar } from '../types';
 import { CaseStudyModal } from './CaseStudyModal';
 import { PROGRAMS, PILLAR_SLUGS } from '../data/programs';
+import { PILLAR_VISUALS } from '../data/pillars';
 import { CASE_STUDIES } from '../data/caseStudies';
 
 const PILLARS = [
   {
     pillar: ProgramPillar.STEM,
-    icon: FlaskConical,
-    color: 'bg-sta-primary',
-    textColor: 'text-sta-primary',
-    tint: 'bg-sta-primary/10',
+    ...PILLAR_VISUALS[ProgramPillar.STEM],
     blurb: 'Coding, robotics, 3D printing, VR, and engineering — from screen-free kindergarten kits to competition-ready middle school teams.',
     highlights: ['Game Builders', 'Robotics I & II', 'Minecraft Coding', '3D Design & Print'],
   },
   {
     pillar: ProgramPillar.AI,
-    icon: Cpu,
-    color: 'bg-sta-secondary',
-    textColor: 'text-sta-secondary',
-    tint: 'bg-sta-secondary/10',
+    ...PILLAR_VISUALS[ProgramPillar.AI],
     blurb: 'Kid-safe, age-gated AI programs — from hands-on machine learning games to building real apps in partnership with AI tools.',
     highlights: ['AI Explorers', 'Intro to Vibe Coding'],
   },
   {
     pillar: ProgramPillar.ESPORTS,
-    icon: Gamepad2,
-    color: 'bg-sta-accent',
-    textColor: 'text-amber-600',
-    tint: 'bg-sta-accent/20',
+    ...PILLAR_VISUALS[ProgramPillar.ESPORTS],
     blurb: 'The zero-to-team playbook: age-appropriate games, practice structure, screen-time policy, and tournaments — on a console budget.',
     highlights: ['Launch Your Esports Program'],
   },
@@ -118,42 +110,26 @@ export const Landing: React.FC = () => {
       </section>
 
       {/* Audience Bar */}
-      <section className="py-8 bg-white border-b-2 border-black">
+      <section className="py-12 bg-white border-b-2 border-black">
         <div className="max-w-6xl mx-auto px-4">
-          <p className="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Built for organizations like</p>
-          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
-            {['YMCAs', 'Boys & Girls Clubs', 'Parks & Recreation', 'Charter Networks', 'K–12 Schools', 'Enrichment Providers'].map((name) => (
-              <span key={name} className="text-lg font-black text-slate-300 tracking-tight">{name}</span>
+          <p className="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">Trusted by organizations like</p>
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+            {[
+              { src: '/logos/ymca.svg', alt: 'YMCA', className: 'h-16' },
+              { src: '/logos/newark_logo_gray.svg', alt: 'City of Newark', className: 'h-20' },
+              { src: '/logos/bgca_logo.svg', alt: 'Boys & Girls Clubs of America', className: 'h-12' },
+              { src: '/logos/pal_logo.svg', alt: 'Police Athletic League', className: 'h-20' },
+              { src: '/logos/phipps.svg', alt: 'Phipps Neighborhoods', className: 'h-16' },
+              { src: '/logos/gs_logo.svg', alt: 'Grand St. Settlement', className: 'h-14' },
+            ].map((logo) => (
+              <img
+                key={logo.src}
+                src={logo.src}
+                alt={logo.alt}
+                loading="lazy"
+                className={`${logo.className} w-auto`}
+              />
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Problem / Solution Block */}
-      <section className="py-20 bg-white border-b-2 border-black">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-0">
-            {/* Problem Side */}
-            <div className="bg-red-50 border-2 border-black rounded-t-xl md:rounded-l-xl md:rounded-tr-none p-10">
-              <div className="flex items-center gap-2 mb-6">
-                <XCircle className="w-6 h-6 text-red-500" />
-                <span className="font-black text-sm uppercase tracking-widest text-red-500">The Problem</span>
-              </div>
-              <p className="text-2xl font-black text-sta-dark leading-snug">
-                Outside STEM vendors cost a fortune, cover a few hours a week, and disappear when their instructor quits. Meanwhile, families are asking for coding, AI, and esports by name.
-              </p>
-            </div>
-
-            {/* Solution Side */}
-            <div className="bg-sta-mint/20 border-2 border-black border-t-0 md:border-t-2 md:border-l-0 rounded-b-xl md:rounded-r-xl md:rounded-bl-none p-10">
-              <div className="flex items-center gap-2 mb-6">
-                <CheckCircle2 className="w-6 h-6 text-emerald-600" />
-                <span className="font-black text-sm uppercase tracking-widest text-emerald-600">The Solution</span>
-              </div>
-              <p className="text-2xl font-black text-sta-dark leading-snug">
-                Train the staff you already have. We provide the curriculum, the session scripts, the equipment shopping lists, and the confidence — you keep the program forever.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -162,8 +138,7 @@ export const Landing: React.FC = () => {
       <section className="py-24 bg-sta-surface bg-dot-pattern border-b-2 border-black">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-sta-dark mb-2">Three Program Pillars</h2>
-            <p className="text-slate-600 text-xl font-medium">A program library of {PROGRAMS.length} turnkey programs, K–12.</p>
+            <h2 className="text-4xl font-black text-sta-dark">Three Program Pillars</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -223,8 +198,7 @@ export const Landing: React.FC = () => {
       <section className="py-24 bg-white border-b-2 border-black">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-sta-dark mb-4">Why Program Leaders Choose STA</h2>
-            <p className="text-slate-600 text-xl font-medium">We speak "Executive Director" as fluently as we speak "Group Leader".</p>
+            <h2 className="text-4xl font-black text-sta-dark">Why Program Leaders Choose STA</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -268,8 +242,7 @@ export const Landing: React.FC = () => {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-16 text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-black text-sta-dark mb-4">Everything Your Site Needs to Launch</h2>
-            <p className="text-slate-600 text-xl font-medium">No jargon. No guesswork. Programs your staff can run on Monday.</p>
+            <h2 className="text-4xl font-black text-sta-dark">Everything Your Site Needs to Launch</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -307,32 +280,32 @@ export const Landing: React.FC = () => {
       </section>
 
       {/* Comparison Section: Old Way vs STA Way */}
-      <section className="py-24 bg-slate-900 text-white border-y-2 border-black">
+      <section className="py-24 bg-sta-surface bg-dot-pattern border-y-2 border-black">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
             {/* The Old Way */}
-            <div className="opacity-50 hover:opacity-70 transition-opacity">
-              <h3 className="text-2xl font-black mb-8 text-slate-400 uppercase tracking-widest border-b-2 border-slate-700 pb-4">The Vendor Model</h3>
+            <div className="opacity-70 hover:opacity-100 transition-opacity">
+              <h3 className="text-2xl font-black mb-8 text-slate-500 uppercase tracking-widest border-b-2 border-slate-300 pb-4">The Vendor Model</h3>
               <ul className="space-y-6">
                 <li className="flex items-start">
                   <XCircle className="w-6 h-6 text-red-500 mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-lg mb-1">Rent-an-Instructor</strong>
-                    <p className="text-slate-400">$150+ per session, one day a week. When their instructor quits, your program ends.</p>
+                    <strong className="block text-lg mb-1 text-slate-600">Rent-an-Instructor</strong>
+                    <p className="text-slate-500">$150+ per session, one day a week. When their instructor quits, your program ends.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <XCircle className="w-6 h-6 text-red-500 mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-lg mb-1">Equipment Gathering Dust</strong>
-                    <p className="text-slate-400">Robotics kits in a closet because nobody on staff was ever shown how to use them.</p>
+                    <strong className="block text-lg mb-1 text-slate-600">Equipment Gathering Dust</strong>
+                    <p className="text-slate-500">Robotics kits in a closet because nobody on staff was ever shown how to use them.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <XCircle className="w-6 h-6 text-red-500 mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-lg mb-1">AI Policy by Avoidance</strong>
-                    <p className="text-slate-400">"Just don't let them use it." Meanwhile, no one checked which tools are even legal for kids under 13.</p>
+                    <strong className="block text-lg mb-1 text-slate-600">Nothing to Show Your Funder</strong>
+                    <p className="text-slate-500">A stack of attendance sheets at year end. When the grant renewal asks what students actually learned, nobody can answer.</p>
                   </div>
                 </li>
               </ul>
@@ -344,24 +317,24 @@ export const Landing: React.FC = () => {
               <h3 className="text-2xl font-black mb-8 text-sta-primary uppercase tracking-widest border-b-2 border-sta-primary pb-4">The STA Way</h3>
               <ul className="space-y-8">
                 <li className="flex items-start">
-                  <CheckCircle2 className="w-6 h-6 text-sta-mint mr-4 shrink-0" />
+                  <CheckCircle2 className="w-6 h-6 text-emerald-600 mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-xl mb-1">Your Staff, Trained</strong>
-                    <p className="text-slate-300">One flat training fee. The capability stays with your organization <i>permanently</i>.</p>
+                    <strong className="block text-xl mb-1 text-sta-dark">Your Staff, Trained</strong>
+                    <p className="text-slate-600">One flat training fee. The capability stays with your organization <i>permanently</i>.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle2 className="w-6 h-6 text-sta-mint mr-4 shrink-0" />
+                  <CheckCircle2 className="w-6 h-6 text-emerald-600 mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-xl mb-1">Every Kit Earning Its Keep</strong>
-                    <p className="text-slate-300">Curriculum mapped to the exact hardware you buy — with the budget path spelled out before you spend a dollar.</p>
+                    <strong className="block text-xl mb-1 text-sta-dark">Every Kit Earning Its Keep</strong>
+                    <p className="text-slate-600">Curriculum mapped to the exact hardware you buy — with the budget path spelled out before you spend a dollar.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle2 className="w-6 h-6 text-sta-mint mr-4 shrink-0" />
+                  <CheckCircle2 className="w-6 h-6 text-emerald-600 mr-4 shrink-0" />
                   <div>
-                    <strong className="block text-xl mb-1">AI Done Responsibly</strong>
-                    <p className="text-slate-300">Age-gating, supervision protocols, and parent-ready policies baked into every AI program.</p>
+                    <strong className="block text-xl mb-1 text-sta-dark">Evidence Your Funder Accepts</strong>
+                    <p className="text-slate-600">Skill rubrics and progress tracking built into every program — so renewal season starts with a report, not a scramble.</p>
                   </div>
                 </li>
               </ul>
@@ -400,8 +373,7 @@ export const Landing: React.FC = () => {
       <section className="py-24 bg-sta-surface bg-dot-pattern">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-sta-dark mb-4">Success Stories</h2>
-            <p className="text-slate-600 text-xl font-medium">Real sites. Real staff. Real programs.</p>
+            <h2 className="text-4xl font-black text-sta-dark">Success Stories</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">

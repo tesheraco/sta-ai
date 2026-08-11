@@ -29,7 +29,10 @@ export interface Program {
   /** Devices requirement, e.g. "Laptops/Chromebooks" or "None" */
   devices: string;
   materials: string;
-  image: string;
+  /** Path under public/, e.g. "/programs/robocubes.jpg". Omit to render the pillar fallback. */
+  image?: string;
+  /** Attribution for third-party imagery; omit for STA-owned photography. */
+  imageCredit?: { text: string; license: string; url: string };
   tags: string[];
   /** True when the program runs with zero student devices */
   screenFree?: boolean;

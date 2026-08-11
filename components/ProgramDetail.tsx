@@ -3,12 +3,7 @@ import { ArrowLeft, Users, Monitor, Package, CheckCircle2, BookOpen, ShieldCheck
 import { useParams, Link } from 'react-router-dom';
 import { ProgramPillar } from '../types';
 import { PROGRAMS } from '../data/programs';
-
-const PILLAR_BADGE: Record<ProgramPillar, string> = {
-    [ProgramPillar.STEM]: 'bg-sta-primary text-white',
-    [ProgramPillar.AI]: 'bg-sta-secondary text-white',
-    [ProgramPillar.ESPORTS]: 'bg-sta-accent text-black',
-};
+import { PILLAR_VISUALS } from '../data/pillars';
 
 export const ProgramDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -29,11 +24,15 @@ export const ProgramDetail: React.FC = () => {
         <div className="min-h-screen bg-white">
             {/* Hero */}
             <div className="relative h-[400px] bg-sta-dark overflow-hidden">
-                <img
-                    src={program.image}
-                    alt={program.title}
-                    className="absolute inset-0 w-full h-full object-cover opacity-40"
-                />
+                {program.image ? (
+                    <img
+                        src={program.image}
+                        alt={program.title}
+                        className="absolute inset-0 w-full h-full object-cover opacity-40"
+                    />
+                ) : (
+                    <div className="absolute inset-0 bg-dot-pattern opacity-20"></div>
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-sta-dark via-transparent to-transparent"></div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-12">
@@ -44,7 +43,7 @@ export const ProgramDetail: React.FC = () => {
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back to Program Library
                     </Link>
 
-                    <div className={`inline-block px-3 py-1 rounded font-bold text-xs uppercase tracking-wider mb-4 w-fit border-2 border-black ${PILLAR_BADGE[program.pillar]}`}>
+                    <div className={`inline-block px-3 py-1 rounded font-bold text-xs uppercase tracking-wider mb-4 w-fit border-2 border-black ${PILLAR_VISUALS[program.pillar].badge}`}>
                         {program.pillar}
                     </div>
                     <h1 className="text-4xl md:text-6xl font-black text-white mb-6 max-w-4xl leading-tight">
@@ -56,6 +55,18 @@ export const ProgramDetail: React.FC = () => {
                         <div className="flex items-center"><Users className="w-5 h-5 mr-2" /> Staff training included</div>
                     </div>
                 </div>
+
+                {/* Attribution — required by the CC BY / BY-SA terms on the sourced imagery. */}
+                {program.imageCredit && (
+                    <a
+                        href={program.imageCredit.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute bottom-3 right-4 z-10 text-[11px] text-white/50 hover:text-white/80 transition-colors"
+                    >
+                        Photo: {program.imageCredit.text} · {program.imageCredit.license}
+                    </a>
+                )}
             </div>
 
             <div className="max-w-7xl mx-auto px-4 py-12">
