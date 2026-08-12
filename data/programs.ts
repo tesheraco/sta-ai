@@ -27,19 +27,53 @@ export const PROGRAMS: Program[] = [
         image: '/programs/game-builders.jpg',
         imageCredit: { text: 'Scratch, MIT Media Lab', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Scratch_3.0_editor.png' },
         tags: ['Coding', 'Free Software', 'Showcase Event'],
-        learningOutcomes: [
+        studentOutcomes: [
+            'Design and code 3 complete, playable games: a Chase game, a Clicker, and a Platformer',
+            'Use real CS concepts in every project — sequences, events, loops, conditionals, and variables',
+            'Practice the design → test → debug cycle and learn to fix their own bugs',
+            'Give and receive playtester feedback, then iterate on their designs',
+            'Present a finished game to a real audience at the Arcade Showcase',
+            'Leave with a Scratch portfolio they can keep building at home, free'
+        ],
+        whyItMatters: [
+            { title: 'Creators, not consumers', description: 'Kids already spend hours playing games. This program moves them to the other side of the screen: designing the rules, art, and logic instead of just consuming them.' },
+            { title: 'The exposure window', description: 'Ages 8–11 are when kids decide whether STEM "is for them." Most elementary schools offer little or no computer science — afterschool is where that gap gets closed.' },
+            { title: 'A showcase families show up for', description: "The Arcade Showcase turns your program's value into a public event. One site's first showcase drew 60+ families — visibility that pays off with enrollment and funders alike." },
+            { title: 'Debugging builds persistence', description: "Every bug a student fixes is practice sticking with a hard problem. It's a skills story that resonates in grant reports as much as in the computer lab." }
+        ],
+        curriculumArc: [
+            { weeks: 'Weeks 1–3', title: 'Scratch Foundations', description: 'Sprites, backdrops, motion, and events — every student ships a simple Chase game by week 3.' },
+            { weeks: 'Weeks 4–6', title: 'The Clicker', description: 'Score variables, costumes, and upgrade logic — the math of "one more click."' },
+            { weeks: 'Weeks 7–10', title: 'The Platformer', description: 'Gravity, collision, and multi-level design — the most requested game type, now buildable.' },
+            { weeks: 'Weeks 11–14', title: 'Design Your Own', description: 'Students pick a genre and polish a personal game: sound effects, title screens, "Game Over" states.' },
+            { weeks: 'Weeks 15–16', title: 'The Arcade Showcase', description: 'Playtesting stations, final fixes, and a family event where every student demos a finished game.', isCapstone: true }
+        ],
+        staffOutcomes: [
             'Facilitate block-based coding with zero prior experience',
             'Guide students through 3 game types: Chase, Clicker, and Platformer',
             'Debug the 10 most common student errors',
             'Host a site-wide "Arcade Showcase" for families'
         ],
-        syllabus: [
+        trainingModules: [
             { title: 'Module 1: Staff Bootcamp', description: 'Sprites, backdrops, and motion — everything your staff needs before day one.' },
             { title: 'Module 2: Logic & Loops', description: 'Teaching events, conditionals, and repetition through gameplay.' },
             { title: 'Module 3: Score & Lives', description: 'Variables that keep kids invested in polishing their games.' },
             { title: 'Module 4: Game Polish', description: 'Sound effects, title screens, and "Game Over" states.' },
             { title: 'Module 5: The Arcade Showcase', description: 'Running a family event that markets your program for you.' }
-        ]
+        ],
+        // TODO(verify): confirm these four numbers before publishing widely
+        logistics: {
+            sessionLength: '45–60 min',
+            totalSessions: '16 weekly sessions',
+            groupSize: '8–16 students',
+            staffRatio: '1 trained leader per ~10 students'
+        },
+        faq: [
+            { question: 'Do students need accounts to use Scratch?', answer: 'No — Scratch runs in the browser without sign-in, and the training covers setting up teacher-managed accounts if you want kids to save projects site-wide.' },
+            { question: 'Can kids keep building at home?', answer: 'Yes — Scratch is completely free on any browser, so the portfolio they build is theirs to keep growing.' },
+            { question: 'What does hosting the Arcade Showcase require from our site?', answer: 'A room, the devices you already use for sessions, and about an hour. Module 5 of the staff training is the complete event playbook.' }
+        ],
+        caseStudyId: '1'
     },
     {
         id: 'level-up-coding',
@@ -106,6 +140,7 @@ export const PROGRAMS: Program[] = [
         image: '/programs/robotics-1.jpg',
         imageCredit: { text: 'Wikimedia Commons', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Lego_Mindstorms_EV3_Robot.jpg' },
         tags: ['Robotics', 'LEGO SPIKE', 'Hands-On'],
+        caseStudyId: '2'
     },
     {
         id: 'robotics-2',
@@ -216,6 +251,7 @@ export const PROGRAMS: Program[] = [
         image: '/programs/launch-esports.jpg',
         imageCredit: { text: 'Wikimedia Commons', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Iskandar_Investment_Esports_Carnival_2019.jpg' },
         tags: ['Esports', 'Tournaments', 'Budget Path Included'],
+        caseStudyId: '3'
     },
 ];
 

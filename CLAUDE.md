@@ -27,24 +27,31 @@ npm run preview      # Preview production build
 
 ## Architecture
 
-### View State Management
-The app uses a simple enum-based view state system (no router). The main App component manages navigation between four views:
-- `LANDING` - Marketing homepage with hero, curriculum, case studies, pricing
-- `TOOLKIT` - Interactive demo of the AI lesson plan generator
-- `PROGRAM_DETAILS` - Program information page
-- `SCHEDULE` - Cohort scheduling page
+### Routing
+The app uses React Router (`BrowserRouter` in `App.tsx`). Routes:
+- `/` - Marketing homepage (`Landing.tsx`)
+- `/toolkit` - Interactive demo of the AI lesson plan generator
+- `/programs` - Program library with URL-driven filters (`?q=`, `?grades=`, `?screenFree=`)
+- `/programs/stem|ai|esports` - Pillar-filtered library views (static segments declared before `:id` so they win)
+- `/programs/:id` - Individual program detail page (`ProgramDetail.tsx`)
+- `/case-studies`, `/about`, `/schedule` - Supporting pages
+- `*` - Redirects to `/`
 
-View state is managed via React `useState` and passed down as props. To add a new view, update the `ViewState` enum in `types.ts` and add the conditional rendering in `App.tsx`.
+`ScrollToTop.tsx` resets scroll position on route change.
 
 ### Component Structure
-- **App.tsx** - Root component, manages view state
+- **App.tsx** - Root component, declares routes
 - **components/** - All UI components organized by feature:
   - `Landing.tsx` - Main landing page with multiple sections
   - `ToolkitPage.tsx` / `ToolkitDemo.tsx` - AI lesson plan generator
-  - `ProgramDetails.tsx` / `SchedulePage.tsx` - Program info pages
-  - `CaseStudyModal.tsx` - Modal for success stories
+  - `ProgramsPage.tsx` / `ProgramDetail.tsx` - Program library and detail pages
+  - `SchedulePage.tsx` - Cohort scheduling page
+  - `CaseStudiesPage.tsx` / `CaseStudyModal.tsx` - Success stories
+  - `FaqSection.tsx` - Reusable FAQ card list (Landing + program pages)
+  - `PathToLaunch.tsx` - Universal 4-step training/launch timeline (program pages)
   - `CohortTicket.tsx` - Pricing ticket component
   - `Navbar.tsx` / `Footer.tsx` - Layout components
+- **data/** - Static content: `programs.ts` (the 15-program catalog), `caseStudies.ts`, `faqs.ts` (shared FAQs), `pillars.ts` (per-pillar visual tokens)
 
 ### Services Layer
 `services/geminiService.ts` is the only service file and handles all AI generation:
@@ -53,7 +60,8 @@ View state is managed via React `useState` and passed down as props. To add a ne
 
 ### Type Definitions
 All TypeScript interfaces are centralized in `types.ts`:
-- `ViewState` - Navigation enum
+- `Program` / `ProgramPillar` / `GradeBand` - Program catalog models; detail-page content fields (`studentOutcomes`, `whyItMatters`, `curriculumArc`, `staffOutcomes`, `trainingModules`, `logistics`, `faq`, `caseStudyId`) are all optional so sections degrade gracefully for programs without content yet
+- `FaqItem` - Shared FAQ shape
 - `LessonPlan` - Structured lesson plan schema matching Gemini response
 - `ProgramDate`, `CaseStudy` - Data models for marketing content
 
@@ -88,12 +96,12 @@ When adding new AI generation features:
 
 ### Component Patterns
 - All components use functional React with hooks
-- Components receive `setView` prop to enable navigation
+- Navigation uses React Router `Link` / `useParams` / `useSearchParams`
 - Heavy use of Tailwind utility classes for styling
 - Interactive elements use hard shadow effects that translate on hover/active states
 
 ### Data Flow
-- Static data (case studies, curriculum info) is defined as constants within components
+- Shared static content (programs, case studies, FAQs, pillar visuals) lives in `data/`; page-specific static data is defined as constants within components
 - Dynamic data (AI-generated content) flows from geminiService → component state → rendered output
 - No global state management or context providers - all state is local to components
 

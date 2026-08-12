@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Shield, Video, Clock, CreditCard, CheckCircle } from 'lucide-react';
-import { ViewState } from '../types';
 import { CohortTicket } from './CohortTicket';
 
 export const SchedulePage: React.FC = () => {

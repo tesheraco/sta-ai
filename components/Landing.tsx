@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Download, Star, Zap, Shield, Heart, BarChart3, XCircle, CheckCircle2, HelpCircle } from 'lucide-react';
+import { ArrowRight, Download, Star, Zap, Shield, Heart, TrendingDown, XCircle, CheckCircle2 } from 'lucide-react';
 import { CaseStudy, ProgramPillar } from '../types';
 import { CaseStudyModal } from './CaseStudyModal';
+import { FaqSection } from './FaqSection';
 import { PROGRAMS, PILLAR_SLUGS } from '../data/programs';
 import { PILLAR_VISUALS } from '../data/pillars';
 import { CASE_STUDIES } from '../data/caseStudies';
+import { SHARED_FAQS } from '../data/faqs';
 
 const PILLARS = [
   {
@@ -84,27 +86,12 @@ export const Landing: React.FC = () => {
           </div>
 
           {/* Hero Visual */}
-          <div className="hidden md:block md:col-span-5 relative h-[600px]">
+          <div className="hidden md:block md:col-span-5 h-[600px]">
             <img
               src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
               alt="Staff training session"
-              className="absolute top-0 right-0 w-full h-full object-cover rounded-3xl border-2 border-black shadow-hard z-10"
+              className="w-full h-full object-cover rounded-3xl border-2 border-black shadow-hard"
             />
-            <div className="absolute bottom-10 left-[-20px] bg-white p-6 rounded-xl border-2 border-black shadow-hard z-20 max-w-xs">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-sta-mint rounded-full flex items-center justify-center border-2 border-black">
-                  <span className="font-black text-lg">A+</span>
-                </div>
-                <div>
-                  <p className="font-bold text-sm">Staff Confidence</p>
-                  <p className="text-xs text-slate-500">Post-training survey</p>
-                </div>
-              </div>
-              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden border border-black">
-                <div className="bg-sta-primary w-[94%] h-full"></div>
-              </div>
-              <p className="text-right text-xs font-bold mt-1">94% Increase</p>
-            </div>
           </div>
         </div>
       </section>
@@ -195,7 +182,7 @@ export const Landing: React.FC = () => {
       </section>
 
       {/* Why Leaders Choose STA */}
-      <section className="py-24 bg-white border-b-2 border-black">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-sta-dark">Why Program Leaders Choose STA</h2>
@@ -203,77 +190,36 @@ export const Landing: React.FC = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl">
-              <div className="w-14 h-14 bg-sta-mint rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
-                <Shield className="w-8 h-8 text-black" strokeWidth={2} />
+            <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl hover:-translate-y-1 transition-transform">
+              <div className="w-14 h-14 bg-sta-accent rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
+                <Zap className="w-8 h-8 text-black" strokeWidth={2} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-4">Safety & Compliance First</h3>
+              <h3 className="text-2xl font-black text-sta-dark mb-4">Teaching in Under a Week</h3>
               <p className="text-slate-600 font-medium leading-relaxed">
-                Age-gating for AI tools, data privacy, screen-time policies, and supervision protocols — documented and ready to show parents, boards, and licensors.
+                Zero-to-one training takes staff with no prior experience to running their own sessions in under a week. Every program ships with session-by-session facilitation guides, slide decks, and troubleshooting notes — there is nothing to build from scratch.
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl">
+            <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl hover:-translate-y-1 transition-transform">
               <div className="w-14 h-14 bg-sta-coral rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
                 <Heart className="w-8 h-8 text-black" strokeWidth={2} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-4">Staff Who Stay</h3>
+              <h3 className="text-2xl font-black text-sta-dark mb-4">Support That Doesn't Stop</h3>
               <p className="text-slate-600 font-medium leading-relaxed">
-                Frontline youth workers get real, resume-worthy skills — coding, robotics, AI facilitation. When staff grow, they stay, and your program quality compounds.
+                Dedicated support is included with every training, not sold back to you as a renewal. Ongoing coaching and troubleshooting long after launch day — so when a session goes sideways or a new hire starts mid-year, you have someone to call.
               </p>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl">
-              <div className="w-14 h-14 bg-sta-accent rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
-                <BarChart3 className="w-8 h-8 text-black" strokeWidth={2} />
+            <div className="bg-white p-8 border-2 border-black shadow-hard rounded-xl hover:-translate-y-1 transition-transform">
+              <div className="w-14 h-14 bg-sta-mint rounded-full border-2 border-black flex items-center justify-center mb-6 shadow-sm">
+                <TrendingDown className="w-8 h-8 text-black" strokeWidth={2} />
               </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-4">Enrollment You Can Measure</h3>
+              <h3 className="text-2xl font-black text-sta-dark mb-4">Costs Less Than One Vendor Season</h3>
               <p className="text-slate-600 font-medium leading-relaxed">
-                STEM, AI, and esports are the programs families ask for by name. Showcase events, tournaments, and take-home projects turn your program into its own marketing.
+                One flat training fee, not a per-session invoice that never ends. The capability stays with your organization permanently.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What's Included */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-16 text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-black text-sta-dark">Everything Your Site Needs to Launch</h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Item 1 */}
-            <div className="border-2 border-black rounded-xl p-8 shadow-hard hover:-translate-y-1 transition-transform bg-white relative overflow-hidden group">
-              <div className="absolute top-0 right-0 bg-sta-secondary text-white font-black text-6xl opacity-10 p-4 -mr-4 -mt-4 rotate-12 group-hover:opacity-20 transition-opacity">01</div>
-              <div className="w-12 h-12 bg-sta-secondary/20 rounded-full flex items-center justify-center border-2 border-black mb-6">
-                <Zap className="w-6 h-6 text-sta-secondary" strokeWidth={3} />
-              </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-3">Turnkey Curriculum</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">Session-by-session facilitation guides, slide decks, and troubleshooting notes — written for staff with zero technical background.</p>
-            </div>
-
-            {/* Item 2 */}
-            <div className="border-2 border-black rounded-xl p-8 shadow-hard hover:-translate-y-1 transition-transform bg-white relative overflow-hidden group">
-              <div className="absolute top-0 right-0 bg-sta-accent text-black font-black text-6xl opacity-20 p-4 -mr-4 -mt-4 rotate-12 group-hover:opacity-40 transition-opacity">02</div>
-              <div className="w-12 h-12 bg-sta-accent/30 rounded-full flex items-center justify-center border-2 border-black mb-6">
-                <Star className="w-6 h-6 text-sta-dark" strokeWidth={3} />
-              </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-3">Flexible Staff Training</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">Self-paced modules for the basics, live coaching for mastery — designed around after-school hours, not against them.</p>
-            </div>
-
-            {/* Item 3 */}
-            <div className="border-2 border-black rounded-xl p-8 shadow-hard hover:-translate-y-1 transition-transform bg-white relative overflow-hidden group">
-              <div className="absolute top-0 right-0 bg-sta-primary text-white font-black text-6xl opacity-10 p-4 -mr-4 -mt-4 rotate-12 group-hover:opacity-20 transition-opacity">03</div>
-              <div className="w-12 h-12 bg-sta-primary/20 rounded-full flex items-center justify-center border-2 border-black mb-6">
-                <BarChart3 className="w-6 h-6 text-sta-primary" strokeWidth={3} />
-              </div>
-              <h3 className="text-2xl font-black text-sta-dark mb-3">Budget-Honest Equipment Lists</h3>
-              <p className="text-slate-600 font-medium leading-relaxed">Exact shopping lists with real prices — including the low-cost path for every program. Several programs need zero student devices.</p>
             </div>
           </div>
         </div>
@@ -429,28 +375,7 @@ export const Landing: React.FC = () => {
       <section className="py-24 bg-sta-surface border-t-2 border-black">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-4xl font-black text-sta-dark mb-12 text-center">Common Questions</h2>
-
-          <div className="space-y-6">
-            <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
-              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Do our staff need any tech experience?</h3>
-              <p className="text-slate-600 font-medium">No. Every curriculum is written for group leaders and youth workers with zero technical background. If your staff can follow a lesson script and manage a room of kids, they can run these programs.</p>
-            </div>
-
-            <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
-              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> What does equipment cost?</h3>
-              <p className="text-slate-600 font-medium">It ranges from nearly free (Invention Lab runs on cardboard and hot glue) to a few thousand dollars for robotics or esports. Every program page lists exactly what you need, and we always teach the budget path first.</p>
-            </div>
-
-            <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
-              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Is AI safe and legal for younger kids?</h3>
-              <p className="text-slate-600 font-medium">This is exactly why our AI programs exist. Most consumer AI tools require users to be 13+ — our training covers which tools each grade can use, kid-safe no-login alternatives for elementary ages, and supervision protocols your licensor and parents will approve of.</p>
-            </div>
-
-            <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
-              <h3 className="font-black text-lg mb-2 flex items-center"><HelpCircle className="w-5 h-5 mr-2 text-sta-primary" /> Can we pay via Purchase Order?</h3>
-              <p className="text-slate-600 font-medium">Yes. We work with nonprofits, districts, and municipal programs regularly and accept POs for organizational purchases. Book a consult and we'll handle the paperwork.</p>
-            </div>
-          </div>
+          <FaqSection items={SHARED_FAQS} />
         </div>
       </section>
 

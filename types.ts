@@ -1,12 +1,3 @@
-export enum ViewState {
-  LANDING = 'LANDING',
-  TOOLKIT = 'TOOLKIT',
-  PROGRAM_DETAILS = 'PROGRAM_DETAILS',
-  SCHEDULE = 'SCHEDULE',
-  PROGRAMS = 'PROGRAMS',
-  PROGRAM_SINGLE = 'PROGRAM_SINGLE'
-}
-
 export enum ProgramPillar {
   STEM = 'STEM',
   AI = 'AI',
@@ -16,6 +7,11 @@ export enum ProgramPillar {
 export type GradeBand = 'K–2' | '3–5' | '6–8' | '9–12';
 
 export const GRADE_BANDS: GradeBand[] = ['K–2', '3–5', '6–8', '9–12'];
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
 
 export interface Program {
   id: string;
@@ -36,8 +32,27 @@ export interface Program {
   tags: string[];
   /** True when the program runs with zero student devices */
   screenFree?: boolean;
-  learningOutcomes?: string[];
-  syllabus?: { title: string; description: string }[];
+  /** What students walk away with — the director's pitch to leadership and families */
+  studentOutcomes?: string[];
+  /** Framing angles for why the program is worth offering, rendered as titled cards */
+  whyItMatters?: { title: string; description: string }[];
+  /** The student semester journey, in order; the capstone phase gets visual emphasis */
+  curriculumArc?: { title: string; description: string; weeks?: string; isCapstone?: boolean }[];
+  /** What staff can do after training */
+  staffOutcomes?: string[];
+  /** The staff training agenda */
+  trainingModules?: { title: string; description: string }[];
+  /** Per-program numbers; each row renders in "At a Glance" only when present */
+  logistics?: {
+    sessionLength?: string;
+    totalSessions?: string;
+    groupSize?: string;
+    staffRatio?: string;
+  };
+  /** Program-specific FAQs, shown above the shared ones */
+  faq?: FaqItem[];
+  /** Links the inline proof card to an entry in CASE_STUDIES */
+  caseStudyId?: string;
 }
 
 export interface LessonPlan {
