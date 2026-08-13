@@ -10,6 +10,7 @@ import { ProgramsPage } from './components/ProgramsPage';
 import { ProgramDetail } from './components/ProgramDetail';
 import { About } from './components/About';
 import { CaseStudiesPage } from './components/CaseStudiesPage';
+import { PricingPage } from './components/PricingPage';
 import { PILLAR_SLUGS } from './data/programs';
 import { ProgramPillar } from './types';
 
@@ -30,6 +31,7 @@ function App() {
             <Route path={`/programs/${PILLAR_SLUGS[ProgramPillar.AI]}`} element={<ProgramsPage pillar={ProgramPillar.AI} />} />
             <Route path={`/programs/${PILLAR_SLUGS[ProgramPillar.ESPORTS]}`} element={<ProgramsPage pillar={ProgramPillar.ESPORTS} />} />
             <Route path="/programs/:id" element={<ProgramDetail />} />
+            <Route path="/pricing" element={<PricingPage />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/schedule" element={<SchedulePage />} />

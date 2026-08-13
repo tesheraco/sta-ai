@@ -55,6 +55,30 @@ export interface Program {
   caseStudyId?: string;
 }
 
+export interface PricingTier {
+  id: string;
+  name: string;
+  /** One-line "who this is for" under the tier name */
+  tagline: string;
+  /** Monthly rate on an annual agreement. null = quote-only (consult tier). */
+  monthlyPrice: number | null;
+  /** Headline capacity, e.g. "Up to 2 trained staff" */
+  capacity: string;
+  /** Rendered as "Everything in {inheritsFrom}, plus:" above the feature list */
+  inheritsFrom?: string;
+  features: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  /** Renders the emphasized "most popular" treatment */
+  featured?: boolean;
+}
+
+/** One row of the tier comparison matrix. `true` renders a check, `false` a dash. */
+export interface PricingMatrixRow {
+  label: string;
+  values: Record<string, string | boolean>;
+}
+
 export interface LessonPlan {
   title: string;
   duration: string;
