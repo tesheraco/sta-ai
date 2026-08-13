@@ -46,25 +46,15 @@ export const Landing: React.FC = () => {
       <section className="relative bg-sta-surface border-b-2 border-black pt-20 pb-24 px-4 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-50 bg-dot-pattern pointer-events-none"></div>
 
-        <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center relative z-10">
-          <div className="md:col-span-7 space-y-8">
-            <div className="inline-block bg-sta-accent border-2 border-black px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-hard-sm rotate-[-2deg]">
-              Staff Training for After-School Programs
-            </div>
-
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-sta-dark leading-[0.9]">
-              Run AI, STEM & <br />
-              <span className="relative inline-block mt-2">
-                <span className="relative z-10">Esports In-House.</span>
-                <span className="absolute bottom-2 left-0 w-full h-6 bg-sta-coral/60 -rotate-1 z-0"></span>
-              </span>
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
+          <div className="lg:col-span-7 space-y-8 [container-type:inline-size]">
+            <h1 className="text-4xl sm:text-5xl lg:text-[clamp(2.5rem,7.6cqi,3.5rem)] font-black tracking-tighter text-sta-dark leading-tight sm:leading-tight">
+              The programs kids want. <br />
+              The staff you already have.
             </h1>
 
             <p className="text-xl text-slate-600 font-medium leading-relaxed max-w-xl">
-              We train your existing staff to run the programs kids ask for — no outside instructors, no per-session vendor fees.
-            </p>
-            <p className="text-lg text-slate-500 font-medium leading-relaxed max-w-lg">
-              Turnkey curriculum, staff training, and equipment shopping lists for after-school sites, community organizations, and schools.
+              We train after-school and summer teams to run STEM, AI, and esports programs with ready-to-teach curriculum, equipment lists, and support all year.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -86,7 +76,7 @@ export const Landing: React.FC = () => {
           </div>
 
           {/* Hero Visual */}
-          <div className="hidden md:block md:col-span-5 h-[600px]">
+          <div className="hidden lg:block lg:col-span-5 h-[600px]">
             <img
               src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
               alt="Staff training session"
