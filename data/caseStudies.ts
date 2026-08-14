@@ -14,9 +14,9 @@ export const CASE_STUDIES: CaseStudy[] = [
 
     Our first Arcade Showcase drew more families than any event we'd run all year. Now STEM is something we own, not something we book.`,
     metrics: [
-      { label: 'Weeks to Launch', value: '4' },
-      { label: 'Vendor Cost Saved', value: '$5.4k/yr' },
-      { label: 'Families at Showcase', value: '60+' }
+      { label: 'Sites Launched', value: '1' },
+      { label: 'Staff Trained', value: '2' },
+      { label: 'Vendor Cost Saved', value: '$5.4k/yr' }
     ]
   },
   {
@@ -34,7 +34,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     metrics: [
       { label: 'Sites Launched', value: '6' },
       { label: 'Staff Trained', value: '14' },
-      { label: 'Staff Retention', value: '+30%' }
+      { label: 'Vendor Cost Saved', value: '$32k/yr' }
     ]
   },
   {
@@ -50,9 +50,9 @@ export const CASE_STUDIES: CaseStudy[] = [
 
     We launched with Rocket League and Smash for our middle schoolers. Within a month we had a waitlist, and our first in-house tournament packed the gym. The screen-time policy doc alone won over every skeptical parent.`,
     metrics: [
-      { label: 'Startup Cost', value: '<$2.5k' },
-      { label: 'Student Waitlist', value: '40+' },
-      { label: 'Parent Approval', value: '96%' }
+      { label: 'Sites Launched', value: '1' },
+      { label: 'Staff Trained', value: '4' },
+      { label: 'Vendor Cost Saved', value: '$22.5k' }
     ]
   }
 ];
