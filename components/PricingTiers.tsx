@@ -1,6 +1,6 @@
 import React from 'react';
 import { Check, ArrowRight } from 'lucide-react';
-import { PRICING_TIERS, ANNUAL_DISCOUNT, annualTotal, prepaidMonthly } from '../data/pricing';
+import { PRICING_TIERS, ANNUAL_DISCOUNT, annualTotal, PRICING_CTA_HREF } from '../data/pricing';
 
 type Billing = 'monthly' | 'prepaid';
 
@@ -70,29 +70,29 @@ export const PricingTiers: React.FC<PricingTiersProps> = ({ heading, subheading 
                             {/* Header */}
                             <div className={`p-8 border-b-2 border-black rounded-t-[10px] ${featured ? 'bg-sta-primary/5' : 'bg-sta-surface'}`}>
                                 <h3 className="text-2xl font-black text-sta-dark">{tier.name}</h3>
-                                <p className="text-slate-600 font-medium mt-1 text-sm min-h-[2.5rem]">{tier.tagline}</p>
 
                                 <div className="mt-6 min-h-[5.5rem]">
                                     {tier.monthlyPrice === null ? (
                                         <>
                                             <div className="text-4xl font-black text-sta-dark tracking-tight">Custom</div>
                                             <p className="text-sm text-slate-500 font-medium mt-2">
-                                                Priced per site. Most multi-site partners land below the per-site rate above.
+                                                Customized pricing based on number of sites and staff.
                                             </p>
                                         </>
                                     ) : (
                                         <>
                                             <div className="flex items-baseline gap-1">
                                                 <span className="text-5xl font-black text-sta-dark tracking-tight">
-                                                    ${dollars(isPrepaid ? prepaidMonthly(tier.monthlyPrice) : tier.monthlyPrice)}
+                                                    ${dollars(isPrepaid ? annualTotal(tier.monthlyPrice) : tier.monthlyPrice)}
                                                 </span>
-                                                <span className="text-slate-500 font-bold">/month</span>
+                                                <span className="text-slate-500 font-bold">{isPrepaid ? '/year' : '/month'}</span>
                                             </div>
                                             <p className="text-sm text-slate-500 font-medium mt-2">
                                                 {isPrepaid ? (
                                                     <>
-                                                        <span className="font-bold text-sta-dark">${dollars(annualTotal(tier.monthlyPrice))} billed once</span>
-                                                        {' · '}saves ${dollars(tier.monthlyPrice * 12 - annualTotal(tier.monthlyPrice))} a year
+                                                        Paid up front ·{' '}
+                                                        <span className="font-bold text-sta-dark">saves ${dollars(tier.monthlyPrice * 12 - annualTotal(tier.monthlyPrice))}</span>
+                                                        {' '}vs. monthly
                                                     </>
                                                 ) : (
                                                     <>${dollars(tier.monthlyPrice * 12)} a year · 12-month agreement</>
@@ -122,29 +122,22 @@ export const PricingTiers: React.FC<PricingTiersProps> = ({ heading, subheading 
                                         </li>
                                     ))}
                                 </ul>
-
-                                <a
-                                    href={tier.ctaHref}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={`mt-8 flex items-center justify-center gap-2 w-full py-4 border-2 border-black rounded-lg font-bold text-center transition-all shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 ${featured
-                                        ? 'bg-sta-cta text-white hover:bg-sta-cta-hover'
-                                        : 'bg-white text-sta-dark hover:bg-slate-50'
-                                        }`}
-                                >
-                                    {tier.ctaLabel} <ArrowRight className="w-4 h-4" />
-                                </a>
                             </div>
                         </div>
                     );
                 })}
             </div>
 
-            <p className="text-center text-sm text-slate-500 font-medium mt-8 max-w-3xl mx-auto">
-                Every plan is a 12-month agreement. Curriculum access covers the programs your staff train in — add a workshop any time to add a program.
-                <br className="hidden sm:block" />
-                Purchase orders accepted · Equipment purchased separately by your organization
-            </p>
+            <div className="flex justify-center mt-12">
+                <a
+                    href={PRICING_CTA_HREF}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-sta-cta text-white border-2 border-black rounded-lg font-bold text-lg shadow-hard hover:bg-sta-cta-hover hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
+                >
+                    Get a Quote <ArrowRight className="w-5 h-5" />
+                </a>
+            </div>
         </div>
     );
 };

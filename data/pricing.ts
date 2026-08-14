@@ -6,20 +6,19 @@ export const ANNUAL_DISCOUNT = 0.1;
 /** What lands on the PO when the year is paid in one go. */
 export const annualTotal = (monthly: number) => Math.round(monthly * 12 * (1 - ANNUAL_DISCOUNT));
 
-/** The per-month figure to headline when the prepaid option is selected. */
-export const prepaidMonthly = (monthly: number) => Math.round(monthly * (1 - ANNUAL_DISCOUNT));
+/** Single destination for every pricing CTA — tiers are quoted, not self-serve. */
+export const PRICING_CTA_HREF = 'https://calendly.com/sta-ai';
 
 export const TIER_IDS = {
     SMALL_TEAM: 'small-team',
-    PROGRAM: 'program',
-    DISTRICT: 'district',
+    SITE: 'site',
+    NETWORK: 'network',
 } as const;
 
 export const PRICING_TIERS: PricingTier[] = [
     {
         id: TIER_IDS.SMALL_TEAM,
         name: 'Small-Team Partnership',
-        tagline: 'One site, one or two staff running programs.',
         monthlyPrice: 249,
         capacity: 'Up to 2 trained staff',
         features: [
@@ -30,13 +29,10 @@ export const PRICING_TIERS: PricingTier[] = [
             'Funder-ready skill rubrics and progress tracking',
             'Free retraining when a trained staff member leaves',
         ],
-        ctaLabel: 'Start with Small-Team',
-        ctaHref: 'https://calendly.com/sta-ai',
     },
     {
-        id: TIER_IDS.PROGRAM,
-        name: 'Program Partnership',
-        tagline: 'A full team running several programs at once.',
+        id: TIER_IDS.SITE,
+        name: 'Site Partnership',
         monthlyPrice: 499,
         capacity: 'Up to 8 trained staff',
         inheritsFrom: 'Small-Team',
@@ -47,26 +43,21 @@ export const PRICING_TIERS: PricingTier[] = [
             'STA Curriculum Builder, with support adapting your programs to your site',
             'Preferred pricing on additional workshops, whenever you want to add a program',
         ],
-        ctaLabel: 'Start with Program',
-        ctaHref: 'https://calendly.com/sta-ai',
         featured: true,
     },
     {
-        id: TIER_IDS.DISTRICT,
-        name: 'District & Multi-Site',
-        tagline: 'More than eight staff, or more than one location.',
+        id: TIER_IDS.NETWORK,
+        name: 'Network Partnership',
         monthlyPrice: null,
         capacity: '9+ staff or multiple sites',
-        inheritsFrom: 'Program Partnership',
+        inheritsFrom: 'Site Partnership',
         features: [
             'A named STA program lead who knows your sites by name',
             'Multi-site rollout plan with staggered launch dates',
             'Volume pricing across sites, staff, and programs',
             'On-site training days available',
-            'Custom SOW, MSA, and district procurement paperwork',
+            'Custom SOW, MSA, and whatever procurement paperwork your organization runs on',
         ],
-        ctaLabel: 'Book a Consult',
-        ctaHref: 'https://calendly.com/sta-ai',
     },
 ];
 
@@ -77,51 +68,39 @@ export const PRICING_TIERS: PricingTier[] = [
 export const PRICING_MATRIX: PricingMatrixRow[] = [
     {
         label: 'Trained staff seats',
-        values: { [TIER_IDS.SMALL_TEAM]: '2', [TIER_IDS.PROGRAM]: '8', [TIER_IDS.DISTRICT]: '9+' },
+        values: { [TIER_IDS.SMALL_TEAM]: '2', [TIER_IDS.SITE]: '8', [TIER_IDS.NETWORK]: '9+' },
     },
     {
         label: 'Staff training workshop',
-        values: { [TIER_IDS.SMALL_TEAM]: '4 hours', [TIER_IDS.PROGRAM]: '4 hours, customized', [TIER_IDS.DISTRICT]: 'Custom schedule' },
+        values: { [TIER_IDS.SMALL_TEAM]: '4 hours', [TIER_IDS.SITE]: '4 hours, customized', [TIER_IDS.NETWORK]: 'Custom schedule' },
+    },
+    {
+        label: 'Training format',
+        values: { [TIER_IDS.SMALL_TEAM]: 'Live virtual training', [TIER_IDS.SITE]: 'Live virtual training', [TIER_IDS.NETWORK]: 'Virtual or in-person' },
     },
     {
         label: 'Curriculum included',
-        values: { [TIER_IDS.SMALL_TEAM]: 'Your trained program', [TIER_IDS.PROGRAM]: 'Every program you train in', [TIER_IDS.DISTRICT]: 'Every program you train in' },
+        values: { [TIER_IDS.SMALL_TEAM]: 'Your trained program', [TIER_IDS.SITE]: 'Your trained program', [TIER_IDS.NETWORK]: 'Every program you train in' },
     },
     {
         label: 'Curriculum updates & revisions',
-        values: { [TIER_IDS.SMALL_TEAM]: true, [TIER_IDS.PROGRAM]: true, [TIER_IDS.DISTRICT]: true },
+        values: { [TIER_IDS.SMALL_TEAM]: true, [TIER_IDS.SITE]: true, [TIER_IDS.NETWORK]: true },
     },
     {
         label: '24/7 email tech support',
-        values: { [TIER_IDS.SMALL_TEAM]: true, [TIER_IDS.PROGRAM]: true, [TIER_IDS.DISTRICT]: true },
+        values: { [TIER_IDS.SMALL_TEAM]: '6 months', [TIER_IDS.SITE]: '6 months', [TIER_IDS.NETWORK]: '12 months' },
     },
     {
-        label: 'Free retraining after staff turnover',
-        values: { [TIER_IDS.SMALL_TEAM]: true, [TIER_IDS.PROGRAM]: true, [TIER_IDS.DISTRICT]: true },
+        label: 'Implementation support',
+        values: { [TIER_IDS.SMALL_TEAM]: false, [TIER_IDS.SITE]: '4 weeks', [TIER_IDS.NETWORK]: 'Custom rollout' },
     },
     {
-        label: 'Startup onboarding',
-        values: { [TIER_IDS.SMALL_TEAM]: false, [TIER_IDS.PROGRAM]: '4 weeks', [TIER_IDS.DISTRICT]: 'Custom rollout' },
-    },
-    {
-        label: 'STA Curriculum Builder',
-        values: { [TIER_IDS.SMALL_TEAM]: false, [TIER_IDS.PROGRAM]: true, [TIER_IDS.DISTRICT]: true },
-    },
-    {
-        label: 'Annual custom training (add or refresh a program)',
-        values: { [TIER_IDS.SMALL_TEAM]: false, [TIER_IDS.PROGRAM]: '1 × 4 hours', [TIER_IDS.DISTRICT]: 'Multiple' },
-    },
-    {
-        label: 'Adding more programs',
-        values: { [TIER_IDS.SMALL_TEAM]: 'Standard rate', [TIER_IDS.PROGRAM]: 'Preferred pricing', [TIER_IDS.DISTRICT]: 'Volume pricing' },
-    },
-    {
-        label: 'Named program lead',
-        values: { [TIER_IDS.SMALL_TEAM]: false, [TIER_IDS.PROGRAM]: false, [TIER_IDS.DISTRICT]: true },
+        label: 'Access to STA Curriculum Builder',
+        values: { [TIER_IDS.SMALL_TEAM]: false, [TIER_IDS.SITE]: true, [TIER_IDS.NETWORK]: true },
     },
     {
         label: 'PO & invoice billing',
-        values: { [TIER_IDS.SMALL_TEAM]: true, [TIER_IDS.PROGRAM]: true, [TIER_IDS.DISTRICT]: true },
+        values: { [TIER_IDS.SMALL_TEAM]: true, [TIER_IDS.SITE]: true, [TIER_IDS.NETWORK]: true },
     },
 ];
 
@@ -144,7 +123,7 @@ export const PRICING_FAQS: FaqItem[] = [
     },
     {
         question: 'How do we add a second or third program later?',
-        answer: 'Add a training workshop, and that program\'s curriculum unlocks with it. Program Partnership includes one custom 4-hour training every year for exactly this, and gets preferred pricing on any workshop beyond that. Small-Team can add workshops at the standard rate at any point in the year.'
+        answer: 'Add a training workshop, and that program\'s curriculum unlocks with it. Site Partnership includes one custom 4-hour training every year for exactly this, and gets preferred pricing on any workshop beyond that. Small-Team can add workshops at the standard rate at any point in the year.'
     },
     {
         question: 'What happens if we need to train more staff mid-year?',

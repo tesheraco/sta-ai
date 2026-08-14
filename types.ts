@@ -58,8 +58,6 @@ export interface Program {
 export interface PricingTier {
   id: string;
   name: string;
-  /** One-line "who this is for" under the tier name */
-  tagline: string;
   /** Monthly rate on an annual agreement. null = quote-only (consult tier). */
   monthlyPrice: number | null;
   /** Headline capacity, e.g. "Up to 2 trained staff" */
@@ -67,8 +65,6 @@ export interface PricingTier {
   /** Rendered as "Everything in {inheritsFrom}, plus:" above the feature list */
   inheritsFrom?: string;
   features: string[];
-  ctaLabel: string;
-  ctaHref: string;
   /** Renders the emphasized "most popular" treatment */
   featured?: boolean;
 }

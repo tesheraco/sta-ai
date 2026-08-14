@@ -1,33 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Check, Minus, ArrowRight, UserPlus, Library, LifeBuoy, FileText, Package, Landmark } from 'lucide-react';
-import { PRICING_TIERS, PRICING_MATRIX, PRICING_FAQS } from '../data/pricing';
-import { PROGRAMS } from '../data/programs';
+import { Check, Minus, ArrowRight, Quote, FileText, Package, CalendarClock } from 'lucide-react';
+import { PRICING_TIERS, PRICING_MATRIX, PRICING_FAQS, PRICING_CTA_HREF } from '../data/pricing';
+import { CASE_STUDIES } from '../data/caseStudies';
 import { PricingTiers } from './PricingTiers';
 import { FaqSection } from './FaqSection';
-
-// Why a partnership renews — the three things that genuinely recur, as opposed
-// to the training itself, which happens once.
-const RECURRING_VALUE = [
-    {
-        icon: UserPlus,
-        color: 'bg-sta-coral',
-        title: 'Turnover Stops Killing Programs',
-        body: 'The most common reason a STEM program dies in year two is that the one trained staff member left. When yours does, we train their replacement — free, for as long as your partnership runs.'
-    },
-    {
-        icon: Library,
-        color: 'bg-sta-accent',
-        title: 'Your Curriculum Stays Current',
-        body: 'Platforms shut down, tools change, and age policies shift — constantly, in AI. Every program you train in gets revised as that happens, and the updated lesson plans and slides land in your account without you asking.'
-    },
-    {
-        icon: LifeBuoy,
-        color: 'bg-sta-mint',
-        title: 'Support That Never Expires',
-        body: "24/7 email support for the length of your agreement, not a six-month window that quietly ends. When a session goes sideways on a Thursday afternoon, you have someone to email."
-    },
-];
 
 const MatrixCell: React.FC<{ value: string | boolean }> = ({ value }) => {
     if (value === true) return <Check className="w-5 h-5 text-sta-mint mx-auto" strokeWidth={3} aria-label="Included" />;
@@ -45,13 +22,10 @@ export const PricingPage: React.FC = () => {
                     <div className="inline-block bg-black text-white px-3 py-1 font-mono text-xs font-bold mb-6 uppercase tracking-widest">
                         Pricing
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-sta-dark leading-tight mb-6">
+                    <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-sta-dark leading-tight">
                         Train your staff. <br className="hidden sm:block" />
                         Keep the curriculum.
                     </h1>
-                    <p className="text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
-                        Pick from all {PROGRAMS.length} programs. Your plan covers the staff training, the complete curriculum for every program your team trains in, and support that stays on all year — not a per-session instructor invoice that never ends.
-                    </p>
                 </div>
             </section>
 
@@ -62,24 +36,35 @@ export const PricingPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Why it recurs */}
+            {/* Proof — three partners, three budgets */}
             <section className="py-24 px-4 bg-sta-surface bg-dot-pattern border-y-2 border-black">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl font-black text-sta-dark mb-4">What You're Paying For in Month Seven</h2>
-                        <p className="text-lg text-slate-600 font-medium max-w-2xl mx-auto">
-                            The training happens once. These three things are why sites stay.
-                        </p>
+                        <h2 className="text-4xl font-black text-sta-dark">Proof It Pays Off</h2>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
-                        {RECURRING_VALUE.map(({ icon: Icon, color, title, body }) => (
-                            <div key={title} className="bg-white p-8 border-2 border-black shadow-hard rounded-xl hover:-translate-y-1 transition-transform">
-                                <div className={`w-14 h-14 ${color} rounded-full border-2 border-black flex items-center justify-center mb-6`}>
-                                    <Icon className="w-7 h-7 text-black" strokeWidth={2} />
+                        {CASE_STUDIES.map(study => (
+                            <div key={study.id} className="bg-white p-8 border-2 border-black shadow-hard rounded-xl flex flex-col hover:-translate-y-1 transition-transform">
+                                <Quote className="w-8 h-8 text-sta-primary mb-4 shrink-0" fill="currentColor" strokeWidth={0} />
+
+                                <p className="text-lg font-bold text-slate-800 leading-snug mb-6 flex-grow">
+                                    "{study.quote}"
+                                </p>
+
+                                <div className="grid grid-cols-3 gap-3 border-t-2 border-slate-100 pt-6 mb-6">
+                                    {study.metrics.map((metric, idx) => (
+                                        <div key={idx} className="text-center">
+                                            <div className="text-xl font-black text-sta-primary">{metric.value}</div>
+                                            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wide leading-tight mt-1">{metric.label}</div>
+                                        </div>
+                                    ))}
                                 </div>
-                                <h3 className="text-2xl font-black text-sta-dark mb-4">{title}</h3>
-                                <p className="text-slate-600 font-medium leading-relaxed">{body}</p>
+
+                                <div>
+                                    <div className="font-black text-sm text-sta-dark uppercase">{study.name}</div>
+                                    <div className="text-slate-500 text-xs font-mono">{study.role.split(',')[0]} · {study.location}</div>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -128,10 +113,7 @@ export const PricingPage: React.FC = () => {
             <section className="py-24 px-4 bg-sta-surface bg-dot-pattern border-y-2 border-black">
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-12">
-                        <h2 className="text-4xl font-black text-sta-dark mb-4">Built for How You Actually Buy</h2>
-                        <p className="text-lg text-slate-600 font-medium max-w-2xl mx-auto">
-                            Nonprofits, districts, and municipal programs don't buy on a credit card. Neither do we make you.
-                        </p>
+                        <h2 className="text-4xl font-black text-sta-dark">Built for How You Actually Buy</h2>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
@@ -144,10 +126,10 @@ export const PricingPage: React.FC = () => {
                         </div>
 
                         <div className="bg-white p-8 border-2 border-black rounded-xl shadow-hard-sm">
-                            <Landmark className="w-8 h-8 text-sta-primary mb-4" />
-                            <h3 className="font-black text-xl text-sta-dark mb-3">Grant-Friendly Line Items</h3>
+                            <CalendarClock className="w-8 h-8 text-sta-primary mb-4" />
+                            <h3 className="font-black text-xl text-sta-dark mb-3">Signed to Started in 4 Weeks</h3>
                             <p className="text-slate-600 font-medium leading-relaxed">
-                                Staff training and curriculum are both allowable costs under most 21st CCLC, ESSER successor, and private youth-development grants. We'll break the quote out however your funder wants it.
+                                Procurement shouldn't eat your semester. Most sites go from signed quote to first student session in about four weeks — staff training, curriculum handoff, and equipment ordering included.
                             </p>
                         </div>
 
@@ -173,24 +155,21 @@ export const PricingPage: React.FC = () => {
             {/* Closing CTA */}
             <section className="py-24 px-4 bg-sta-dark border-t-2 border-black">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+                    <h2 className="text-4xl md:text-5xl font-black text-white mb-10 tracking-tight">
                         Not sure which plan fits?
                     </h2>
-                    <p className="text-xl text-slate-300 font-medium mb-10 max-w-2xl mx-auto">
-                        Tell us how many staff you have and what you want kids doing by spring. We'll tell you which tier covers it — and say so if the smaller one does.
-                    </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a
-                            href="https://calendly.com/sta-ai"
+                            href={PRICING_CTA_HREF}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-8 py-4 bg-sta-cta text-white border-2 border-black rounded-lg font-bold text-lg shadow-hard-white hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all inline-flex items-center justify-center gap-2"
+                            className="px-8 py-4 bg-sta-cta text-white border-2 border-black rounded-lg font-bold text-lg hover:bg-sta-cta-hover transition-colors inline-flex items-center justify-center gap-2"
                         >
                             Book a Consult <ArrowRight className="w-5 h-5" />
                         </a>
                         <Link
                             to="/programs"
-                            className="px-8 py-4 bg-white text-sta-dark border-2 border-black rounded-lg font-bold text-lg hover:bg-slate-100 transition-all text-center"
+                            className="px-8 py-4 bg-white text-sta-dark border-2 border-black rounded-lg font-bold text-lg hover:bg-slate-100 transition-colors text-center"
                         >
                             Browse the Program Library
                         </Link>
