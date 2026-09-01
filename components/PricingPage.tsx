@@ -36,7 +36,7 @@ export const PricingPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Proof — three partners, three budgets */}
+            {/* Proof: three partners, three budgets */}
             <section className="py-24 px-4 bg-sta-surface bg-dot-pattern border-y-2 border-black">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
@@ -129,7 +129,7 @@ export const PricingPage: React.FC = () => {
                             <CalendarClock className="w-8 h-8 text-sta-primary mb-4" />
                             <h3 className="font-black text-xl text-sta-dark mb-3">Signed to Started in 4 Weeks</h3>
                             <p className="text-slate-600 font-medium leading-relaxed">
-                                Procurement shouldn't eat your semester. Most sites go from signed quote to first student session in about four weeks — staff training, curriculum handoff, and equipment ordering included.
+                                Procurement shouldn't eat your semester. Most sites go from signed quote to first student session in about four weeks, including staff training, curriculum handoff, and equipment ordering.
                             </p>
                         </div>
 
@@ -137,7 +137,7 @@ export const PricingPage: React.FC = () => {
                             <Package className="w-8 h-8 text-sta-primary mb-4" />
                             <h3 className="font-black text-xl text-sta-dark mb-3">Equipment Stays Yours</h3>
                             <p className="text-slate-600 font-medium leading-relaxed">
-                                Materials aren't included in the plan — you buy them directly, so they belong to you. We hand you an exact shopping list with the lowest-cost purchase links, and always teach the budget path first.
+                                Materials aren't included in the plan. You buy them directly, so they belong to you. We hand you an exact shopping list with the lowest-cost purchase links, and always teach the budget path first.
                             </p>
                         </div>
                     </div>

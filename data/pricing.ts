@@ -6,7 +6,7 @@ export const ANNUAL_DISCOUNT = 0.1;
 /** What lands on the PO when the year is paid in one go. */
 export const annualTotal = (monthly: number) => Math.round(monthly * 12 * (1 - ANNUAL_DISCOUNT));
 
-/** Single destination for every pricing CTA — tiers are quoted, not self-serve. */
+/** Single destination for every pricing CTA. Tiers are quoted, not self-serve. */
 export const PRICING_CTA_HREF = 'https://calendly.com/sta-ai';
 
 export const TIER_IDS = {
@@ -22,12 +22,10 @@ export const PRICING_TIERS: PricingTier[] = [
         monthlyPrice: 249,
         capacity: 'Up to 2 trained staff',
         features: [
-            'Two seats in a 4-hour zero-to-one training workshop — in person, or two 2-hour virtual sessions',
-            'The complete curriculum for the program you train in: every lesson plan, slide deck, facilitation guide, and materials list',
+            'Two seats in a 4-hour zero-to-one training workshop, run live online as two 2-hour sessions',
+            'The complete curriculum for the program you train in',
             'Curriculum updates for that program as tools and age policies change',
             '24/7 email tech support for the topics your staff trained in',
-            'Funder-ready skill rubrics and progress tracking',
-            'Free retraining when a trained staff member leaves',
         ],
     },
     {
@@ -37,9 +35,9 @@ export const PRICING_TIERS: PricingTier[] = [
         capacity: 'Up to 8 trained staff',
         inheritsFrom: 'Small-Team',
         features: [
-            'Eight seats in a training workshop built around the programs you picked — with the curriculum for each one',
-            'One custom 4-hour training every year — add a new program to your library, or refresh the one you run',
-            '4-week startup onboarding — live office hours while your first sessions run',
+            'Eight seats in a live online training workshop built around the program you picked, with its full curriculum included',
+            'One custom 4-hour training every year, to add a new program or refresh the one you run',
+            '4 weeks of implementation support, with live office hours while your first sessions run',
             'STA Curriculum Builder, with support adapting your programs to your site',
             'Preferred pricing on additional workshops, whenever you want to add a program',
         ],
@@ -107,7 +105,7 @@ export const PRICING_MATRIX: PricingMatrixRow[] = [
 export const PRICING_FAQS: FaqItem[] = [
     {
         question: 'What is the monthly fee actually paying for after our staff are trained?',
-        answer: 'Three things that never stop: your curriculum stays current, so when a platform changes or an age policy shifts, the revised lesson plans and slides land in your account; tech support stays on all year instead of expiring at six months; and when a trained staff member leaves, we train their replacement for free. In after-school, staff turnover is the single most common reason a program dies after year one — this is the fix.'
+        answer: 'Your curriculum stays current, so when a platform changes or an age policy shifts, the revised lesson plans and slides land in your account. And when a trained staff member leaves, we train their replacement for free. In after-school, staff turnover is the single most common reason a program dies after year one, and that is the fix.'
     },
     {
         question: 'Can we pay via Purchase Order?',
@@ -115,11 +113,11 @@ export const PRICING_FAQS: FaqItem[] = [
     },
     {
         question: 'Is equipment included in the price?',
-        answer: 'No — your organization purchases materials directly, which keeps them yours and keeps our price down. Every program page lists exactly what you need, and we provide a shopping list with the lowest-cost purchase links. Costs range from nearly free (Invention Lab runs on cardboard and hot glue) to a few thousand dollars for robotics or esports.'
+        answer: 'No. Your organization purchases materials directly, which keeps them yours and keeps our price down. Every program page lists exactly what you need, and we provide a shopping list with the lowest-cost purchase links. Costs range from nearly free (Invention Lab runs on cardboard and hot glue) to a few thousand dollars for robotics or esports.'
     },
     {
         question: 'Which curriculum do we get access to?',
-        answer: "The curriculum for the programs your staff actually train in — not the whole catalog. Training and curriculum travel together: when your team trains in Robotics I, you get every Robotics I lesson plan, slide deck, facilitation guide, and materials list, plus revisions to it for as long as your partnership runs. Browse all our programs to pick what you train in; you're never paying for shelves of curriculum nobody at your site was taught to run."
+        answer: "The curriculum for the programs your staff actually train in, not the whole catalog. Training and curriculum travel together: when your team trains in Robotics I, you get every Robotics I lesson plan, slide deck, facilitation guide, and materials list, plus revisions to it for as long as your partnership runs. Browse all our programs to pick what you train in; you're never paying for shelves of curriculum nobody at your site was taught to run."
     },
     {
         question: 'How do we add a second or third program later?',
@@ -127,7 +125,7 @@ export const PRICING_FAQS: FaqItem[] = [
     },
     {
         question: 'What happens if we need to train more staff mid-year?',
-        answer: "Add seats at any time, prorated to your agreement. If you're consistently adding people, moving up a tier is usually cheaper than buying seats one at a time — we'll tell you when that's the case."
+        answer: "Add seats at any time, prorated to your agreement. If you're consistently adding people, moving up a tier is usually cheaper than buying seats one at a time, and we'll tell you when that's the case."
     },
     {
         question: 'Do our staff need any tech experience?',

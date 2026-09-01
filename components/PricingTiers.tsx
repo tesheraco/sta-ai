@@ -31,10 +31,14 @@ export const PricingTiers: React.FC<PricingTiersProps> = ({ heading, subheading 
 
             {/* Billing toggle */}
             <div className="flex justify-center mb-12">
-                <div className="inline-flex bg-white border-2 border-black rounded-lg p-1 shadow-hard-sm" role="group" aria-label="Billing period">
+                <div className="relative">
+                    <div className="absolute -top-2.5 right-3 z-10 bg-sta-accent text-black text-[0.55rem] font-black uppercase tracking-wider px-2 py-0.5 border-2 border-black rounded-full whitespace-nowrap leading-tight">
+                        Save {Math.round(ANNUAL_DISCOUNT * 100)}%
+                    </div>
+                    <div className="inline-flex bg-white border-2 border-black rounded-lg p-1 shadow-hard-sm" role="group" aria-label="Billing period">
                     {([
                         { key: 'monthly' as Billing, label: 'Pay monthly' },
-                        { key: 'prepaid' as Billing, label: `Pay for the year — save ${Math.round(ANNUAL_DISCOUNT * 100)}%` },
+                        { key: 'prepaid' as Billing, label: 'Pay for the year' },
                     ]).map(({ key, label }) => (
                         <button
                             key={key}
@@ -49,6 +53,7 @@ export const PricingTiers: React.FC<PricingTiersProps> = ({ heading, subheading 
                             {label}
                         </button>
                     ))}
+                    </div>
                 </div>
             </div>
 
@@ -58,7 +63,7 @@ export const PricingTiers: React.FC<PricingTiersProps> = ({ heading, subheading 
                     return (
                         <div
                             key={tier.id}
-                            className={`relative bg-white border-2 border-black rounded-xl flex flex-col h-full transition-transform hover:-translate-y-1 ${featured ? 'shadow-hard-lg lg:-mt-4' : 'shadow-hard'
+                            className={`relative bg-white border-2 border-black rounded-xl transition-transform hover:-translate-y-1 ${featured ? 'shadow-hard-lg lg:-mt-4' : 'shadow-hard'
                                 }`}
                         >
                             {featured && (
@@ -85,7 +90,7 @@ export const PricingTiers: React.FC<PricingTiersProps> = ({ heading, subheading 
                                                 <span className="text-5xl font-black text-sta-dark tracking-tight">
                                                     ${dollars(isPrepaid ? annualTotal(tier.monthlyPrice) : tier.monthlyPrice)}
                                                 </span>
-                                                <span className="text-slate-500 font-bold">{isPrepaid ? '/year' : '/month'}</span>
+                                                {!isPrepaid && <span className="text-slate-500 font-bold">/month</span>}
                                             </div>
                                             <p className="text-sm text-slate-500 font-medium mt-2">
                                                 {isPrepaid ? (
@@ -108,13 +113,13 @@ export const PricingTiers: React.FC<PricingTiersProps> = ({ heading, subheading 
                             </div>
 
                             {/* Features */}
-                            <div className="p-8 flex flex-col flex-grow">
+                            <div className="p-8">
                                 {tier.inheritsFrom && (
                                     <p className="font-black text-sta-dark mb-4 text-sm">
                                         Everything in {tier.inheritsFrom}, plus:
                                     </p>
                                 )}
-                                <ul className="space-y-4 flex-grow">
+                                <ul className="space-y-4">
                                     {tier.features.map((feature, idx) => (
                                         <li key={idx} className="flex items-start">
                                             <Check className="w-5 h-5 text-sta-mint mr-3 shrink-0 mt-0.5" strokeWidth={3} />
