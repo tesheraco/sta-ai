@@ -13,29 +13,52 @@ export const About: React.FC = () => {
             Our Story
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-sta-dark leading-[0.9] mb-8">
-            From Teaching 10,000 Students to Training Their Teachers.
+            We Came to Teach STEM. We Stayed to Teach the Teachers.
           </h1>
-          <p className="text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
-            We spent 7 years in the trenches. Now we hand that playbook to you.
-          </p>
         </div>
       </section>
 
-      {/* Pivot Story */}
+      {/* Origin */}
       <section className="py-24 bg-white border-b-2 border-black">
         <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-black text-white inline-block px-3 py-1 font-mono text-sm font-bold mb-8">2015 / SCHOLARSTEM</div>
           <div className="space-y-8 text-lg text-slate-600 font-medium leading-relaxed">
             <p className="text-2xl text-sta-dark font-black leading-snug">
-              Founded by the team behind ScholarStem, we spent 7 years teaching 10,000 students directly. We learned what works and what fails in a real classroom. Now, we hand that playbook to you.
+              We founded{' '}
+              <a
+                href="https://www.scholarstem.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-4 decoration-sta-accent underline-offset-4 hover:text-sta-cta transition-colors"
+              >
+                ScholarStem
+              </a>{' '}
+              in 2015 to bring robotics, coding, and engineering into after-school programs. It grew into one of the largest STEAM vendors in New York City.
             </p>
             <p>
-              We started as an after-school STEM vendor — the kind of company that shows up with robots, runs a 90-minute class, and leaves. It worked, but it didn't scale. Schools needed us more hours than we could give, and when we left, so did the program.
+              That matters mostly because of where it happened. New York City runs the largest public school system in the country, with more students than the next two districts combined. Working at that scale meant we saw every version of a STEM program: the well funded and the improvised, the district school and the community center, the classroom with a 3D printer and the classroom with a folding table.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* The realization */}
+      <section className="py-24 bg-sta-surface bg-dot-pattern border-b-2 border-black">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="space-y-8 text-lg text-slate-600 font-medium leading-relaxed">
+            <p>
+              After enough years of it, we noticed something that ran against our own business model. The programs that lasted were not the ones with the best instructors or the newest hardware. They were the ones where a staff member already on site, a group leader or a librarian or a 3rd-grade teacher who had never written a line of code, picked the work up and made it theirs.
+            </p>
+            <div className="border-l-4 border-black pl-6 py-2">
+              <p className="text-3xl font-black text-sta-dark leading-tight tracking-tight">
+                Almost anyone can become a talented STEM teacher. What they need isn't talent. It's a good curriculum, a little training, and someone to call when the robot won't connect.
+              </p>
+            </div>
+            <p>
+              That reframed the problem. A vendor who shows up for 90 minutes and leaves takes the program with them. A trained staff member keeps it. So we started teaching the adults instead of only the kids, and the programs held up long after our contract ended.
             </p>
             <p>
-              The real breakthrough came when we started training existing staff. A 3rd-grade teacher who'd never touched a line of code was running a full robotics lab within a semester. A librarian became the school's AI specialist. The programs didn't depend on us anymore — they belonged to the school.
-            </p>
-            <p>
-              That's what STA is: everything we learned about running world-class STEM labs, distilled into programs, kits, and coaching that your team can use immediately.
+              STA grew out of that shift. Today it is one of the premier teacher training services for community-based organizations in New York City: the curriculum, the kits, and the coaching we built over a decade, handed to the people already in the room.
             </p>
           </div>
         </div>
@@ -58,10 +81,28 @@ export const About: React.FC = () => {
               <h2 className="text-4xl font-black text-sta-dark mb-6 tracking-tight">Allen Rabinovich</h2>
               <div className="space-y-4 text-lg text-sta-dark font-medium leading-relaxed">
                 <p>
-                  Allen has spent over a decade at the forefront of educational innovation, serving public, private, and charter schools across the nation.
+                  Allen founded{' '}
+                  <a
+                    href="https://www.scholarstem.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-2 underline-offset-4 hover:text-sta-cta transition-colors"
+                  >
+                    ScholarStem
+                  </a>{' '}
+                  in 2015 and led it through its acquisition by Nexplore. He also serves as Director of Education at the{' '}
+                  <a
+                    href="http://loyaltyfoundation.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-2 underline-offset-4 hover:text-sta-cta transition-colors"
+                  >
+                    Loyalty Foundation
+                  </a>
+                  .
                 </p>
                 <p>
-                  From CBOs to massive school districts, Allen understands the unique pressure cookers that educators live in. He doesn't just teach technology — he teaches how to use technology to bring humanity back into the classroom.
+                  He holds a master's in Instructional Technology from Columbia University's Teachers College, and has spent the years since working with public, private, and charter schools as well as CBOs. He knows the difference between what a program looks like on paper and what it looks like at 3:15 on a Tuesday.
                 </p>
               </div>
               <div className="mt-8 flex items-center gap-3">
@@ -74,19 +115,19 @@ export const About: React.FC = () => {
       </section>
 
       {/* Credentials */}
-      <section className="py-24 bg-sta-surface bg-dot-pattern border-b-2 border-black">
+      <section className="py-24 bg-white border-b-2 border-black">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-black text-sta-dark mb-12 text-center">Why Schools Trust Us</h2>
+          <h2 className="text-3xl font-black text-sta-dark mb-12 text-center">What We Bring</h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {[
-              '10,000+ students taught directly over 7 years',
-              'Partnered with 50+ schools and districts',
+              '10,000+ students taught directly since 2015',
+              'Partnered with 50+ schools, districts, and CBOs',
               'Curriculum aligned to ISTE & CSTA standards',
               'Hardware procurement & setup support included',
-              'Real classroom-tested lesson plans — not theory',
+              'Real classroom-tested lesson plans, not theory',
               'Ongoing coaching & troubleshooting after training',
             ].map((item) => (
-              <div key={item} className="flex items-start gap-3 bg-white border-2 border-black rounded-xl p-5 shadow-hard-sm">
+              <div key={item} className="flex items-start gap-3 bg-sta-surface border-2 border-black rounded-xl p-5 shadow-hard-sm">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                 <span className="font-bold text-sta-dark">{item}</span>
               </div>
@@ -98,9 +139,9 @@ export const About: React.FC = () => {
       {/* CTA */}
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-black text-sta-dark mb-6">Ready to Build Your STEM Program?</h2>
+          <h2 className="text-4xl font-black text-sta-dark mb-6">See What We'd Hand Your Team</h2>
           <p className="text-xl text-slate-600 font-medium mb-8">
-            Browse our program catalog or book a free consultation to design a custom plan for your school.
+            Browse the program catalog, or talk it through with us. No pitch, just a conversation about what your site can realistically run.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -115,7 +156,7 @@ export const About: React.FC = () => {
               rel="noopener noreferrer"
               className="px-8 py-4 bg-white text-sta-dark border-2 border-black rounded-lg font-bold text-lg shadow-hard-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center inline-flex items-center justify-center gap-2"
             >
-              Book a Demo <ArrowRight className="w-5 h-5" />
+              Book a Call <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>
