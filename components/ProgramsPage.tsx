@@ -76,7 +76,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({ pillar: routePillar 
                         The Program Library
                     </h1>
                     <p className="text-xl text-slate-300 max-w-3xl mx-auto font-medium">
-                        Turnkey STEM, AI, and Esports programs your existing staff can run — complete with training, curriculum, and a shopping list. Built for after-school sites, community organizations, and schools.
+                        Turnkey STEM, AI, and Esports programs your existing staff can run, complete with training, curriculum, and a shopping list. Built for after-school sites, community organizations, and schools.
                     </p>
                     <div className="flex flex-wrap justify-center gap-3 mt-8">
                         {PILLAR_ORDER.map(pillar => (
@@ -273,7 +273,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({ pillar: routePillar 
                                 <div>
                                     <h3 className="font-black text-sm uppercase tracking-wider mb-2">Age-Safe AI</h3>
                                     <p className="text-sm font-medium text-slate-300">
-                                        Most consumer AI tools require users to be 13+. Every AI program includes age-gating and supervision training so your staff knows exactly which tools each grade can use — and how.
+                                        Most consumer AI tools require users to be 13+. Every AI program includes age-gating and supervision training so your staff knows exactly which tools each grade can use, and how.
                                     </p>
                                 </div>
                             </div>

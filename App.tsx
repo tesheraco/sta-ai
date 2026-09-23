@@ -10,6 +10,7 @@ import { ProgramsPage } from './components/ProgramsPage';
 import { ProgramDetail } from './components/ProgramDetail';
 import { About } from './components/About';
 import { CaseStudiesPage } from './components/CaseStudiesPage';
+import { CaseStudyDetail } from './components/CaseStudyDetail';
 import { PricingPage } from './components/PricingPage';
 import { PILLAR_SLUGS } from './data/programs';
 import { ProgramPillar } from './types';
@@ -33,6 +34,7 @@ function App() {
             <Route path="/programs/:id" element={<ProgramDetail />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
+            <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/schedule" element={<SchedulePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />

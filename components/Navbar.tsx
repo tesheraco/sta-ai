@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
             </Link>
             <Link
               to="/case-studies"
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 border-transparent ${currentPath === '/case-studies'
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 border-transparent ${currentPath === '/case-studies' || currentPath.startsWith('/case-studies/')
                 ? 'bg-sta-primary/10 text-sta-primary border-sta-primary'
                 : 'text-slate-600 hover:bg-slate-100'
                 }`}

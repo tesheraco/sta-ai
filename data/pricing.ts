@@ -102,15 +102,18 @@ export const PRICING_MATRIX: PricingMatrixRow[] = [
     },
 ];
 
+/** Shared with SHARED_FAQS so the Landing and program pages give the same answer. */
+export const PO_FAQ: FaqItem = {
+    question: 'Can we pay via Purchase Order?',
+    answer: "Yes. We work with nonprofits, districts, and municipal programs regularly and accept POs for organizational purchases. We'll provide a W-9, a formal quote for your fiscal year, and an invoice on whatever schedule your finance office needs."
+};
+
 export const PRICING_FAQS: FaqItem[] = [
     {
         question: 'What is the monthly fee actually paying for after our staff are trained?',
-        answer: 'Your curriculum stays current, so when a platform changes or an age policy shifts, the revised lesson plans and slides land in your account. And when a trained staff member leaves, we train their replacement for free. In after-school, staff turnover is the single most common reason a program dies after year one, and that is the fix.'
+        answer: 'Your curriculum stays current, so when a platform changes or an age policy shifts, the revised lesson plans and slides land in your account. You also keep 24/7 email tech support for anything related to the topic your staff trained in, so questions still get answered long after training day.'
     },
-    {
-        question: 'Can we pay via Purchase Order?',
-        answer: "Yes. We work with nonprofits, districts, and municipal programs regularly and accept POs for organizational purchases. We'll provide a W-9, a formal quote for your fiscal year, and an invoice on whatever schedule your finance office needs."
-    },
+    PO_FAQ,
     {
         question: 'Is equipment included in the price?',
         answer: 'No. Your organization purchases materials directly, which keeps them yours and keeps our price down. Every program page lists exactly what you need, and we provide a shopping list with the lowest-cost purchase links. Costs range from nearly free (Invention Lab runs on cardboard and hot glue) to a few thousand dollars for robotics or esports.'

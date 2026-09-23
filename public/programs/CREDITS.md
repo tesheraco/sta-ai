@@ -12,17 +12,24 @@ on the program detail page. Keep the two in sync.
 | `first-coders.jpg` | First Coders | [ScratchJr Interface](https://commons.wikimedia.org/wiki/File:ScratchJr_Interface.png) | CC BY-SA 4.0 | Tufts University, Scratch Foundation |
 | `game-builders.jpg` | Game Builders | [Scratch 3.0 editor](https://commons.wikimedia.org/wiki/File:Scratch_3.0_editor.png) | CC BY-SA 2.0 | Scratch, MIT Media Lab |
 | `3d-design-print.jpg` | 3D Design & Print Studio | [3D Printing](https://commons.wikimedia.org/wiki/File:3D_Printing.jpg) | CC0 | — |
+| `3d-pen-studio.jpg` | 3D Pen Studio | [Person using 3D printing pen at exhibition](https://commons.wikimedia.org/wiki/File:Person_using_3D_printing_pen_at_exhibition_(1).jpg) | CC BY-SA 4.0 | Mrshaxas |
 | `robocubes.jpg` | RoboCubes | [Cubelets Six Kit](https://commons.wikimedia.org/wiki/File:Cubelets_Six_Kit_(15311725944).jpg) | CC BY 2.0 | SparkFun Electronics |
 | `robotics-1.jpg` | Robotics I | [Lego Mindstorms EV3 Robot](https://commons.wikimedia.org/wiki/File:Lego_Mindstorms_EV3_Robot.jpg) | CC BY-SA 4.0 | — |
 | `robotics-2.jpg` | Robotics II | [Students in robotics competition](https://commons.wikimedia.org/wiki/File:Scott_members_mentor_students_in_robotics_competition_141122-F-IW762-006.jpg) | Public domain | U.S. Air Force |
 | `minecraft-coding.jpg` | Minecraft Coding | [Minecraft — Lush caves](https://commons.wikimedia.org/wiki/File:Minecraft_-_Lush_caves.jpg) | CC BY 3.0 | — |
 | `circuit-inventors.jpg` | Circuit Inventors | [Makey Makey](https://commons.wikimedia.org/wiki/File:Makey_Makey.jpg) | CC BY-SA 4.0 | — |
-| `structures-skyscrapers.jpg` | Structures & Skyscrapers | [Strawbees, Open Dag Philips Drachten](https://commons.wikimedia.org/wiki/File:Open_Dag_Philips_Drachten_Strawbees.jpg) | CC0 | — |
+| `structures-skyscrapers.jpg` | Structures & Skyscrapers | [Success!](https://commons.wikimedia.org/wiki/File:Success!.jpg) (popsicle stick bridge holding ten textbooks, cropped) | CC BY 4.0 | Davegriffin242 |
+| `lab-coat-science.jpg` | Lab Coat Science | [Outreach with girls](https://commons.wikimedia.org/wiki/File:Outreach_with_girls.jpg) (Northcote Primary School, Auckland) | CC BY-SA 2.0 | dwc.internal |
 | `launch-esports.jpg` | Launch Your Esports Program | [Iskandar Investment Esports Carnival 2019](https://commons.wikimedia.org/wiki/File:Iskandar_Investment_Esports_Carnival_2019.jpg) | CC BY-SA 4.0 | — |
 
 ## Still to capture
 
-Five programs have no image here and still use a stock stand-in, marked
+`ai-explorers.jpg` is the exception to this directory's rule: it is an STA-made
+mockup of a student rock paper scissors detector app, not a download. Its source is
+`scripts/program-mockups/ai-explorers.html`; re-capture it with headless Chrome at
+1200×900, 2× scale, then downscale to 1200px wide. No credit needed.
+
+Four programs have no image here and still use a stock stand-in, marked
 `TODO(image)` in `data/programs.ts`. Nothing suitable exists under a usable licence
 for these, and each runs on a free tool — a self-captured screenshot is both easier
 and more accurate than anything findable:
@@ -31,7 +38,6 @@ and more accurate than anything findable:
 |---|---|---|
 | Level Up Coding | A retro game mid-edit, sprite + blocks visible | arcade.makecode.com |
 | VR World Builders | A 3D scene in the editor | cospaces.io/edu (free tier) |
-| AI Explorers | Mid-training, with class samples showing | teachablemachine.withgoogle.com |
 | Intro to Vibe Coding | A student-built app running | your own Claude/Replit account |
 | Invention Lab | An actual cardboard build from a session | your camera |
 
@@ -51,6 +57,9 @@ Capture at 1600×900 or larger in a clean browser window, save as
   images. LEGO's Fair Play policy and Minecraft's usage guidelines both discourage
   this on a commercial site. Each is a one-line swap in the fetch script if that
   becomes a concern.
+- **3D Pen Studio** shows an adult at a tech exhibition, not a student, and a character
+  drawing (Winnie the Pooh style) sits at the bottom edge of the frame. The hero crop
+  mostly hides it, but a photo from a real session is the clean upgrade.
 - **Lower-resolution sources**: `first-coders.jpg` (589×442) and `robocubes.jpg`
   (538×460) are the largest versions available. Fine in the card strip, soft in the
   400px detail hero — the best candidates for replacement.

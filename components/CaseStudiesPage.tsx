@@ -1,22 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Star } from 'lucide-react';
-import { CaseStudy } from '../types';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { CASE_STUDIES } from '../data/caseStudies';
-import { CaseStudyModal } from './CaseStudyModal';
+import { CaseStudyCard } from './CaseStudyCard';
 
 export const CaseStudiesPage: React.FC = () => {
-    const [selectedCaseStudy, setSelectedCaseStudy] = React.useState<CaseStudy | null>(null);
-
     return (
         <div className="w-full min-h-screen bg-sta-surface bg-dot-pattern">
-            {selectedCaseStudy && (
-                <CaseStudyModal
-                    study={selectedCaseStudy}
-                    onClose={() => setSelectedCaseStudy(null)}
-                />
-            )}
-
             <div className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b-2 border-black px-4 py-4">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
                     <Link
@@ -38,40 +28,8 @@ export const CaseStudiesPage: React.FC = () => {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
-                    {CASE_STUDIES.map((study) => (
-                        <div
-                            key={study.id}
-                            onClick={() => setSelectedCaseStudy(study)}
-                            className="bg-white p-8 border-2 border-black shadow-hard-sm rounded-xl cursor-pointer group hover:-translate-y-1 hover:shadow-hard transition-all duration-200 flex flex-col h-full relative overflow-hidden"
-                        >
-                            <div className="absolute top-0 right-0 bg-sta-accent text-xs font-bold px-3 py-1 border-l-2 border-b-2 border-black opacity-0 group-hover:opacity-100 transition-opacity">
-                                READ STORY
-                            </div>
-
-                            <div className="flex items-center justify-between mb-6">
-                                <div className="flex text-sta-accent">
-                                    {[1, 2, 3, 4, 5].map(i => <Star key={i} fill="currentColor" strokeWidth={1} className="w-4 h-4" />)}
-                                </div>
-                            </div>
-
-                            <p className="text-lg font-bold text-slate-800 mb-6 leading-snug line-clamp-4 flex-grow">
-                                "{study.quote}"
-                            </p>
-
-                            <div className="flex items-center border-t-2 border-slate-100 pt-4 mb-6">
-                                <div className="w-10 h-10 bg-slate-200 rounded-full border border-black mr-3 overflow-hidden">
-                                    {study.image && <img src={study.image} alt={study.name} className="w-full h-full object-cover" />}
-                                </div>
-                                <div>
-                                    <div className="font-black text-sm text-sta-dark uppercase">{study.name}</div>
-                                    <div className="text-slate-500 text-xs font-mono">{study.role}</div>
-                                </div>
-                            </div>
-
-                            <div className="w-full py-3 bg-slate-50 border-2 border-black rounded-lg font-bold text-sm text-center group-hover:bg-sta-cta group-hover:text-white transition-colors flex items-center justify-center gap-2">
-                                Read Success Story <ArrowRight className="w-4 h-4" />
-                            </div>
-                        </div>
+                    {CASE_STUDIES.map(study => (
+                        <CaseStudyCard key={study.id} study={study} />
                     ))}
                 </div>
 

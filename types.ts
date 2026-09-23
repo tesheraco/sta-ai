@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export enum ProgramPillar {
   STEM = 'STEM',
   AI = 'AI',
@@ -10,7 +12,8 @@ export const GRADE_BANDS: GradeBand[] = ['K–2', '3–5', '6–8', '9–12'];
 
 export interface FaqItem {
   question: string;
-  answer: string;
+  /** Plain text, or JSX when the answer needs an inline link */
+  answer: ReactNode;
 }
 
 export interface Program {
@@ -32,6 +35,8 @@ export interface Program {
   tags: string[];
   /** True when the program runs with zero student devices */
   screenFree?: boolean;
+  /** Age-tiered variants of one program (e.g., different tools per grade band), rendered as side-by-side cards */
+  versions?: { name: string; grades: string; tool: string; description: string }[];
   /** What students walk away with — the director's pitch to leadership and families */
   studentOutcomes?: string[];
   /** Framing angles for why the program is worth offering, rendered as titled cards */
@@ -97,13 +102,29 @@ export interface ProgramDate {
   link?: string;
 }
 
+export type OrganizationType = 'Public School District' | 'Community-Based Organization';
+
 export interface CaseStudy {
+  /** URL slug, e.g. "grand-street-settlement" → /case-studies/grand-street-settlement */
   id: string;
-  name: string;
-  role: string;
+  organization: string;
+  /** Program focus shown as the tile badge, e.g. "LEGO Robotics" */
+  topic: string;
+  /** Drives badge colour and the fallback icon via PILLAR_VISUALS */
+  pillar: ProgramPillar;
+  /** Display string, e.g. "Grades K–8" */
+  gradeLevel: string;
+  organizationType: OrganizationType;
   location: string;
-  quote: string;
-  fullStory: string;
-  metrics: { label: string; value: string }[];
-  image?: string;
+  /** Path under public/, e.g. "/logos/phipps.svg". Omit to render the pillar icon. */
+  logo?: string;
+  /** One-line blurb for the tile */
+  summary?: string;
+  /** Detail-page content below; all optional so sections degrade gracefully */
+  overview?: string;
+  challenge?: string;
+  /** What we did at the site, in order */
+  approach?: { title: string; description: string }[];
+  outcomes?: string[];
+  quote?: { text: string; name: string; role: string };
 }

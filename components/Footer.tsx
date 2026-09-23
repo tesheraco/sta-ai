@@ -1,6 +1,7 @@
 import React from 'react';
-import { Twitter, Linkedin, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ProgramPillar } from '../types';
+import { PILLAR_SLUGS } from '../data/programs';
 
 export const Footer: React.FC = () => {
   return (
@@ -10,8 +11,19 @@ export const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <span className="font-black text-3xl tracking-tighter mb-6 block">STA</span>
             <p className="text-gray-400 max-w-sm">
-              Turnkey AI, STEM, and Esports programs for after-school sites, community organizations, and schools — run by the staff you already have.
+              Turnkey AI, STEM, and Esports programs for after-school sites, community organizations, and schools, run by the staff you already have.
             </p>
+          </div>
+          <div>
+            <h4 className="font-bold mb-4 text-sta-accent">Programs</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li><Link to="/programs" className="hover:text-white">All Programs</Link></li>
+              {Object.values(ProgramPillar).map((pillar) => (
+                <li key={pillar}>
+                  <Link to={`/programs/${PILLAR_SLUGS[pillar]}`} className="hover:text-white">{pillar} Programs</Link>
+                </li>
+              ))}
+            </ul>
           </div>
           <div>
             <h4 className="font-bold mb-4 text-sta-accent">Company</h4>
@@ -20,28 +32,16 @@ export const Footer: React.FC = () => {
               <li><Link to="/about" className="hover:text-white">About Us</Link></li>
               <li><Link to="/pricing" className="hover:text-white">Pricing</Link></li>
               <li><Link to="/case-studies" className="hover:text-white">Case Studies</Link></li>
-              <li><a href="#" className="hover:text-white">Careers</a></li>
-              <li><a href="#" className="hover:text-white">Contact</a></li>
-              <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
+              <li>
+                <a href="https://calendly.com/sta-ai" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  Book a Demo
+                </a>
+              </li>
             </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4 text-sta-accent">Connect</h4>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-sta-primary transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-sta-primary transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-sta-primary transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-            </div>
           </div>
         </div>
         <div className="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} STA Education Training. All rights reserved.
+          &copy; {new Date().getFullYear()} STEM Teacher Academy. All rights reserved.
         </div>
       </div>
     </footer>

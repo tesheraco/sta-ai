@@ -1,4 +1,7 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaqItem } from '../types';
+import { ANNUAL_DISCOUNT, PO_FAQ, PRICING_TIERS } from './pricing';
 
 /**
  * FAQs that apply to every program. Program pages render these below any
@@ -11,18 +14,19 @@ export const SHARED_FAQS: FaqItem[] = [
     },
     {
         question: 'Is the cost one-time or recurring?',
-        answer: 'One-time. It covers the staff training, a full semester of curriculum, and optional four weeks of implementation support — plus six months of 24/7 email tech support. No hidden or recurring fees.'
+        answer: (
+            <>
+                It's an annual partnership: pay monthly, or pay for the year up front and save {Math.round(ANNUAL_DISCOUNT * 100)}%. It covers staff training, the full curriculum for the program you train in, curriculum updates as tools and age policies change, and 24/7 email tech support. Plans start at ${PRICING_TIERS[0].monthlyPrice} a month; see the{' '}
+                <Link to="/pricing" className="text-sta-primary font-bold underline underline-offset-2 hover:text-sta-cta">
+                    Pricing page
+                </Link>{' '}
+                for details.
+            </>
+        )
     },
     {
         question: 'What does equipment cost?',
         answer: 'It ranges from nearly free (Invention Lab runs on cardboard and hot glue) to a few thousand dollars for robotics or esports. Every program page lists exactly what you need, and we always teach the budget path first.'
     },
-    {
-        question: 'Is AI safe and legal for younger kids?',
-        answer: 'This is exactly why our AI programs exist. Most consumer AI tools require users to be 13+ — our training covers which tools each grade can use, kid-safe no-login alternatives for elementary ages, and supervision protocols your licensor and parents will approve of.'
-    },
-    {
-        question: 'Can we pay via Purchase Order?',
-        answer: "Yes. We work with nonprofits, districts, and municipal programs regularly and accept POs for organizational purchases. Book a consult and we'll handle the paperwork."
-    }
+    PO_FAQ
 ];

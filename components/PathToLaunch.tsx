@@ -7,22 +7,22 @@ const STEPS = [
     {
         icon: GraduationCap,
         title: 'Train Your Staff',
-        description: 'Four hours of zero-to-one technical training — one in-person workshop, or two 2-hour virtual sessions. No STEM or coding experience expected.'
+        description: 'Four hours of zero-to-one technical training, run live online as two 2-hour sessions. Network partnerships can add on-site training days. No STEM or coding experience expected.'
     },
     {
         icon: BookOpen,
         title: 'Unlock the Curriculum',
-        description: 'A full semester (~16 hours) of project-based sessions: daily lesson plans, helpful videos, and projectable slides — standards-aligned. Plus an exact materials shopping list with lowest-cost purchase links.'
+        description: 'A full semester (~16 hours) of project-based sessions: daily lesson plans, helpful videos, and projectable slides, all standards-aligned. Plus an exact materials shopping list with lowest-cost purchase links.'
     },
     {
         icon: Rocket,
         title: 'Launch With Support',
-        description: 'An optional four weeks of implementation support while your first sessions run: office hours, troubleshooting, and extra resources.'
+        description: 'On Site and Network partnerships, four weeks of implementation support while your first sessions run: live office hours, troubleshooting, and extra resources.'
     },
     {
         icon: LifeBuoy,
         title: 'Keep the Safety Net',
-        description: 'Six months of 24/7 email tech support for anything related to the topic your staff was trained in.'
+        description: '24/7 email tech support for anything related to the topic your staff trained in, plus curriculum updates as tools and age policies change.'
     }
 ];
 
@@ -30,7 +30,7 @@ export const PathToLaunch: React.FC = () => (
     <div>
         <h2 className="text-3xl font-black text-sta-dark mb-2">Your Path to Launch</h2>
         <p className="text-slate-600 font-medium mb-8">
-            One flat, one-time cost covers everything below. Most sites go from signed quote to first session in about 4 weeks.
+            How an annual partnership gets your site running. Most sites go from signed quote to first session in about 4 weeks.
         </p>
         <div className="relative">
             {/* Connector line behind the numbered circles */}

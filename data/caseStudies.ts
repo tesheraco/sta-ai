@@ -1,58 +1,79 @@
-import { CaseStudy } from '../types';
+import { CaseStudy, ProgramPillar } from '../types';
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    id: '1',
-    name: 'Sarah Jenkins',
-    role: 'Site Director, After-School Program',
-    location: 'Brooklyn, NY',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    quote: "None of my staff had ever written a line of code. Eight weeks later they were running a Scratch arcade night with 60 families in the room.",
-    fullStory: `We'd been quoted $180 per session by an outside STEM vendor — for one hour, one day a week. It wasn't sustainable, and when their instructor left mid-semester, the program just stopped.
-
-    STA flipped the model. Instead of renting an instructor, they trained my existing group leaders to run Game Builders themselves. The facilitation guides are written for people with zero coding background — every session is scripted, every common student error has a troubleshooting note.
-
-    Our first Arcade Showcase drew more families than any event we'd run all year. Now STEM is something we own, not something we book.`,
-    metrics: [
-      { label: 'Sites Launched', value: '1' },
-      { label: 'Staff Trained', value: '2' },
-      { label: 'Vendor Cost Saved', value: '$5.4k/yr' }
+    id: 'newark-board-of-education',
+    organization: 'Newark Board of Education',
+    topic: 'Esports',
+    pillar: ProgramPillar.ESPORTS,
+    gradeLevel: 'High School',
+    organizationType: 'Public School District',
+    location: 'Newark, NJ',
+    logo: '/logos/newark_logo_gray.svg',
+    summary: 'We worked with 3 high schools to start their inaugural esports program.',
+    overview: 'We helped Newark Board of Education introduce the district\'s first official high school esports program, launching teams at three schools: Technology High School, East Side High School, and Newark School of Data Science & Information Technology.',
+    challenge: 'Esports had never been an official high school activity in Newark. The program needed a game to build around, and each school needed equipment, purchasing support, and IT setup. The coaches stepping up to lead the new teams had minimal or no esports experience.',
+    approach: [
+      { title: 'Start with one game', description: 'All three schools launched with Rocket League, so every team practiced and competed in the same game.' },
+      { title: 'Equipment, purchasing, and IT', description: 'We helped each site decide on its equipment, a setup of six gaming desktops, then assisted with purchasing and IT.' },
+      { title: 'Coach training', description: 'We held training for the coaches from every school, each of whom came in with minimal or no esports experience.' },
+      { title: 'The Super Cup', description: 'The first season culminated in a Super Cup, where the schools played each other in person at an event attended and watched by the entire community, including on a live stream.' }
+    ],
+    outcomes: [
+      'Launched the district\'s first official high school esports program',
+      'Fielded teams at three high schools in the first season',
+      'Prepared coaches new to esports to lead their teams through a full season',
+      'Closed the season with a Super Cup played in person and streamed live'
     ]
   },
   {
-    id: '2',
-    name: 'Marcus Thompson',
-    role: 'Program Director, Youth Development Org',
-    location: 'Oakland, CA',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    quote: "We rolled out robotics across six sites with the staff we already had. The training scaled — that's the part no vendor could ever offer us.",
-    fullStory: `Running programs across multiple sites means every new offering has to work without me standing in the room. Outside vendors could never scale past one or two locations, and quality varied wildly.
-
-    With STA we trained 14 site staff on Robotics I in a single cohort — mixed live sessions and self-paced modules that fit around program hours. Every site got the same curriculum, the same challenge mats, the same shopping list.
-
-    The unexpected win: staff retention. Our group leaders now have a real, resume-worthy skill, and two of them have taken over as our internal robotics leads. People stay when they're growing.`,
-    metrics: [
-      { label: 'Sites Launched', value: '6' },
-      { label: 'Staff Trained', value: '14' },
-      { label: 'Vendor Cost Saved', value: '$32k/yr' }
+    id: 'grand-street-settlement',
+    organization: 'Grand Street Settlement',
+    topic: 'LEGO Robotics',
+    pillar: ProgramPillar.STEM,
+    gradeLevel: 'Grades K–8',
+    organizationType: 'Community-Based Organization',
+    location: 'New York, NY',
+    logo: '/logos/gs_logo.svg',
+    summary: 'We trained 150+ staff across their various school and community sites in Manhattan and Brooklyn.',
+    overview: 'Grand Street Settlement is a New York City community organization serving school and community sites throughout Manhattan and Brooklyn. Over three years, we have worked with more than 150 of their staff, focusing each year on topics tied to their annual themes and goals, including coding, VR, robotics, and esports.',
+    challenge: 'Grand Street runs hundreds of hours of after school programming every week, so the staff working directly with students are always in need of practical, effective STEM programs. Their focus also shifts from year to year, so the training has to keep pace with new themes and goals.',
+    approach: [
+      { title: 'A new focus each year', description: 'Each year we build the training around Grand Street\'s themes and goals, including topics like coding, VR, robotics, and esports.' },
+      { title: 'Training at headquarters', description: 'We train staff in person at Grand Street\'s headquarters at 80 Pitt Street, in sessions that run several hours.' },
+      { title: 'Online curriculum and materials', description: 'We created online platforms with the curriculum, so every staff member knows exactly what to do in the classroom. We also help with purchasing materials.' },
+      { title: 'The Discovery Fair', description: 'Every year, Grand Street holds a Discovery Fair where each site and class shows its projects from the year. We help prepare for the event.' }
+    ],
+    outcomes: [
+      'Worked with more than 150 staff over three years',
+      'Covered coding, VR, robotics, and esports, following Grand Street\'s yearly themes',
+      'Gave every staff member an online curriculum to follow in the classroom',
+      'Helped prepare the annual Discovery Fair, where every site and class shows its work'
     ]
   },
   {
-    id: '3',
-    name: 'Elena Rodriguez',
-    role: 'Enrichment Coordinator, K–8 School',
-    location: 'Austin, TX',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    quote: "The esports launch training paid for itself before the first practice. Six Switch consoles instead of a PC lab — and a 40-student waitlist.",
-    fullStory: `Parents had been asking about esports for two years, but every quote we got started with a $25,000 gaming PC lab. It was dead on arrival with our budget.
-
-    STA's Launch Your Esports Program training showed us the budget path: six Nintendo Switch consoles, age-appropriate game selection, and a real practice structure with sportsmanship and screen-time policies parents actually appreciated.
-
-    We launched with Rocket League and Smash for our middle schoolers. Within a month we had a waitlist, and our first in-house tournament packed the gym. The screen-time policy doc alone won over every skeptical parent.`,
-    metrics: [
-      { label: 'Sites Launched', value: '1' },
-      { label: 'Staff Trained', value: '4' },
-      { label: 'Vendor Cost Saved', value: '$22.5k' }
+    id: 'phipps-neighborhoods',
+    organization: 'Phipps Neighborhoods',
+    topic: 'Sports & STEM',
+    pillar: ProgramPillar.STEM,
+    gradeLevel: 'Grades K–5',
+    organizationType: 'Community-Based Organization',
+    location: 'Bronx, NY',
+    logo: '/logos/phipps.svg',
+    summary: 'We trained 80+ group leaders to run a summer STEM program built around sports and the outdoors.',
+    overview: 'We trained more than 80 group leaders at Phipps Neighborhoods to run STEM over the summer. The featured program was Structures & Skyscrapers, our structural engineering program, which we combined with a sports and outdoors curriculum since the summer ran outside.',
+    challenge: 'The summer program ran outdoors, so a standard classroom STEM curriculum would not fit. Group leaders needed activities that worked outside, built real math and engineering skills, and kept students engaged for the whole summer.',
+    approach: [
+      { title: 'Group leader training', description: 'We led a large training for more than 80 group leaders, held in person and focused on summer STEM.' },
+      { title: 'Engineering meets sports', description: 'Structures & Skyscrapers, our structural engineering program, was the centerpiece. Because the summer ran outdoors, we combined it with a sports and outdoors curriculum.' },
+      { title: 'Sports as experiments', description: 'Students ran experiments like tracking their heartbeats, measuring frisbee distance, and recording dribble frequency, learning math and statistics skills along the way.' },
+      { title: 'Challenges all summer', description: 'We built a series of engineering challenges that kept students engaged all summer long.' }
+    ],
+    outcomes: [
+      'Trained more than 80 group leaders in person for summer STEM',
+      'Paired structural engineering with a sports and outdoors curriculum',
+      'Turned heartbeats, frisbee throws, and dribbling into math and statistics practice',
+      'Kept students engaged all summer with engineering challenges'
     ]
   }
 ];

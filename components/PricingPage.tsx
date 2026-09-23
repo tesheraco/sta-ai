@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Check, Minus, ArrowRight, Quote, FileText, Package, CalendarClock } from 'lucide-react';
+import { Check, Minus, ArrowRight, FileText, Package, CalendarClock } from 'lucide-react';
 import { PRICING_TIERS, PRICING_MATRIX, PRICING_FAQS, PRICING_CTA_HREF } from '../data/pricing';
 import { CASE_STUDIES } from '../data/caseStudies';
+import { CaseStudyCard } from './CaseStudyCard';
 import { PricingTiers } from './PricingTiers';
 import { FaqSection } from './FaqSection';
 
@@ -36,36 +37,16 @@ export const PricingPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Proof: three partners, three budgets */}
+            {/* Proof: the partner sites already running programs */}
             <section className="py-24 px-4 bg-sta-surface bg-dot-pattern border-y-2 border-black">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl font-black text-sta-dark">Proof It Pays Off</h2>
+                        <h2 className="text-4xl font-black text-sta-dark">Proof It Works</h2>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {CASE_STUDIES.map(study => (
-                            <div key={study.id} className="bg-white p-8 border-2 border-black shadow-hard rounded-xl flex flex-col hover:-translate-y-1 transition-transform">
-                                <Quote className="w-8 h-8 text-sta-primary mb-4 shrink-0" fill="currentColor" strokeWidth={0} />
-
-                                <p className="text-lg font-bold text-slate-800 leading-snug mb-6 flex-grow">
-                                    "{study.quote}"
-                                </p>
-
-                                <div className="grid grid-cols-3 gap-3 border-t-2 border-slate-100 pt-6 mb-6">
-                                    {study.metrics.map((metric, idx) => (
-                                        <div key={idx} className="text-center">
-                                            <div className="text-xl font-black text-sta-primary">{metric.value}</div>
-                                            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wide leading-tight mt-1">{metric.label}</div>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div>
-                                    <div className="font-black text-sm text-sta-dark uppercase">{study.name}</div>
-                                    <div className="text-slate-500 text-xs font-mono">{study.role.split(',')[0]} · {study.location}</div>
-                                </div>
-                            </div>
+                            <CaseStudyCard key={study.id} study={study} />
                         ))}
                     </div>
                 </div>

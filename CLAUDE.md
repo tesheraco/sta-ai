@@ -34,7 +34,9 @@ The app uses React Router (`BrowserRouter` in `App.tsx`). Routes:
 - `/programs` - Program library with URL-driven filters (`?q=`, `?grades=`, `?screenFree=`)
 - `/programs/stem|ai|esports` - Pillar-filtered library views (static segments declared before `:id` so they win)
 - `/programs/:id` - Individual program detail page (`ProgramDetail.tsx`)
-- `/case-studies`, `/about`, `/schedule` - Supporting pages
+- `/case-studies` - Partner site case studies (`CaseStudiesPage.tsx`)
+- `/case-studies/:id` - Individual case study detail page (`CaseStudyDetail.tsx`)
+- `/about`, `/schedule` - Supporting pages
 - `*` - Redirects to `/`
 
 `ScrollToTop.tsx` resets scroll position on route change.
@@ -46,12 +48,14 @@ The app uses React Router (`BrowserRouter` in `App.tsx`). Routes:
   - `ToolkitPage.tsx` / `ToolkitDemo.tsx` - AI lesson plan generator
   - `ProgramsPage.tsx` / `ProgramDetail.tsx` - Program library and detail pages
   - `SchedulePage.tsx` - Cohort scheduling page
-  - `CaseStudiesPage.tsx` / `CaseStudyModal.tsx` - Success stories
+  - `CaseStudiesPage.tsx` / `CaseStudyDetail.tsx` - Partner site case studies and the reusable detail template
+  - `CaseStudyCard.tsx` - Shared site tile (case studies page, Landing, Pricing)
+  - `GlanceRow.tsx` - "At a Glance" label/value row (program and case study detail pages)
   - `FaqSection.tsx` - Reusable FAQ card list (Landing + program pages)
   - `PathToLaunch.tsx` - Universal 4-step training/launch timeline (program pages)
   - `CohortTicket.tsx` - Pricing ticket component
   - `Navbar.tsx` / `Footer.tsx` - Layout components
-- **data/** - Static content: `programs.ts` (the 15-program catalog), `caseStudies.ts`, `faqs.ts` (shared FAQs), `pillars.ts` (per-pillar visual tokens)
+- **data/** - Static content: `programs.ts` (the 17-program catalog), `caseStudies.ts`, `faqs.tsx` (shared FAQs; answers can be JSX for inline links), `pillars.ts` (per-pillar visual tokens)
 
 ### Services Layer
 `services/geminiService.ts` is the only service file and handles all AI generation:
@@ -60,10 +64,11 @@ The app uses React Router (`BrowserRouter` in `App.tsx`). Routes:
 
 ### Type Definitions
 All TypeScript interfaces are centralized in `types.ts`:
-- `Program` / `ProgramPillar` / `GradeBand` - Program catalog models; detail-page content fields (`studentOutcomes`, `whyItMatters`, `curriculumArc`, `staffOutcomes`, `trainingModules`, `logistics`, `faq`, `caseStudyId`) are all optional so sections degrade gracefully for programs without content yet
+- `Program` / `ProgramPillar` / `GradeBand` - Program catalog models; detail-page content fields (`studentOutcomes`, `whyItMatters`, `curriculumArc`, `staffOutcomes`, `trainingModules`, `logistics`, `faq`, `caseStudyId`, `versions`) are all optional so sections degrade gracefully for programs without content yet
 - `FaqItem` - Shared FAQ shape
 - `LessonPlan` - Structured lesson plan schema matching Gemini response
-- `ProgramDate`, `CaseStudy` - Data models for marketing content
+- `CaseStudy` / `OrganizationType` - Site-centric case study model. Tile facts (`organization`, `topic`, `pillar`, `gradeLevel`, `organizationType`, `location`) are required; detail-page story fields (`overview`, `challenge`, `approach`, `outcomes`, `quote`) are optional so sections degrade gracefully for studies without content yet. `Program.caseStudyId` links a program to its site by slug.
+- `ProgramDate` - Data model for marketing content
 
 ### Styling System
 Uses Tailwind CSS (loaded via CDN in `index.html`) with custom STA color palette:

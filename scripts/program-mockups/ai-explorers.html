@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Rock Paper Scissors Detector</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 900px; }
+  body {
+    font-family: -apple-system, "SF Pro Rounded", "Helvetica Neue", Arial, sans-serif;
+    background: #eef2ff;
+    background-image: radial-gradient(#c7d2fe 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    display: flex; flex-direction: column;
+  }
+  /* Browser chrome */
+  .browser { margin: 36px 48px 0; background: #fff; border: 3px solid #1e293b; border-radius: 18px; box-shadow: 10px 10px 0 #1e293b; flex: 1; display: flex; flex-direction: column; overflow: hidden; margin-bottom: 48px; }
+  .bar { height: 52px; background: #f1f5f9; border-bottom: 3px solid #1e293b; display: flex; align-items: center; gap: 10px; padding: 0 18px; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #1e293b; }
+  .url { margin-left: 16px; flex: 1; height: 30px; background: #fff; border: 2px solid #cbd5e1; border-radius: 15px; display: flex; align-items: center; padding: 0 14px; font-size: 14px; color: #64748b; }
+  /* App */
+  .app { flex: 1; padding: 28px 36px; display: flex; flex-direction: column; gap: 22px; }
+  header { display: flex; align-items: center; justify-content: space-between; }
+  h1 { font-size: 38px; font-weight: 900; color: #1e293b; letter-spacing: -0.5px; }
+  h1 span { color: #4f46e5; }
+  .badge { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; background: #fbbf24; border: 2px solid #1e293b; border-radius: 8px; padding: 6px 12px; }
+  .main { display: grid; grid-template-columns: 1.05fr 1fr; gap: 28px; flex: 1; }
+  .cam { position: relative; border: 3px solid #1e293b; border-radius: 16px; background: linear-gradient(145deg, #334155, #0f172a); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .cam .hand { font-size: 210px; filter: drop-shadow(0 12px 20px rgba(0,0,0,.45)); transform: rotate(-8deg); }
+  .live { position: absolute; top: 16px; left: 16px; background: #ef4444; color: #fff; font-size: 14px; font-weight: 800; letter-spacing: 1px; padding: 5px 10px; border-radius: 6px; display: flex; align-items: center; gap: 6px; }
+  .live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+  .box { position: absolute; inset: 70px 90px; border: 4px dashed #34d399; border-radius: 12px; }
+  .box span { position: absolute; top: -18px; left: 16px; background: #34d399; color: #064e3b; font-weight: 900; font-size: 15px; padding: 4px 10px; border-radius: 6px; border: 2px solid #1e293b; }
+  .panel { border: 3px solid #1e293b; border-radius: 16px; padding: 26px 26px; display: flex; flex-direction: column; justify-content: space-between; background: #fff; box-shadow: 6px 6px 0 #1e293b; }
+  .label { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; }
+  .guess { font-size: 54px; font-weight: 900; color: #1e293b; line-height: 1; }
+  .row { display: grid; grid-template-columns: 120px 1fr 58px; align-items: center; gap: 12px; font-weight: 800; font-size: 20px; color: #1e293b; }
+  .track { height: 30px; background: #f1f5f9; border: 2px solid #1e293b; border-radius: 8px; overflow: hidden; }
+  .fill { height: 100%; border-right: 2px solid #1e293b; }
+  .pct { text-align: right; font-variant-numeric: tabular-nums; }
+  .bars { display: flex; flex-direction: column; gap: 16px; }
+  .examples { display: flex; gap: 8px; flex-wrap: nowrap; margin-top: 10px; }
+  .chip { white-space: nowrap; font-size: 14px; font-weight: 700; padding: 7px 12px; border-radius: 999px; border: 2px solid #1e293b; background: #f8fafc; }
+  .btns { display: flex; gap: 12px; }
+  .btn { flex: 1; text-align: center; font-weight: 900; font-size: 18px; padding: 13px 0; border: 3px solid #1e293b; border-radius: 12px; box-shadow: 4px 4px 0 #1e293b; }
+  .btn.primary { background: #4f46e5; color: #fff; }
+  .btn.alt { background: #fff; color: #1e293b; }
+</style>
+</head>
+<body>
+  <div class="browser">
+    <div class="bar">
+      <div class="dot" style="background:#f87171"></div>
+      <div class="dot" style="background:#fbbf24"></div>
+      <div class="dot" style="background:#34d399"></div>
+      <div class="url">my-rps-detector.web.app</div>
+    </div>
+    <div class="app">
+      <header>
+        <h1>Rock Paper Scissors <span>Detector</span> 🤖</h1>
+        <div class="badge">My trained model</div>
+      </header>
+      <div class="main">
+        <div class="cam">
+          <div class="live">LIVE</div>
+          <div class="box"><span>✊ rock</span></div>
+          <div class="hand">✊</div>
+        </div>
+        <div class="panel">
+          <div>
+            <div class="label">The computer thinks…</div>
+            <div class="guess">✊ Rock!</div>
+          </div>
+          <div class="bars"><div class="row"><div>✊ Rock</div><div class="track"><div class="fill" style="width:94%;background:#4f46e5"></div></div><div class="pct">94%</div></div>
+          <div class="row"><div>✋ Paper</div><div class="track"><div class="fill" style="width:4%;background:#db2777"></div></div><div class="pct">4%</div></div>
+          <div class="row"><div>✌️ Scissors</div><div class="track"><div class="fill" style="width:2%;background:#fbbf24"></div></div><div class="pct">2%</div></div></div>
+          <div><div class="label">Training data</div><div class="examples">
+            <div class="chip">📸 42 rock</div>
+            <div class="chip">📸 38 paper</div>
+            <div class="chip">📸 40 scissors</div>
+          </div></div>
+          <div class="btns">
+            <div class="btn primary">Play vs. the AI</div>
+            <div class="btn alt">Train again</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

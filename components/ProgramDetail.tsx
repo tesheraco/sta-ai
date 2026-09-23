@@ -1,27 +1,20 @@
 import React from 'react';
-import { ArrowLeft, ArrowRight, Users, Monitor, Package, CheckCircle2, BookOpen, ShieldCheck, ClipboardList, GraduationCap, Clock, Video, UserCheck, Trophy, Quote } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Users, Monitor, Package, CheckCircle2, BookOpen, ShieldCheck, ClipboardList, GraduationCap, Clock, Video, UserCheck, Trophy } from 'lucide-react';
 import { useParams, Link } from 'react-router-dom';
-import { CaseStudy, ProgramPillar } from '../types';
+import { ProgramPillar } from '../types';
 import { PROGRAMS } from '../data/programs';
 import { PILLAR_VISUALS } from '../data/pillars';
 import { CASE_STUDIES } from '../data/caseStudies';
 import { SHARED_FAQS } from '../data/faqs';
-import { CaseStudyModal } from './CaseStudyModal';
+import { PRICING_TIERS, PRICING_CTA_HREF } from '../data/pricing';
 import { FaqSection } from './FaqSection';
+import { GlanceRow } from './GlanceRow';
 import { PathToLaunch } from './PathToLaunch';
-
-const GlanceRow: React.FC<{ label: string; value: string }> = ({ label, value }) => (
-    <li className="flex justify-between gap-4">
-        <span className="text-slate-400 font-bold shrink-0">{label}</span>
-        <span className="text-right">{value}</span>
-    </li>
-);
 
 export const ProgramDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const program = PROGRAMS.find(c => c.id === id);
     const caseStudy = program?.caseStudyId ? CASE_STUDIES.find(s => s.id === program.caseStudyId) : undefined;
-    const [selectedCaseStudy, setSelectedCaseStudy] = React.useState<CaseStudy | null>(null);
 
     if (!program) {
         return (
@@ -36,13 +29,6 @@ export const ProgramDetail: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-white">
-            {selectedCaseStudy && (
-                <CaseStudyModal
-                    study={selectedCaseStudy}
-                    onClose={() => setSelectedCaseStudy(null)}
-                />
-            )}
-
             {/* Hero */}
             <div className="relative h-[400px] bg-sta-dark overflow-hidden">
                 {program.image ? (
@@ -103,6 +89,30 @@ export const ProgramDetail: React.FC = () => {
                                 {program.description}
                             </p>
                         </section>
+
+                        {/* Versions — one program, different tools per grade band */}
+                        {program.versions && (
+                            <section>
+                                <h2 className="text-3xl font-black text-sta-dark mb-2">Two Versions</h2>
+                                <p className="text-slate-600 font-medium mb-6">
+                                    Same curriculum arc, with the tools and challenges matched to each age group.
+                                </p>
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    {program.versions.map((version, idx) => (
+                                        <div key={idx} className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
+                                            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-3">
+                                                <h3 className="font-black text-xl text-sta-dark">{version.name}</h3>
+                                                <span className="px-2 py-0.5 rounded border-2 border-black bg-sta-accent text-xs font-bold uppercase tracking-wider">{version.grades}</span>
+                                            </div>
+                                            <div className="flex items-center text-sm font-bold text-sta-primary mb-3">
+                                                <Package className="w-4 h-4 mr-2 shrink-0" /> {version.tool}
+                                            </div>
+                                            <p className="text-slate-600 font-medium">{version.description}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
 
                         {/* What Students Learn + Why It Matters — the director's pitch up and out */}
                         {(program.studentOutcomes || program.whyItMatters) && (
@@ -241,34 +251,25 @@ export const ProgramDetail: React.FC = () => {
                         {caseStudy && (
                             <section>
                                 <h2 className="text-3xl font-black text-sta-dark mb-6">Proof It Works</h2>
-                                <div className="bg-white border-2 border-black rounded-xl p-8 shadow-hard">
-                                    <Quote className="w-8 h-8 text-sta-primary mb-4" fill="currentColor" strokeWidth={0} />
-                                    <p className="text-xl md:text-2xl font-bold text-slate-800 leading-snug mb-6">
-                                        "{caseStudy.quote}"
-                                    </p>
-                                    <div className="flex items-center mb-6">
-                                        <div className="w-10 h-10 bg-slate-200 rounded-full border border-black mr-3 overflow-hidden shrink-0">
-                                            {caseStudy.image && <img src={caseStudy.image} alt={caseStudy.name} className="w-full h-full object-cover" />}
+                                <div className="bg-white border-2 border-black rounded-xl p-8 shadow-hard flex flex-col sm:flex-row sm:items-center gap-6">
+                                    {caseStudy.logo && (
+                                        <div className="w-32 h-24 shrink-0 bg-white rounded-xl border-2 border-black flex items-center justify-center p-3">
+                                            <img src={caseStudy.logo} alt="" className="max-w-full max-h-full object-contain" />
                                         </div>
-                                        <div>
-                                            <div className="font-black text-sm text-sta-dark uppercase">{caseStudy.name}</div>
-                                            <div className="text-slate-500 text-xs font-mono">{caseStudy.role} · {caseStudy.location}</div>
-                                        </div>
+                                    )}
+                                    <div className="flex-grow">
+                                        <div className="font-black text-xl text-sta-dark">{caseStudy.organization}</div>
+                                        <div className="text-slate-500 text-xs font-mono mb-2">{caseStudy.topic} · {caseStudy.gradeLevel} · {caseStudy.location}</div>
+                                        {caseStudy.summary && (
+                                            <p className="text-slate-600 font-medium">{caseStudy.summary}</p>
+                                        )}
                                     </div>
-                                    <div className="grid grid-cols-3 gap-4 border-t-2 border-slate-100 pt-6 mb-6">
-                                        {caseStudy.metrics.map((metric, idx) => (
-                                            <div key={idx} className="text-center">
-                                                <div className="text-2xl font-black text-sta-primary">{metric.value}</div>
-                                                <div className="text-xs font-bold text-slate-500 uppercase tracking-wide">{metric.label}</div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <button
-                                        onClick={() => setSelectedCaseStudy(caseStudy)}
-                                        className="w-full py-3 bg-slate-50 border-2 border-black rounded-lg font-bold text-sm hover:bg-sta-cta hover:text-white transition-colors flex items-center justify-center gap-2"
+                                    <Link
+                                        to={`/case-studies/${caseStudy.id}`}
+                                        className="shrink-0 px-5 py-3 bg-slate-50 border-2 border-black rounded-lg font-bold text-sm hover:bg-sta-cta hover:text-white transition-colors flex items-center justify-center gap-2"
                                     >
-                                        Read the Full Story <ArrowRight className="w-4 h-4" />
-                                    </button>
+                                        Read the Case Study <ArrowRight className="w-4 h-4" />
+                                    </Link>
                                 </div>
                             </section>
                         )}
@@ -282,7 +283,7 @@ export const ProgramDetail: React.FC = () => {
                                         <Monitor className="w-5 h-5 text-sta-primary" />
                                         <h3 className="font-black text-lg">Devices</h3>
                                     </div>
-                                    <p className="text-slate-600 font-medium">{program.devices === 'None' ? 'None — this program is fully screen-free.' : program.devices}</p>
+                                    <p className="text-slate-600 font-medium">{program.devices === 'None' ? 'None. This program is fully screen-free.' : program.devices}</p>
                                 </div>
                                 <div className="bg-white border-2 border-black rounded-xl p-6 shadow-hard-sm">
                                     <div className="flex items-center gap-2 mb-3">
@@ -293,7 +294,7 @@ export const ProgramDetail: React.FC = () => {
                                 </div>
                             </div>
                             <p className="text-sm text-slate-500 font-medium mt-4">
-                                Your organization purchases materials directly — we provide an exact shopping list with the lowest-cost, highest-quality purchase links.
+                                Your organization purchases materials directly. We provide an exact shopping list with the lowest-cost, highest-quality purchase links.
                             </p>
                         </section>
 
@@ -307,10 +308,10 @@ export const ProgramDetail: React.FC = () => {
                             <section className="bg-sta-dark text-white rounded-xl border-2 border-black p-8 shadow-hard-sm">
                                 <div className="flex items-center gap-2 mb-3">
                                     <ShieldCheck className="w-6 h-6 text-sta-mint" />
-                                    <h3 className="font-black text-xl">Age-Gating & Responsible Use — Built In</h3>
+                                    <h3 className="font-black text-xl">Age-Gating & Responsible Use, Built In</h3>
                                 </div>
                                 <p className="text-slate-300 font-medium leading-relaxed">
-                                    Most consumer AI tools require users to be 13+ (often 18, or 13 with consent) — and virtually no after-school staff know this. This program trains your team on exactly which tools each grade can legally use, how to supervise sessions, and how to communicate your AI policy to parents.
+                                    Most consumer AI tools require users to be 13+ (often 18, or 13 with consent), and virtually no after-school staff know this. This program trains your team on exactly which tools each grade can legally use, how to supervise sessions, and how to communicate your AI policy to parents.
                                 </p>
                             </section>
                         )}
@@ -329,17 +330,23 @@ export const ProgramDetail: React.FC = () => {
                         <div className="bg-white p-6 rounded-xl border-2 border-black shadow-hard">
                             <h3 className="font-black text-xl mb-2">Bring this to your site</h3>
                             <p className="text-slate-500 font-medium text-sm mb-6">
-                                One-time fee per site — covers staff training, a full semester of curriculum, and 6 months of support. No recurring fees. Most programs launch within 4 weeks of onboarding.
+                                An annual partnership covers staff training, this program's full curriculum and updates, and 24/7 email tech support. Plans start at ${PRICING_TIERS[0].monthlyPrice} a month. Most programs launch within 4 weeks of onboarding.
                             </p>
 
                             <a
-                                href="https://calendly.com/sta-ai"
+                                href={PRICING_CTA_HREF}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="block w-full py-4 bg-sta-cta text-white rounded-lg font-bold text-lg text-center shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all mb-4"
                             >
-                                Request a Quote
+                                Get a Quote
                             </a>
+                            <Link
+                                to="/pricing"
+                                className="block w-full py-4 mb-4 bg-white text-sta-dark border-2 border-black rounded-lg font-bold text-lg text-center hover:bg-slate-50 transition-all"
+                            >
+                                See Plans &amp; Pricing
+                            </Link>
                             <Link
                                 to="/programs"
                                 className="block w-full py-4 bg-white text-sta-dark border-2 border-black rounded-lg font-bold text-lg text-center hover:bg-slate-50 transition-all"
