@@ -12,7 +12,9 @@ import { About } from './components/About';
 import { CaseStudiesPage } from './components/CaseStudiesPage';
 import { CaseStudyDetail } from './components/CaseStudyDetail';
 import { PricingPage } from './components/PricingPage';
+import { LegalPage } from './components/LegalPage';
 import { PILLAR_SLUGS } from './data/programs';
+import { PRIVACY_POLICY, TERMS_OF_SERVICE } from './data/legal';
 import { ProgramPillar } from './types';
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
             <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/schedule" element={<SchedulePage />} />
+            <Route path="/privacy" element={<LegalPage document={PRIVACY_POLICY} related={{ label: 'Terms of Service', to: '/terms' }} />} />
+            <Route path="/terms" element={<LegalPage document={TERMS_OF_SERVICE} related={{ label: 'Privacy Policy', to: '/privacy' }} />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

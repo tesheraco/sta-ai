@@ -1,6 +1,7 @@
 import React from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { Logo } from './Logo';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -12,14 +13,8 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center cursor-pointer group"
-          >
-            <div className="w-10 h-10 bg-sta-dark text-white border-2 border-black rounded flex items-center justify-center mr-3 font-black text-xl shadow-hard-sm group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-none transition-all">
-              S
-            </div>
-            <span className="font-black text-2xl tracking-tighter text-sta-dark">STA</span>
+          <Link to="/" aria-label="STEM Teacher Academy home" className="flex items-center">
+            <Logo />
           </Link>
 
           {/* Desktop Menu */}
@@ -85,7 +80,7 @@ export const Navbar: React.FC = () => {
                 href="https://calendly.com/sta-ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2.5 bg-sta-cta text-white border-2 border-black rounded-lg text-sm font-bold hover:bg-sta-cta-hover hover:shadow-hard-sm transition-all"
+                className="inline-block px-6 py-2.5 bg-sta-cta text-white border-2 border-black rounded-lg text-sm font-bold shadow-hard-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
               >
                 Book a Demo
               </a>

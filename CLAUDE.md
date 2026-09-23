@@ -37,6 +37,7 @@ The app uses React Router (`BrowserRouter` in `App.tsx`). Routes:
 - `/case-studies` - Partner site case studies (`CaseStudiesPage.tsx`)
 - `/case-studies/:id` - Individual case study detail page (`CaseStudyDetail.tsx`)
 - `/about`, `/schedule` - Supporting pages
+- `/privacy`, `/terms` - Privacy Policy and Terms of Service (`LegalPage.tsx`, text in `data/legal.ts`)
 - `*` - Redirects to `/`
 
 `ScrollToTop.tsx` resets scroll position on route change.
@@ -55,7 +56,7 @@ The app uses React Router (`BrowserRouter` in `App.tsx`). Routes:
   - `PathToLaunch.tsx` - Universal 4-step training/launch timeline (program pages)
   - `CohortTicket.tsx` - Pricing ticket component
   - `Navbar.tsx` / `Footer.tsx` - Layout components
-- **data/** - Static content: `programs.ts` (the 17-program catalog), `caseStudies.ts`, `faqs.tsx` (shared FAQs; answers can be JSX for inline links), `pillars.ts` (per-pillar visual tokens)
+- **data/** - Static content: `programs.ts` (the 17-program catalog), `caseStudies.ts`, `faqs.tsx` (shared FAQs; answers can be JSX for inline links), `pillars.ts` (per-pillar visual tokens), `legal.ts` (Privacy Policy and Terms of Service text, contact email, effective date)
 
 ### Services Layer
 `services/geminiService.ts` is the only service file and handles all AI generation:
@@ -72,7 +73,7 @@ All TypeScript interfaces are centralized in `types.ts`:
 
 ### Styling System
 Uses Tailwind CSS (loaded via CDN in `index.html`) with custom STA color palette:
-- **sta-primary** (#4f46e5) - Indigo for CTAs
+- **sta-primary** (#4b4ef7) - Logo blue for CTAs
 - **sta-secondary** (#db2777) - Pink accents
 - **sta-accent** (#fbbf24) - Amber/yellow highlights
 - **sta-mint** (#34d399) - Success/positive

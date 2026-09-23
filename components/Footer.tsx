@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ProgramPillar } from '../types';
 import { PILLAR_SLUGS } from '../data/programs';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,7 +10,9 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <span className="font-black text-3xl tracking-tighter mb-6 block">STA</span>
+            <Link to="/" aria-label="STEM Teacher Academy home" className="inline-block mb-6">
+              <Logo tone="light" size="lg" />
+            </Link>
             <p className="text-gray-400 max-w-sm">
               Turnkey AI, STEM, and Esports programs for after-school sites, community organizations, and schools, run by the staff you already have.
             </p>
@@ -40,8 +43,12 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
-        <div className="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} STEM Teacher Academy. All rights reserved.
+        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
+          <span>&copy; {new Date().getFullYear()} STEM Teacher Academy. All rights reserved.</span>
+          <div className="flex gap-6">
+            <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-white">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>
