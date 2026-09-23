@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { CASE_STUDIES } from '../data/caseStudies';
 import { CaseStudyCard } from './CaseStudyCard';
+import { CONSULT_HREF } from '../data/pricing';
 
 export const CaseStudiesPage: React.FC = () => {
     return (
@@ -46,12 +47,12 @@ export const CaseStudiesPage: React.FC = () => {
                             Browse Programs <ArrowRight className="w-5 h-5" />
                         </Link>
                         <a
-                            href="https://calendly.com/sta-ai"
+                            href={CONSULT_HREF}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-sta-cta text-white border-2 border-black rounded-lg font-bold shadow-hard-sm hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
                         >
-                            Book a Demo
+                            Book a Consult
                         </a>
                     </div>
                 </div>

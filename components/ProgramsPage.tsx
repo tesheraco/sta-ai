@@ -4,6 +4,7 @@ import { Search, Clock3, Monitor, Package, ShieldCheck, GraduationCap } from 'lu
 import { ProgramPillar, GradeBand, GRADE_BANDS } from '../types';
 import { PROGRAMS, PILLAR_ORDER, PILLAR_SLUGS } from '../data/programs';
 import { PILLAR_VISUALS } from '../data/pillars';
+import { CONSULT_HREF } from '../data/pricing';
 
 /** Grade bands contain an en dash, which URL-encodes badly — swap it for a plain hyphen. */
 const bandToSlug = (band: GradeBand) => band.replace('–', '-');
@@ -173,7 +174,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({ pillar: routePillar 
                             <h3 className="font-black text-lg mb-2">Not sure where to start?</h3>
                             <p className="text-sm font-medium mb-4">We'll match programs to your space, budget, and staff in a 20-minute call.</p>
                             <a
-                                href="https://calendly.com/sta-ai"
+                                href={CONSULT_HREF}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="block w-full py-2 bg-white border-2 border-black rounded font-bold text-sm hover:bg-sta-cta hover:text-white transition-colors"

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ProgramPillar } from '../types';
 import { PILLAR_SLUGS } from '../data/programs';
 import { Logo } from './Logo';
+import { CONSULT_HREF } from '../data/pricing';
 
 export const Footer: React.FC = () => {
   return (
@@ -36,8 +37,8 @@ export const Footer: React.FC = () => {
               <li><Link to="/pricing" className="hover:text-white">Pricing</Link></li>
               <li><Link to="/case-studies" className="hover:text-white">Case Studies</Link></li>
               <li>
-                <a href="https://calendly.com/sta-ai" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                  Book a Demo
+                <a href={CONSULT_HREF} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  Book a Consult
                 </a>
               </li>
             </ul>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Check, ArrowRight } from 'lucide-react';
-import { PRICING_TIERS, ANNUAL_DISCOUNT, annualTotal, PRICING_CTA_HREF } from '../data/pricing';
+import { PRICING_TIERS, ANNUAL_DISCOUNT, annualTotal, CONSULT_HREF } from '../data/pricing';
 
 type Billing = 'monthly' | 'prepaid';
 
@@ -135,7 +135,7 @@ export const PricingTiers: React.FC<PricingTiersProps> = ({ heading, subheading 
 
             <div className="flex justify-center mt-12">
                 <a
-                    href={PRICING_CTA_HREF}
+                    href={CONSULT_HREF}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-sta-cta text-white border-2 border-black rounded-lg font-bold text-lg shadow-hard hover:bg-sta-cta-hover hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"

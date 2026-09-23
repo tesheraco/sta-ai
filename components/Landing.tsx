@@ -8,7 +8,7 @@ import { PROGRAMS, PILLAR_SLUGS } from '../data/programs';
 import { PILLAR_VISUALS } from '../data/pillars';
 import { CASE_STUDIES } from '../data/caseStudies';
 import { SHARED_FAQS } from '../data/faqs';
-import { PRICING_CTA_HREF } from '../data/pricing';
+import { CONSULT_HREF } from '../data/pricing';
 
 const PILLARS = [
   {
@@ -57,7 +57,7 @@ export const Landing: React.FC = () => {
                 Browse the Program Library
               </Link>
               <a
-                href={PRICING_CTA_HREF}
+                href={CONSULT_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-white text-sta-dark border-2 border-black rounded-lg font-bold text-lg shadow-hard-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center"

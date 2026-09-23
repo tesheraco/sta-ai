@@ -5,6 +5,7 @@ import { CASE_STUDIES } from '../data/caseStudies';
 import { PROGRAMS } from '../data/programs';
 import { PILLAR_VISUALS } from '../data/pillars';
 import { GlanceRow } from './GlanceRow';
+import { CONSULT_HREF } from '../data/pricing';
 
 export const CaseStudyDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -194,12 +195,12 @@ export const CaseStudyDetail: React.FC = () => {
                                     Train the staff you already have to run AI, STEM, and Esports programs at your site.
                                 </p>
                                 <a
-                                    href="https://calendly.com/sta-ai"
+                                    href={CONSULT_HREF}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="block w-full py-4 bg-sta-cta text-white rounded-lg font-bold text-lg text-center shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all mb-4"
                                 >
-                                    Book a Demo
+                                    Book a Consult
                                 </a>
                                 <Link
                                     to="/programs"

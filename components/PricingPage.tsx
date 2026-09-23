@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Check, Minus, ArrowRight, FileText, Package, CalendarClock } from 'lucide-react';
-import { PRICING_TIERS, PRICING_MATRIX, PRICING_FAQS, PRICING_CTA_HREF } from '../data/pricing';
+import { PRICING_TIERS, PRICING_MATRIX, PRICING_FAQS, CONSULT_HREF } from '../data/pricing';
 import { CASE_STUDIES } from '../data/caseStudies';
 import { CaseStudyCard } from './CaseStudyCard';
 import { PricingTiers } from './PricingTiers';
@@ -141,7 +141,7 @@ export const PricingPage: React.FC = () => {
                     </h2>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a
-                            href={PRICING_CTA_HREF}
+                            href={CONSULT_HREF}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-8 py-4 bg-sta-cta text-white border-2 border-black rounded-lg font-bold text-lg hover:bg-sta-cta-hover transition-colors inline-flex items-center justify-center gap-2"

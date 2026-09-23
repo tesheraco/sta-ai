@@ -6,8 +6,8 @@ export const ANNUAL_DISCOUNT = 0.1;
 /** What lands on the PO when the year is paid in one go. */
 export const annualTotal = (monthly: number) => Math.round(monthly * 12 * (1 - ANNUAL_DISCOUNT));
 
-/** Single destination for every pricing CTA. Tiers are quoted, not self-serve. */
-export const PRICING_CTA_HREF = 'https://calendly.com/sta-ai';
+/** Single destination for every consult and quote CTA sitewide. Tiers are quoted, not self-serve. */
+export const CONSULT_HREF = 'https://calendly.com/allen-teshera/30min';
 
 export const TIER_IDS = {
     SMALL_TEAM: 'small-team',

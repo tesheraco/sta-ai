@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { CONSULT_HREF } from '../data/pricing';
 
 export const About: React.FC = () => {
   return (
@@ -181,12 +182,12 @@ export const About: React.FC = () => {
               View Program Catalog
             </Link>
             <a
-              href="https://calendly.com/sta-ai"
+              href={CONSULT_HREF}
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-white text-sta-dark border-2 border-black rounded-lg font-bold text-lg shadow-hard-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-center inline-flex items-center justify-center gap-2"
             >
-              Book a Call <ArrowRight className="w-5 h-5" />
+              Book a Consult <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>

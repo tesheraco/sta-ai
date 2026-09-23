@@ -2,6 +2,7 @@ import React from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
+import { CONSULT_HREF } from '../data/pricing';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -77,12 +78,12 @@ export const Navbar: React.FC = () => {
             */}
             <div className="pl-4">
               <a
-                href="https://calendly.com/sta-ai"
+                href={CONSULT_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-2.5 bg-sta-cta text-white border-2 border-black rounded-lg text-sm font-bold shadow-hard-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
               >
-                Book a Demo
+                Book a Consult
               </a>
             </div>
           </div>
@@ -145,13 +146,13 @@ export const Navbar: React.FC = () => {
             </Link>
             */}
             <a
-              href="https://calendly.com/sta-ai"
+              href={CONSULT_HREF}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
               className="block w-full text-left px-4 py-3 bg-sta-cta text-white border-2 border-black rounded-lg shadow-hard-sm font-bold active:shadow-none active:translate-x-0.5 active:translate-y-0.5"
             >
-              Book a Demo
+              Book a Consult
             </a>
           </div>
         </div>

@@ -6,7 +6,7 @@ import { PROGRAMS } from '../data/programs';
 import { PILLAR_VISUALS } from '../data/pillars';
 import { CASE_STUDIES } from '../data/caseStudies';
 import { SHARED_FAQS } from '../data/faqs';
-import { PRICING_TIERS, PRICING_CTA_HREF } from '../data/pricing';
+import { PRICING_TIERS, CONSULT_HREF } from '../data/pricing';
 import { FaqSection } from './FaqSection';
 import { GlanceRow } from './GlanceRow';
 import { PathToLaunch } from './PathToLaunch';
@@ -334,7 +334,7 @@ export const ProgramDetail: React.FC = () => {
                             </p>
 
                             <a
-                                href={PRICING_CTA_HREF}
+                                href={CONSULT_HREF}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="block w-full py-4 bg-sta-cta text-white rounded-lg font-bold text-lg text-center shadow-hard hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all mb-4"
